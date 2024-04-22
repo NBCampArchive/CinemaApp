@@ -32,7 +32,8 @@ class MovieListViewController: UIViewController {
             $0.minimumInteritemSpacing = 0
         }
     }
-    
+    // MARK: - SegementController
+    // 세그먼트 설정
     func setupSegement(){
         // 기존 세그먼트 제거
         categorySegementController.removeAllSegments()
@@ -60,6 +61,7 @@ class MovieListViewController: UIViewController {
         categorySegementController.selectedSegmentIndex = 0
     }
     
+    // 세그먼트 선택 시 호출되는 메소드
     @IBAction func categorySegmentChanged(_ sender: UISegmentedControl) {
         let listType: String
         
@@ -79,6 +81,7 @@ class MovieListViewController: UIViewController {
         fetchMovieList(listType: listType)
     }
     
+    //MARK: - API
     func fetchMovieList(listType: String){
         MovieListApiManager.shared.fetchMovieList(listType: listType, page: 1) { result in
             switch result {
