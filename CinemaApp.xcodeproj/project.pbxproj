@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68E614FB2BD6510E003E623C /* SearchMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E614FA2BD6510E003E623C /* SearchMovie.storyboard */; };
+		68E614FD2BD65176003E623C /* SerachMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E614FC2BD65176003E623C /* SerachMovieViewController.swift */; };
+		68E615022BD657CC003E623C /* MovieListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E615012BD657CC003E623C /* MovieListCollectionViewCell.swift */; };
 		B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62A82BD631B90006E956 /* AppDelegate.swift */; };
 		B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */; };
 		B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AC2BD631B90006E956 /* MovieListViewController.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68E614FA2BD6510E003E623C /* SearchMovie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchMovie.storyboard; sourceTree = "<group>"; };
+		68E614FC2BD65176003E623C /* SerachMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachMovieViewController.swift; sourceTree = "<group>"; };
+		68E615012BD657CC003E623C /* MovieListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5EC62A52BD631B90006E956 /* CinemaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EC62A82BD631B90006E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68E614F42BD65021003E623C /* SearchMovie */ = {
+			isa = PBXGroup;
+			children = (
+				68E614F52BD65049003E623C /* StoryBoard */,
+				68E614F62BD65053003E623C /* ViewController */,
+				68E615002BD657A8003E623C /* Cell */,
+			);
+			path = SearchMovie;
+			sourceTree = "<group>";
+		};
+		68E614F52BD65049003E623C /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				68E614FA2BD6510E003E623C /* SearchMovie.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		68E614F62BD65053003E623C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				68E614FC2BD65176003E623C /* SerachMovieViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		68E615002BD657A8003E623C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				68E615012BD657CC003E623C /* MovieListCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B5EC629C2BD631B90006E956 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +140,7 @@
 		B5EC62BF2BD6323D0006E956 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				68E614F42BD65021003E623C /* SearchMovie */,
 				B5EC62C42BD6328D0006E956 /* Launch */,
 				B5EC62C02BD632540006E956 /* MovieList */,
 			);
@@ -223,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5EC62B22BD631BB0006E956 /* Assets.xcassets in Resources */,
+				68E614FB2BD6510E003E623C /* SearchMovie.storyboard in Resources */,
 				B5EC62B52BD631BB0006E956 /* Base in Resources */,
 				B5EC62B02BD631B90006E956 /* Base in Resources */,
 			);
@@ -239,6 +281,8 @@
 				B5EC62C92BD63F0D0006E956 /* BaseNetwork.swift in Sources */,
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
 				B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */,
+				68E614FD2BD65176003E623C /* SerachMovieViewController.swift in Sources */,
+				68E615022BD657CC003E623C /* MovieListCollectionViewCell.swift in Sources */,
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
 			);
