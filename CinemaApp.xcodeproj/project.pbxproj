@@ -70,6 +70,7 @@
 		B5EC62BC2BD6321F0006E956 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC62C62BD63DF50006E956 /* Base */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -77,6 +78,7 @@
 		B5EC62BD2BD632300006E956 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC62C72BD63E010006E956 /* Base */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -137,6 +139,20 @@
 				B5EC62B32BD631BB0006E956 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		B5EC62C62BD63DF50006E956 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B5EC62C72BD63E010006E956 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
