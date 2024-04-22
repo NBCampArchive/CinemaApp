@@ -12,8 +12,7 @@ class MovieListApiManager{
     // 싱글톤 객체 생성
     static let shared = MovieListApiManager()
     
-    private let apiKey = "c31b9c5e5899c77a5743da1f58e46171"
-    private let token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzFiOWM1ZTU4OTljNzdhNTc0M2RhMWY1OGU0NjE3MSIsInN1YiI6IjY2MjVkMGZkY2I1YzhlMDE2NDNmY2Y2YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gYBA_5m1zFie_AKPbNap-9XH1IHCjHgMHw5hP1T1H_k"
+    
     
     private init() {}
     
