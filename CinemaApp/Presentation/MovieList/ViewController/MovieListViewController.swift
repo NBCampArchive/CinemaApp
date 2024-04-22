@@ -18,6 +18,7 @@ class MovieListViewController: UIViewController {
         view.backgroundColor = UIColor(named: "backgroundColor")
         setupCollectionView()
         setupSegement()
+        fetchMovieList(listType: "now_playing")
     }
     
     func setupCollectionView() {
@@ -59,6 +60,35 @@ class MovieListViewController: UIViewController {
         categorySegementController.selectedSegmentIndex = 0
     }
     
+    @IBAction func categorySegmentChanged(_ sender: UISegmentedControl) {
+        let listType: String
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            listType = "now_playing"
+        case 1:
+            listType = "popular"
+        case 2:
+            listType = "top_rated"
+        case 3:
+            listType = "upcoming"
+        default:
+            listType = "now_playing"
+        }
+        
+        fetchMovieList(listType: listType)
+    }
+    
+    func fetchMovieList(listType: String){
+        MovieListApiManager.shared.fetchMovieList(listType: listType, page: 1) { result in
+            switch result {
+            case .success(let movies):
+                print(movies)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDataSource{
