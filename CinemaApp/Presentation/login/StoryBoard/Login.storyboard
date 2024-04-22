@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="upI-Nr-Yag">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
@@ -21,20 +21,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zGS-GP-E3p" userLabel="Movie Poster">
-                                        <rect key="frame" x="-19" y="-49" width="398" height="856"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="850"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvd-Qo-Cp9" userLabel="Transparent Black">
-                                        <rect key="frame" x="-18" y="-60" width="398" height="856"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GC2-QF-sbo" userLabel="Transparent Black">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="850"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.68592197847682124" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
+                                    </imageView>
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DcR-Vk-xQ2" userLabel="Login Components">
                                 <rect key="frame" x="19" y="281" width="348" height="395"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COc-ov-NlE" userLabel="앱 로고">
+                                        <rect key="frame" x="54" y="16" width="240" height="53"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-Ed-WjS" userLabel="ID box">
                                         <rect key="frame" x="15" y="89" width="319" height="68"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -63,11 +66,11 @@
                                         </subviews>
                                         <color key="backgroundColor" name="PrimaryContainerColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQb-Xc-bgJ" userLabel="Auto Login">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQb-Xc-bgJ" userLabel="Auto Login Check">
                                         <rect key="frame" x="191" y="241" width="149" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJY-94-6X8">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJY-94-6X8" userLabel="Check Button">
                                                 <rect key="frame" x="8" y="0.0" width="49" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" name="PrimaryContainerColor"/>
@@ -111,19 +114,51 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                         </buttonConfiguration>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COc-ov-NlE" userLabel="앱 로고">
-                                        <rect key="frame" x="54" y="16" width="240" height="53"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                 </subviews>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                     </view>
+                    <navigationItem key="navigationItem" id="XsJ-UQ-cjb"/>
+                    <connections>
+                        <outlet property="appLogoImage" destination="COc-ov-NlE" id="O8r-Ua-NB7"/>
+                        <outlet property="autoLoginCheckButton" destination="LJY-94-6X8" id="H8R-fa-l7E"/>
+                        <outlet property="autoLoginCheckLabel" destination="kcO-0t-Gjf" id="dgR-D7-r6f"/>
+                        <outlet property="autoLoginCheckView" destination="bQb-Xc-bgJ" id="Mre-ii-7OI"/>
+                        <outlet property="bgPosterImage" destination="zGS-GP-E3p" id="9qO-xJ-xXV"/>
+                        <outlet property="bgTransparentBlackImage" destination="GC2-QF-sbo" id="yE4-zn-sSr"/>
+                        <outlet property="bgView" destination="n4m-54-pJz" id="ygc-Gt-Zxg"/>
+                        <outlet property="idBoxView" destination="aDV-Ed-WjS" id="72W-ro-ZIg"/>
+                        <outlet property="idLabel" destination="sOe-gq-ACR" id="dDf-8G-VAZ"/>
+                        <outlet property="loginButton" destination="bvP-KW-NEJ" id="1Ya-wn-whm"/>
+                        <outlet property="loginComponentsView" destination="DcR-Vk-xQ2" id="eKr-Bn-id2"/>
+                        <outlet property="pwBoxView" destination="vEp-yq-Lad" id="BlQ-Vm-26O"/>
+                        <outlet property="pwLabel" destination="4Yb-6z-3eN" id="SgD-eR-Pda"/>
+                        <outlet property="registerButton" destination="1wb-nc-4U0" id="8jy-UV-B9W"/>
+                        <outlet property="searchIDButton" destination="90l-gc-Zlb" id="SV2-I7-EDR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-98.473282442748086" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="828.24427480916029" y="3.5211267605633805"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Bdf-ID-2nV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="upI-Nr-Yag" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JfL-SD-qq5">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="gst-bx-MVy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAL-6Z-tn3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-25" y="4"/>
         </scene>
     </scenes>
     <resources>
