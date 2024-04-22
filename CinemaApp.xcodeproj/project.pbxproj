@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */; };
+		1AE3A3F22BD658A300021239 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE3A3F12BD658A300021239 /* SnapKit */; };
+		1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */; };
 		B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62A82BD631B90006E956 /* AppDelegate.swift */; };
 		B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */; };
 		B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AC2BD631B90006E956 /* MovieListViewController.swift */; };
@@ -21,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B5EC62A52BD631B90006E956 /* CinemaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EC62A82BD631B90006E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE3A3F22BD658A300021239 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +69,7 @@
 		1ACA9BDC2BD6449900B6DE9E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -207,6 +212,9 @@
 			dependencies = (
 			);
 			name = CinemaApp;
+			packageProductDependencies = (
+				1AE3A3F12BD658A300021239 /* SnapKit */,
+			);
 			productName = CinemaApp;
 			productReference = B5EC62A52BD631B90006E956 /* CinemaApp.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +243,9 @@
 				Base,
 			);
 			mainGroup = B5EC629C2BD631B90006E956;
+			packageReferences = (
+				1AE3A3F02BD658A300021239 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = B5EC62A62BD631B90006E956 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */,
 				B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */,
 				B5EC62C92BD63F0D0006E956 /* BaseNetwork.swift in Sources */,
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
@@ -491,6 +503,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1AE3A3F02BD658A300021239 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1AE3A3F12BD658A300021239 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AE3A3F02BD658A300021239 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B5EC629D2BD631B90006E956 /* Project object */;
 }
