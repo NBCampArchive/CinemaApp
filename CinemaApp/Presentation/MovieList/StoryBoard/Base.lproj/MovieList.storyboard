@@ -28,6 +28,9 @@
                                     <segment title=""/>
                                     <segment title=""/>
                                 </segments>
+                                <connections>
+                                    <action selector="categorySegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="aLx-tF-igV"/>
+                                </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="weU-PL-kQK">
                                 <rect key="frame" x="16" y="169" width="361" height="633"/>
