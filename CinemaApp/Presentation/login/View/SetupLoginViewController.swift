@@ -29,6 +29,17 @@ class SetupLoginViewController: LoginViewController {
     @IBOutlet weak var searchIDButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
+    var autoLoginStatus: Bool = true {
+        didSet {
+            updateAutoLoginCheckImage()
+        }
+    }
+    
+    @IBAction func tappedAutoLoginCheckButton(_ sender: UIButton) {
+        autoLoginStatus = !autoLoginStatus
+    }
+    
+    
     // color set
     let BackgroundColor = UIColor(named: "BackgroundColor")
     let customPrimaryColor = UIColor(named: "customPrimaryColor")
@@ -37,6 +48,7 @@ class SetupLoginViewController: LoginViewController {
     
     // MARK: - UI Setting functions
     override func setupUI() {
+        updateAutoLoginCheckImage()
         setBackgroundUI()
         setAppLogoUI()
         setCornerRadius()
@@ -51,9 +63,19 @@ class SetupLoginViewController: LoginViewController {
         setLoginComponentsConstraints()
     }
     
-    
+ 
     
     // MARK: - Setup UI
+    
+    // AutoLogin check 이미지 변경 함수
+    func updateAutoLoginCheckImage() {
+        if autoLoginStatus {
+            autoLoginCheckButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+        } else {
+            autoLoginCheckButton.setImage(UIImage(systemName: "square.fill"), for: .normal)
+        }
+    }
+    
     func setBackgroundUI() {
         // 포스터 이미지
         let image = UIImage(systemName: "viewfinder.circle.fill")

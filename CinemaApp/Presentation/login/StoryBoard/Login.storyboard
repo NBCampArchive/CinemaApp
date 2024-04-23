@@ -49,6 +49,9 @@
                                                 <color key="tintColor" name="PrimaryContainerColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="squareshape.fill" catalog="system" title="" imagePadding="3"/>
+                                                <connections>
+                                                    <action selector="tappedAutoLoginCheckButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SUj-lK-93P"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="자동로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcO-0t-Gjf">
                                                 <rect key="frame" x="53" y="6" width="74" height="21"/>
