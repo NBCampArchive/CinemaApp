@@ -6,32 +6,37 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var movieListCollectionView: UICollectionView!
     
     let urlString = "https://api.themoviedb.org/3/search/movie"
-    
     let interSpacing: CGFloat = 2
-    var imageList: [UIImage] = []
-    let imageNameList = ["bodercoly", "boldGuy", "brain", "cat", "dance", "game", "heart", "pepe" , "scary", "ugly"]
+    
+    var movieList: [Results] = [] {
+        didSet {
+            // print("movieList 저장됨: \(movieList.count)")
+            DispatchQueue.main.async {
+                self.movieListCollectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         movieListCollectionView.dataSource = self
         movieListCollectionView.delegate = self
-        makeImage()
         view.backgroundColor = UIColor(named: "BackgroundColor")
         
-        getData(query: "12")
+        getData(query: "300")
     }
     
     func getData(query: String) {
-    
         guard let url = URL(string: urlString) else { return }
-        // 파라미터나 헤더를 추가하고 싶을때 이걸로 생성 -> URLComponents -> 이걸 사용할 때는 URLRequest 안에 components?.url 넣기
-        // 헤더나 파라미터 필요 없는 경우 -> URLRequest 만 생성.
+        // 파라미터 or 헤더를 추가 -> URLComponents -> URLRequest 안에 components?.url 넣기
+        // 헤더 or 파라미터 필요 x -> URLRequest만 생성
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         // 파라미터 설정
         let qureyParam = URLQueryItem(name: "query", value: query)
@@ -47,14 +52,13 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
           "accept": "application/json",
           "Authorization": ""
         ]
-        //
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(Movie.self, from: data)
-                print("result: \(result)")
+                self.movieList = result.results
             } catch {
                 print("error: \(error)")
             }
@@ -62,23 +66,22 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         .resume()
     }
     
-    func makeImage() {
-        for imageName in imageNameList {
-            let newImage = UIImage(named: imageName) ?? UIImage(systemName: "folder.fill")!
-            imageList.append(newImage)
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        imageList.count
+        movieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = self.movieListCollectionView.dequeueReusableCell(withReuseIdentifier: MovieListCollectionViewCell.indentifier, for: indexPath) as? MovieListCollectionViewCell else { return UICollectionViewCell() }
-        let image = imageList[indexPath.item]
-        cell.movieImage.image = image
+        
+        let movie = movieList[indexPath.item]
+        
         cell.movieImage.contentMode = .scaleAspectFill
-        cell.movieName.text = imageNameList[indexPath.item]
+        cell.movieName.text = movie.title
+        if let path = movie.poster_path {
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(path)")
+            let placeholderImage = UIImage(systemName: "movieclapper")
+            cell.movieImage.kf.setImage(with: url, placeholder: placeholderImage)
+        }
         
         return cell
     }
@@ -102,7 +105,6 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return interSpacing
-        
     }
     
 }
