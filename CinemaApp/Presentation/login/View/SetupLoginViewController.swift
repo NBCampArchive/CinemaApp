@@ -18,10 +18,8 @@ class SetupLoginViewController: LoginViewController {
     @IBOutlet weak var loginComponentsView: UIView!
     @IBOutlet weak var appLogoImage: UIImageView!
     
-    @IBOutlet weak var idBoxView: UIView!
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var pwBoxView: UIView!
-    @IBOutlet weak var pwLabel: UILabel!
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var pwTextField: UITextField!
     
     @IBOutlet weak var autoLoginCheckView: UIView!
     @IBOutlet weak var autoLoginCheckButton: UIButton!
@@ -31,6 +29,11 @@ class SetupLoginViewController: LoginViewController {
     @IBOutlet weak var searchIDButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
+    // color set
+    let BackgroundColor = UIColor(named: "BackgroundColor")
+    let customPrimaryColor = UIColor(named: "customPrimaryColor")
+    let PrimaryContainerColor = UIColor(named: "PrimaryContainerColor")
+    let LabelTextColor = UIColor(named: "LabelTextColor")
     
     // MARK: - UI Setting functions
     override func setupUI() {
@@ -38,6 +41,8 @@ class SetupLoginViewController: LoginViewController {
         setAppLogoUI()
         setCornerRadius()
         setFont()
+        setColors()
+        setPlaceholderText()
     }
     
     override func setupConstraints() {
@@ -68,14 +73,17 @@ class SetupLoginViewController: LoginViewController {
     }
     
     func setCornerRadius() {
-        self.idBoxView.layer.cornerRadius = 30
-        self.pwBoxView.layer.cornerRadius = 30
+        [self.idTextField, 
+         self.pwTextField].forEach {
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 30
+        }
         self.loginButton.layer.cornerRadius = 30
     }
     
     func setFont() {
-        [self.idLabel,
-         self.pwLabel].forEach {
+        [self.idTextField, 
+         self.pwTextField].forEach {
             $0.font = UIFont.systemFont(ofSize: 18)
         }
         [self.searchIDButton.titleLabel,
@@ -84,6 +92,34 @@ class SetupLoginViewController: LoginViewController {
         }
         self.autoLoginCheckLabel.font = UIFont.systemFont(ofSize: 16)
         self.loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+    }
+    
+    func setColors() {
+        [self.idTextField, 
+         self.pwTextField].forEach {
+            $0?.backgroundColor = PrimaryContainerColor
+            $0?.textColor = LabelTextColor
+        }
+        self.loginComponentsView.backgroundColor = nil
+        self.autoLoginCheckLabel.textColor = LabelTextColor
+        self.loginButton.backgroundColor = customPrimaryColor
+        self.loginButton.tintColor = LabelTextColor
+        [self.searchIDButton,
+         self.registerButton].forEach {
+            $0?.tintColor = LabelTextColor
+        }
+    }
+    
+    func setPlaceholderText() {
+        // 텍스트
+        idTextField.attributedPlaceholder = NSAttributedString(string: "아이디를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        pwTextField.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        // 패딩
+        [self.idTextField,
+         self.pwTextField].forEach {
+            $0?.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0))
+            $0?.leftViewMode = .always
+            }
     }
     
     
@@ -95,10 +131,8 @@ class SetupLoginViewController: LoginViewController {
          self.bgTransparentBlackImage,
          self.loginComponentsView,
          self.appLogoImage,
-         self.idBoxView,
-         self.idLabel,
-         self.pwBoxView,
-         self.pwLabel,
+         self.idTextField,
+         self.pwTextField,
          self.autoLoginCheckView,
          self.autoLoginCheckLabel,
          self.autoLoginCheckButton,
@@ -139,36 +173,23 @@ class SetupLoginViewController: LoginViewController {
             $0.width.equalTo(loginComponentsView) // width
         }
         
-        // id Box: top, height, horizontalEdges
-        self.idBoxView.snp.makeConstraints {
+        // idTextField: top, height, horizontalEdges
+        self.idTextField.snp.makeConstraints {
             $0.top.equalTo(appLogoImage.snp.bottom).offset(30)
             $0.height.equalTo(60)
             $0.horizontalEdges.equalTo(loginComponentsView)
         }
         
-        // id label: leading, centerY
-        self.idLabel.snp.makeConstraints {
-            $0.leading.equalTo(idBoxView.snp.leading).offset(20)
-            $0.centerY.equalTo(idBoxView)
-        }
-        
-        // pw Box: top, height, horizontalEdges
-        self.pwBoxView.snp.makeConstraints {
-            $0.top.equalTo(idBoxView.snp.bottom).offset(20)
+        // pwTextField: top, height, horizontalEdges
+        self.pwTextField.snp.makeConstraints {
+            $0.top.equalTo(idTextField.snp.bottom).offset(20)
             $0.height.equalTo(60)
             $0.horizontalEdges.equalTo(loginComponentsView)
         }
         
-        // pw label: leading, centerY
-        self.pwLabel.snp.makeConstraints {
-            $0.leading.equalTo(pwBoxView.snp.leading).offset(20)
-            $0.centerY.equalTo(pwBoxView)
-        }
-        
         // 자동로그인 뷰: top, height, trailing, width
-        //        self.autoLoginCheckView.backgroundColor = .brown
         self.autoLoginCheckView.snp.makeConstraints {
-            $0.top.equalTo(pwBoxView.snp.bottom).offset(10)
+            $0.top.equalTo(pwTextField.snp.bottom).offset(10)
             $0.height.equalTo(26)
             $0.trailing.equalTo(loginComponentsView.snp.trailing)
             $0.width.equalTo(loginComponentsView)

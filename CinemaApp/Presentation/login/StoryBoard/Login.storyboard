@@ -39,34 +39,6 @@
                                         <rect key="frame" x="54" y="16" width="240" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-Ed-WjS" userLabel="ID box">
-                                        <rect key="frame" x="15" y="89" width="319" height="68"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="아이디" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOe-gq-ACR">
-                                                <rect key="frame" x="21" y="24" width="267" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="LabelTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" name="PrimaryContainerColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-yq-Lad" userLabel="PW box">
-                                        <rect key="frame" x="15" y="165" width="319" height="68"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-6z-3eN">
-                                                <rect key="frame" x="21" y="24" width="267" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="LabelTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" name="PrimaryContainerColor"/>
-                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQb-Xc-bgJ" userLabel="Auto Login Check">
                                         <rect key="frame" x="191" y="241" width="149" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,6 +90,18 @@
                                             <segue destination="aap-l5-SSd" kind="presentation" id="O2T-9A-I7U"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P3X-aR-8tR" userLabel="ID Text Field">
+                                        <rect key="frame" x="45" y="111" width="259" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="174-BY-AC3" userLabel="PW Text Field">
+                                        <rect key="frame" x="45" y="171" width="259" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                             </view>
                         </subviews>
@@ -132,12 +116,10 @@
                         <outlet property="bgPosterImage" destination="zGS-GP-E3p" id="9qO-xJ-xXV"/>
                         <outlet property="bgTransparentBlackImage" destination="GC2-QF-sbo" id="yE4-zn-sSr"/>
                         <outlet property="bgView" destination="n4m-54-pJz" id="ygc-Gt-Zxg"/>
-                        <outlet property="idBoxView" destination="aDV-Ed-WjS" id="72W-ro-ZIg"/>
-                        <outlet property="idLabel" destination="sOe-gq-ACR" id="dDf-8G-VAZ"/>
+                        <outlet property="idTextField" destination="P3X-aR-8tR" id="Wct-0e-7KY"/>
                         <outlet property="loginButton" destination="bvP-KW-NEJ" id="1Ya-wn-whm"/>
                         <outlet property="loginComponentsView" destination="DcR-Vk-xQ2" id="eKr-Bn-id2"/>
-                        <outlet property="pwBoxView" destination="vEp-yq-Lad" id="BlQ-Vm-26O"/>
-                        <outlet property="pwLabel" destination="4Yb-6z-3eN" id="SgD-eR-Pda"/>
+                        <outlet property="pwTextField" destination="174-BY-AC3" id="JJT-MA-VPb"/>
                         <outlet property="registerButton" destination="1wb-nc-4U0" id="8jy-UV-B9W"/>
                         <outlet property="searchIDButton" destination="90l-gc-Zlb" id="SV2-I7-EDR"/>
                     </connections>
