@@ -173,7 +173,7 @@ class LoginViewController: UIViewController {
         }
         
         // 자동로그인 뷰: top, height, trailing, width
-        self.autoLoginCheckView.backgroundColor = .brown
+//        self.autoLoginCheckView.backgroundColor = .brown
         self.autoLoginCheckView.snp.makeConstraints {
             $0.top.equalTo(pwBoxView.snp.bottom).offset(10)
             $0.height.equalTo(26)
@@ -190,7 +190,7 @@ class LoginViewController: UIViewController {
         
         // 자동로그인 버튼 : horizontalEdges, trailing
         self.autoLoginCheckButton.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(autoLoginCheckView)
+            $0.verticalEdges.equalTo(autoLoginCheckView)
             $0.trailing.equalTo(autoLoginCheckLabel.snp.leading).inset(2)
         }
         
