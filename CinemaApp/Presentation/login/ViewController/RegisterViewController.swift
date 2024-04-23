@@ -11,6 +11,18 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupConstraints()
+    }
+    
+
+    
+    
+    // MARK: - UI Setting functions
+    func setupUI() {
+    }
+    
+    func setupConstraints() {
     }
 
 }
