@@ -10,6 +10,8 @@ import UIKit
 class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var movieListCollectionView: UICollectionView!
     
+    let urlString = "https://api.themoviedb.org/3/search/movie"
+    
     let interSpacing: CGFloat = 2
     var imageList: [UIImage] = []
     let imageNameList = ["bodercoly", "boldGuy", "brain", "cat", "dance", "game", "heart", "pepe" , "scary", "ugly"]
@@ -21,6 +23,43 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         movieListCollectionView.delegate = self
         makeImage()
         view.backgroundColor = UIColor(named: "BackgroundColor")
+        
+        getData(query: "12")
+    }
+    
+    func getData(query: String) {
+    
+        guard let url = URL(string: urlString) else { return }
+        // 파라미터나 헤더를 추가하고 싶을때 이걸로 생성 -> URLComponents -> 이걸 사용할 때는 URLRequest 안에 components?.url 넣기
+        // 헤더나 파라미터 필요 없는 경우 -> URLRequest 만 생성.
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        // 파라미터 설정
+        let qureyParam = URLQueryItem(name: "query", value: query)
+        let languageParam = URLQueryItem(name: "language", value: "ko-KR")
+        let queryItems = [qureyParam, languageParam]
+        components?.queryItems = queryItems
+        
+        guard let componentUrl = components?.url else { return }
+        var urlRequest = URLRequest(url: componentUrl)
+        
+        // 해더 설정
+        urlRequest.allHTTPHeaderFields = [
+          "accept": "application/json",
+          "Authorization": ""
+        ]
+        //
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(Movie.self, from: data)
+                print("result: \(result)")
+            } catch {
+                print("error: \(error)")
+            }
+        }
+        .resume()
     }
     
     func makeImage() {
@@ -29,7 +68,6 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
             imageList.append(newImage)
         }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         imageList.count
