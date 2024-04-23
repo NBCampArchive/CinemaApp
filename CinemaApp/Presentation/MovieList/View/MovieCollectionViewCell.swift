@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
+import Alamofire
 
 class MovieCollectionViewCell: UICollectionViewCell{
     
@@ -16,7 +18,6 @@ class MovieCollectionViewCell: UICollectionViewCell{
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 16
-        $0.backgroundColor = .gray
     }
     
     private let titleLabel = UILabel().then {
@@ -82,8 +83,17 @@ class MovieCollectionViewCell: UICollectionViewCell{
         }
     }
     
-    func configure(image: UIImage?, title: String, description: String){
-        imageView.image = image
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageView.image = nil
+        titleLabel.text = nil
+        descriptionLabel.text = nil
+    }
+    
+    func configure(imageURL: URL, title: String, description: String) {
+        imageView.image = nil
+        imageView.kf.setImage(with: imageURL)
         titleLabel.text = title
         descriptionLabel.text = description
     }
