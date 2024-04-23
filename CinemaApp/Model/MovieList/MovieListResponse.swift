@@ -23,7 +23,7 @@ struct MovieListResponse: Decodable {
     }
 }
 
-struct Movie: Decodable {
+struct Movie: Codable {
     let adult: Bool
     let backdropPath: String?
     let genreIDs: [Int]
