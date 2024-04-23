@@ -30,6 +30,9 @@ class SetupRegisterViewController: RegisterViewController {
     let PrimaryContainerColor = UIColor(named: "PrimaryContainerColor")
     let LabelTextColor = UIColor(named: "LabelTextColor")
     
+    @IBAction func tappedExitButton(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
