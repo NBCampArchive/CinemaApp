@@ -16,8 +16,7 @@ class MovieListApiManager{
     
     private init() {}
     
-    func fetchMovieList(listType: String, page: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
-        let baseURL = "https://api.themoviedb.org/3/movie/"
+    func fetchMovieList(listType: String, page: Int, completion: @escaping (Result<MovieListResponse, Error>) -> Void) {
         let url = baseURL + listType
         
         let headers: HTTPHeaders = [
@@ -34,8 +33,7 @@ class MovieListApiManager{
         AF.request(url, parameters: parameters, headers: headers).validate().responseDecodable(of: MovieListResponse.self) { response in
             switch response.result {
             case .success(let movieListResponse):
-                let movies = movieListResponse.results
-                completion(.success(movies))
+                completion(.success(movieListResponse))
             case .failure(let error):
                 completion(.failure(error))
             }
