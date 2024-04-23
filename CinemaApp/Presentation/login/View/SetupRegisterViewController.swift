@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SetupRegisterViewController: RegisterViewController {
     
@@ -37,9 +38,18 @@ class SetupRegisterViewController: RegisterViewController {
     override func setupUI() {
         setColors()
         setFontAndText()
+        setCornerRadius()
+        setTextFieldPadding()
     }
     
     override func setupConstraints() {
+        setTranslatesAutoresizingMaskIntoConstraintsFalse()
+        setTitleConstraints()
+        setNameViewConstraints()
+        setIdViewConstraints()
+        setPwViewConstraints()
+        setRegisterButtonConstraints()
+        setExitButtonConstraints()
     }
     
     // MARK: - Setup UI
@@ -82,7 +92,14 @@ class SetupRegisterViewController: RegisterViewController {
         self.pageTitleLabel.font = UIFont.boldSystemFont(ofSize: 26)
         
         self.pageSubtitleLabel.text = "Twelve Cinema에 오신 것을 환영합니다."
-        self.pageSubtitleLabel.font = UIFont.systemFont(ofSize: 18)
+        self.pageSubtitleLabel.font = UIFont.systemFont(ofSize: 16)
+        self.pageSubtitleLabel.numberOfLines = 0
+        
+        // MARK: page title 텍스트 가운데 정렬
+        [self.pageTitleLabel,
+         self.pageSubtitleLabel].forEach {
+            $0.textAlignment = .center
+        }
         
         // MARK: view title labels
         // text
@@ -108,8 +125,136 @@ class SetupRegisterViewController: RegisterViewController {
             $0?.font = UIFont.systemFont(ofSize: 18)
         }
         
+        // MARK: Register button <- 적용 안 됨....
+        self.registerButton.titleLabel?.text = "가입하기"
+        self.registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
     }
     
+    func setCornerRadius() { // frame과 관련된 값은 viewDidAppear
+        [self.nameViewTextField,
+         self.idViewTextField,
+         self.pwViewTextField].forEach {
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 20 // height이 설정된 후에 실행되어야 함
+        }
+    }
     
+    func setTextFieldPadding() {
+        [self.nameViewTextField,
+         self.idViewTextField,
+         self.pwViewTextField].forEach {
+            $0?.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0))
+            $0?.leftViewMode = .always
+        }
+    }
+    
+    // MARK: - set up constraints
+    func setTranslatesAutoresizingMaskIntoConstraintsFalse() {
+        [pageTitleLabel,
+         pageSubtitleLabel,
+         nameView,
+         nameViewTitleLabel,
+         nameViewTextField,
+         idView,
+         idViewTitleLabel,
+         idViewTextField,
+         pwView,
+         pwViewTitleLabel,
+         pwViewTextField,
+         exitButton,
+         registerButton].forEach {
+            $0?.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    // title: top,horizontalEdges
+    func setTitleConstraints() {
+        self.pageTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.view.snp.top).offset(40)
+            $0.horizontalEdges.equalTo(self.view)
+        }
+        self.pageSubtitleLabel.snp.makeConstraints {
+            $0.top.equalTo(pageTitleLabel.snp.bottom).offset(10)
+            $0.horizontalEdges.equalTo(self.view)
+        }
+    }
+    
+    func setNameViewConstraints() {
+        // view: top, horizontalEdges
+        self.nameView.snp.makeConstraints {
+            $0.top.equalTo(pageSubtitleLabel.snp.bottom).offset(30)
+            $0.horizontalEdges.equalTo(self.view).inset(40)
+        }
+        // title: top, horizontalEdges
+        self.nameViewTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(nameView)
+            $0.horizontalEdges.equalTo(nameView)
+        }
+        // textField: top, horizontalEdgs, height, bottom
+        self.nameViewTextField.snp.makeConstraints {
+            $0.top.equalTo(nameViewTitleLabel.snp.bottom).offset(10)
+            $0.horizontalEdges.equalTo(nameView)
+            $0.height.equalTo(40)
+            $0.bottom.equalTo(nameView.snp.bottom)
+        }
+    }
+    
+    func setIdViewConstraints() {
+        // view: top, horizontalEdges
+        self.idView.snp.makeConstraints {
+            $0.top.equalTo(nameView.snp.bottom).offset(30)
+            $0.horizontalEdges.equalTo(self.view).inset(40)
+        }
+        // title: top, horizontalEdges
+        self.idViewTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(idView)
+            $0.horizontalEdges.equalTo(idView)
+        }
+        // textField: top, horizontalEdgs, height, bottom
+        self.idViewTextField.snp.makeConstraints {
+            $0.top.equalTo(idViewTitleLabel.snp.bottom).offset(10)
+            $0.horizontalEdges.equalTo(idView)
+            $0.height.equalTo(40)
+            $0.bottom.equalTo(idView.snp.bottom)
+        }
+    }
+    
+    func setPwViewConstraints() {
+        // view: top, horizontalEdges
+        self.pwView.snp.makeConstraints {
+            $0.top.equalTo(idView.snp.bottom).offset(30)
+            $0.horizontalEdges.equalTo(self.view).inset(40)
+        }
+        // title: top, horizontalEdges
+        self.pwViewTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(pwView)
+            $0.horizontalEdges.equalTo(pwView)
+        }
+        // textField: top, horizontalEdgs, height, bottom
+        self.pwViewTextField.snp.makeConstraints {
+            $0.top.equalTo(pwViewTitleLabel.snp.bottom).offset(10)
+            $0.horizontalEdges.equalTo(pwView)
+            $0.height.equalTo(40)
+            $0.bottom.equalTo(pwView.snp.bottom)
+        }
+    }
+    
+    func setRegisterButtonConstraints() {
+        // top, width, centerX
+        self.registerButton.snp.makeConstraints {
+            $0.top.equalTo(pwView.snp.bottom).offset(30)
+            $0.width.equalTo(100)
+            $0.centerX.equalTo(self.view)
+        }
+    }
+    
+    func setExitButtonConstraints() {
+        // top,leading, width, height
+        self.exitButton.snp.makeConstraints {
+            $0.top.leading.equalTo(self.view).offset(15)
+            $0.width.height.equalTo(30)
+        }
+    }
     
 }
