@@ -10,6 +10,7 @@
 		1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */; };
 		1AE3A3F22BD658A300021239 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE3A3F12BD658A300021239 /* SnapKit */; };
 		1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */; };
+		1AE3A3F72BD753D900021239 /* SetupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */; };
 		B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62A82BD631B90006E956 /* AppDelegate.swift */; };
 		B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */; };
 		B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AC2BD631B90006E956 /* MovieListViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLoginViewController.swift; sourceTree = "<group>"; };
 		B5EC62A52BD631B90006E956 /* CinemaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EC62A82BD631B90006E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				1ACA9BDB2BD6449100B6DE9E /* StoryBoard */,
 				1ACA9BDC2BD6449900B6DE9E /* ViewController */,
+				1AE3A3F52BD7535900021239 /* View */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -72,6 +75,14 @@
 				1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1AE3A3F52BD7535900021239 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B5EC629C2BD631B90006E956 = {
@@ -276,6 +287,7 @@
 			files = (
 				1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */,
 				B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */,
+				1AE3A3F72BD753D900021239 /* SetupLoginViewController.swift in Sources */,
 				B5EC62C92BD63F0D0006E956 /* BaseNetwork.swift in Sources */,
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
 				B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */,
