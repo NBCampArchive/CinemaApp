@@ -9,7 +9,6 @@ import UIKit
 
 class MovieListCollectionViewCell: UICollectionViewCell {
     static let indentifier = "MovieListCollectionViewCell"
-    
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var movieName: UILabel!
 }

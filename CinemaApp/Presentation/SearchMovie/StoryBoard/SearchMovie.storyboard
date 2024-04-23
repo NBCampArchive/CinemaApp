@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Serach Movie View Controller-->
+        <!--Search Movie View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SerachMovieViewController" customModule="CinemaApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="SearchMovieViewController" customModule="CinemaApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Df6-oE-gmR" userLabel="MovieListCollectionView">
-                                <rect key="frame" x="0.0" y="150" width="393" height="668"/>
+                                <rect key="frame" x="0.0" y="125" width="393" height="693"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LwN-wo-HWx">
                                     <size key="itemSize" width="128" height="128"/>
@@ -89,7 +89,7 @@
                                 </cells>
                             </collectionView>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1I-eL-Fc2">
-                                <rect key="frame" x="0.0" y="79" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -107,18 +107,19 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Df6-oE-gmR" secondAttribute="bottom" id="AjB-n4-6IK"/>
                             <constraint firstItem="Df6-oE-gmR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ey3-lf-A3r"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Df6-oE-gmR" secondAttribute="trailing" id="MLF-JX-d96"/>
-                            <constraint firstItem="W1I-eL-Fc2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Yop-GA-J1d"/>
-                            <constraint firstItem="Df6-oE-gmR" firstAttribute="top" secondItem="W1I-eL-Fc2" secondAttribute="bottom" constant="15" id="afk-CR-Vkm"/>
+                            <constraint firstItem="W1I-eL-Fc2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Yop-GA-J1d"/>
+                            <constraint firstItem="Df6-oE-gmR" firstAttribute="top" secondItem="W1I-eL-Fc2" secondAttribute="bottom" constant="10" id="afk-CR-Vkm"/>
                             <constraint firstItem="W1I-eL-Fc2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="f14-tP-YOE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="movieListCollectionView" destination="Df6-oE-gmR" id="gol-qq-Mfx"/>
+                        <outlet property="searchBar" destination="W1I-eL-Fc2" id="Ov8-Vj-sbn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-163" y="2"/>
+            <point key="canvasLocation" x="-337" y="-211"/>
         </scene>
     </scenes>
     <resources>

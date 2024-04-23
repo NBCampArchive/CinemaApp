@@ -8,15 +8,17 @@
 import UIKit
 import Kingfisher
 
-class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var movieListCollectionView: UICollectionView!
-    
+
+    // TODO: Key를 발급받아 채워주세요.
+    let authenticationKey = ""
     let urlString = "https://api.themoviedb.org/3/search/movie"
     let interSpacing: CGFloat = 2
     
     var movieList: [Results] = [] {
         didSet {
-            // print("movieList 저장됨: \(movieList.count)")
             DispatchQueue.main.async {
                 self.movieListCollectionView.reloadData()
             }
@@ -25,12 +27,16 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.delegate = self
         movieListCollectionView.dataSource = self
         movieListCollectionView.delegate = self
         view.backgroundColor = UIColor(named: "BackgroundColor")
-        
-        getData(query: "300")
+        getData(query: "12")
+        setSearchBar()
+    }
+    
+    func setSearchBar() {
+        searchBar.placeholder = "영화 제목을 검색하세요."
     }
     
     func getData(query: String) {
@@ -50,7 +56,7 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         // 해더 설정
         urlRequest.allHTTPHeaderFields = [
           "accept": "application/json",
-          "Authorization": ""
+          "Authorization": "Bearer \(authenticationKey)"
         ]
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
@@ -76,6 +82,10 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         let movie = movieList[indexPath.item]
         
         cell.movieImage.contentMode = .scaleAspectFill
+        cell.movieImage.backgroundColor = UIColor(named: "BackgroundColor")
+        cell.movieImage.tintColor = UIColor(named: "LabelTextColor")
+        cell.movieName.backgroundColor = UIColor(named: "customPrimaryColor")
+        cell.movieName.tintColor = UIColor(named: "LabelTextColor")
         cell.movieName.text = movie.title
         if let path = movie.poster_path {
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(path)")
@@ -108,3 +118,16 @@ class SerachMovieViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
 }
+
+extension SearchMovieViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        getData(query: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+}
+
+
