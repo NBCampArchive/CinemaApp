@@ -26,34 +26,4 @@ class LoginViewController: UIViewController {
     func setupConstraints() {
     }
     
-    
-    
-//    // MARK: - configure UI
-//    func setBackgroundUI() { // 포스터 이미지
-//    }
-//    
-//    func setAppLogoUI() {
-//    }
-//    
-//    func setCornerRadius() {
-//    }
-//    
-//    func setFont() {
-//    }
-//    
-//    
-//    // MARK: - Setup Constraints
-//    // set translatesAutoresizingMaskIntoConstraints false
-//    func setTranslatesAutoresizingMaskIntoConstraintsFalse() {
-//    }
-//    
-//    func setBackgroundConstraints() {
-//    }
-//    
-//    func setLoginComponentsConstraints() {
-//    }
-//    
-//    
-//    
-    
 }

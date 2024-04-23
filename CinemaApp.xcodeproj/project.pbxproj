@@ -11,6 +11,8 @@
 		1AE3A3F22BD658A300021239 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE3A3F12BD658A300021239 /* SnapKit */; };
 		1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */; };
 		1AE3A3F72BD753D900021239 /* SetupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */; };
+		1AE3A3F92BD7635600021239 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F82BD7635600021239 /* RegisterViewController.swift */; };
+		1AE3A3FB2BD7638600021239 /* SetupRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3FA2BD7638600021239 /* SetupRegisterViewController.swift */; };
 		B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62A82BD631B90006E956 /* AppDelegate.swift */; };
 		B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */; };
 		B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AC2BD631B90006E956 /* MovieListViewController.swift */; };
@@ -26,6 +28,8 @@
 		1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLoginViewController.swift; sourceTree = "<group>"; };
+		1AE3A3F82BD7635600021239 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1AE3A3FA2BD7638600021239 /* SetupRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRegisterViewController.swift; sourceTree = "<group>"; };
 		B5EC62A52BD631B90006E956 /* CinemaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EC62A82BD631B90006E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */,
+				1AE3A3F82BD7635600021239 /* RegisterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -81,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */,
+				1AE3A3FA2BD7638600021239 /* SetupRegisterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,7 +294,9 @@
 				1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */,
 				B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */,
 				1AE3A3F72BD753D900021239 /* SetupLoginViewController.swift in Sources */,
+				1AE3A3F92BD7635600021239 /* RegisterViewController.swift in Sources */,
 				B5EC62C92BD63F0D0006E956 /* BaseNetwork.swift in Sources */,
+				1AE3A3FB2BD7638600021239 /* SetupRegisterViewController.swift in Sources */,
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
 				B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */,
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,

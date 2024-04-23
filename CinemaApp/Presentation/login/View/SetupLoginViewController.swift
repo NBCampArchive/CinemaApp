@@ -48,7 +48,7 @@ class SetupLoginViewController: LoginViewController {
     
     
     
-    // MARK: - configure UI
+    // MARK: - Setup UI
     func setBackgroundUI() {
         // 포스터 이미지
         let image = UIImage(systemName: "viewfinder.circle.fill")
