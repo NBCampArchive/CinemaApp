@@ -12,7 +12,9 @@ class MovieListApiManager{
     // 싱글톤 객체 생성
     static let shared = MovieListApiManager()
     
-    
+    private let apiKey = Bundle.main.apiKey
+    private let token = Bundle.main.token
+    private let baseURL = "https://api.themoviedb.org/3/movie/"
     
     private init() {}
     

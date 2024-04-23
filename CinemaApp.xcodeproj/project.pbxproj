@@ -24,6 +24,8 @@
 		B5EC62DD2BD685FA0006E956 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC62DC2BD685FA0006E956 /* AlamofireDynamic */; };
 		B5EC62E02BD687B10006E956 /* MovieListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62DF2BD687B10006E956 /* MovieListResponse.swift */; };
 		B5EC62E32BD693920006E956 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC62E22BD693920006E956 /* Kingfisher */; };
+		B5EC62E72BD7C31D0006E956 /* TwelveCinemaInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62E62BD7C31D0006E956 /* TwelveCinemaInfo.plist */; };
+		B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62E82BD7C4000006E956 /* TwelveCinema++Bundle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		B5EC62CE2BD668EA0006E956 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5EC62D72BD685900006E956 /* MovieListApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListApiManager.swift; sourceTree = "<group>"; };
 		B5EC62DF2BD687B10006E956 /* MovieListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListResponse.swift; sourceTree = "<group>"; };
+		B5EC62E62BD7C31D0006E956 /* TwelveCinemaInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TwelveCinemaInfo.plist; sourceTree = "<group>"; };
+		B5EC62E82BD7C4000006E956 /* TwelveCinema++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwelveCinema++Bundle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				B5EC62A82BD631B90006E956 /* AppDelegate.swift */,
 				B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */,
 				B5EC62B62BD631BB0006E956 /* Info.plist */,
+				B5EC62E62BD7C31D0006E956 /* TwelveCinemaInfo.plist */,
 			);
 			path = CinemaApp;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				B5EC62B12BD631BB0006E956 /* Assets.xcassets */,
+				B5EC62E82BD7C4000006E956 /* TwelveCinema++Bundle.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EC62E72BD7C31D0006E956 /* TwelveCinemaInfo.plist in Resources */,
 				B5EC62B22BD631BB0006E956 /* Assets.xcassets in Resources */,
 				B5EC62B52BD631BB0006E956 /* Base in Resources */,
 				B5EC62B02BD631B90006E956 /* Base in Resources */,
@@ -292,6 +299,7 @@
 				B5EC62D82BD685900006E956 /* MovieListApiManager.swift in Sources */,
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
+				B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
