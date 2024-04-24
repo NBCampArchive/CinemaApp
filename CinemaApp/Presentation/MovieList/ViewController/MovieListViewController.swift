@@ -25,16 +25,6 @@ class MovieListViewController: UIViewController {
         setupCollectionView()
         setupSegement()
         fetchMovieList(listType: category)
-        printLikedMovies()
-    }
-    
-    func printLikedMovies() {
-        let defaults = UserDefaults.standard
-        if let encodedMovies = defaults.data(forKey: "likedMovies"),
-           let movies = try? PropertyListDecoder().decode([Movie].self, from: encodedMovies) {
-            print("Liked Movies:")
-            movies.forEach { print($0) }
-        }
     }
     
     func setupCollectionView() {
