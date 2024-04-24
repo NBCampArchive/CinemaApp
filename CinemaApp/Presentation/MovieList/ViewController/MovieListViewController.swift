@@ -28,8 +28,7 @@ class MovieListViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        movieCollectionView.layer.cornerRadius = 24
-        movieCollectionView.layer.masksToBounds = true
+        movieCollectionView.backgroundColor = UIColor(named: "backgroundColor")
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
         movieCollectionView.collectionViewLayout = UICollectionViewFlowLayout().then {
@@ -121,12 +120,8 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
             return UICollectionViewCell()
         }
         let movie = movies[indexPath.item]
-        if let posterPath = movie.posterPath {
-            let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)"
-            let imageURL = URL(string: urlString)
-            cell.configure(imageURL: imageURL!, title: movie.title, description: movie.title)
-        }
         
+        cell.configure(with: movie)
         return cell
     }
     

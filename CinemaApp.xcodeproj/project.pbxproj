@@ -39,6 +39,8 @@
 		B5EC62E32BD693920006E956 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC62E22BD693920006E956 /* Kingfisher */; };
 		B5EC62E72BD7C31D0006E956 /* TwelveCinemaInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62E62BD7C31D0006E956 /* TwelveCinemaInfo.plist */; };
 		B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62E82BD7C4000006E956 /* TwelveCinema++Bundle.swift */; };
+		B5EC62EB2BD924260006E956 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62EA2BD924260006E956 /* MovieDetail.swift */; };
+		B5EC62ED2BD928090006E956 /* LikedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62EC2BD928090006E956 /* LikedMovie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		B5EC62DF2BD687B10006E956 /* MovieListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListResponse.swift; sourceTree = "<group>"; };
 		B5EC62E62BD7C31D0006E956 /* TwelveCinemaInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TwelveCinemaInfo.plist; sourceTree = "<group>"; };
 		B5EC62E82BD7C4000006E956 /* TwelveCinema++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwelveCinema++Bundle.swift"; sourceTree = "<group>"; };
+		B5EC62EA2BD924260006E956 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		B5EC62EC2BD928090006E956 /* LikedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedMovie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				B5EC62DF2BD687B10006E956 /* MovieListResponse.swift */,
+				B5EC62EA2BD924260006E956 /* MovieDetail.swift */,
+				B5EC62EC2BD928090006E956 /* LikedMovie.swift */,
 			);
 			path = MovieList;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 				68E615712BD6ACC6003E623C /* Movie.swift in Sources */,
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
 				B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */,
+				B5EC62ED2BD928090006E956 /* LikedMovie.swift in Sources */,
 				68E614FD2BD65176003E623C /* SerachMovieViewController.swift in Sources */,
 				68E615022BD657CC003E623C /* MovieListCollectionViewCell.swift in Sources */,
 				B5EC62E02BD687B10006E956 /* MovieListResponse.swift in Sources */,
@@ -418,6 +425,7 @@
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
 				B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */,
+				B5EC62EB2BD924260006E956 /* MovieDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
