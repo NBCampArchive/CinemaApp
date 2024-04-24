@@ -41,4 +41,29 @@ class MovieListApiManager{
             }
         }
     }
+    
+    func getMovieDetail(id: Int, completion: @escaping (Result<MovieDetail, Error>) -> Void) {
+        
+        let url = baseURL + "\(id)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "accept": "application/json"
+        ]
+        
+        let parameters: [String: Any] = [
+            "language": "en-US",
+            "api_key": "\(apiKey)"
+        ]
+        
+        AF.request(url, parameters: parameters, headers: headers).validate().responseDecodable(of: MovieDetail.self) { response in
+            switch response.result {
+            case .success(let movieDetail):
+                completion(.success(movieDetail))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+    }
 }
