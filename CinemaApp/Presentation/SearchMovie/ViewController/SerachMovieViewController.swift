@@ -63,7 +63,7 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(Movie.self, from: data)
+                let result = try decoder.decode(Movies.self, from: data)
                 self.movieList = result.results
             } catch {
                 print("error: \(error)")
