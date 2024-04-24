@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */; };
 		1AE3A3F22BD658A300021239 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE3A3F12BD658A300021239 /* SnapKit */; };
-		1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */; };
-		1AE3A3F72BD753D900021239 /* SetupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */; };
-		1AE3A3F92BD7635600021239 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F82BD7635600021239 /* RegisterViewController.swift */; };
-		1AE3A3FB2BD7638600021239 /* SetupRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3FA2BD7638600021239 /* SetupRegisterViewController.swift */; };
-		1AE3A3FD2BD8D66600021239 /* UpcomingMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3FC2BD8D66600021239 /* UpcomingMovieViewController.swift */; };
+		1AE3A3F42BD65D2B00021239 /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F32BD65D2B00021239 /* BaseLoginViewController.swift */; };
+		1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F62BD753D900021239 /* LoginViewController.swift */; };
+		1AE3A3F92BD7635600021239 /* BaseRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F82BD7635600021239 /* BaseRegisterViewController.swift */; };
+		1AE3A3FB2BD7638600021239 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */; };
+		1AE3A4002BD8E13400021239 /* UpcomingMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3FF2BD8E13400021239 /* UpcomingMovie.swift */; };
+		1AE3A4032BD8E2A300021239 /* UpcomingMovieApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A4022BD8E2A300021239 /* UpcomingMovieApiManager.swift */; };
 		B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62A82BD631B90006E956 /* AppDelegate.swift */; };
 		B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */; };
 		B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AC2BD631B90006E956 /* MovieListViewController.swift */; };
@@ -27,11 +28,12 @@
 
 /* Begin PBXFileReference section */
 		1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupLoginViewController.swift; sourceTree = "<group>"; };
-		1AE3A3F82BD7635600021239 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		1AE3A3FA2BD7638600021239 /* SetupRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRegisterViewController.swift; sourceTree = "<group>"; };
-		1AE3A3FC2BD8D66600021239 /* UpcomingMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieViewController.swift; sourceTree = "<group>"; };
+		1AE3A3F32BD65D2B00021239 /* BaseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
+		1AE3A3F62BD753D900021239 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1AE3A3F82BD7635600021239 /* BaseRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRegisterViewController.swift; sourceTree = "<group>"; };
+		1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1AE3A3FF2BD8E13400021239 /* UpcomingMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovie.swift; sourceTree = "<group>"; };
+		1AE3A4022BD8E2A300021239 /* UpcomingMovieApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieApiManager.swift; sourceTree = "<group>"; };
 		B5EC62A52BD631B90006E956 /* CinemaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EC62A82BD631B90006E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +64,6 @@
 			children = (
 				1ACA9BDB2BD6449100B6DE9E /* StoryBoard */,
 				1ACA9BDC2BD6449900B6DE9E /* ViewController */,
-				1AE3A3F52BD7535900021239 /* View */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -78,20 +79,28 @@
 		1ACA9BDC2BD6449900B6DE9E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1AE3A3F32BD65D2B00021239 /* LoginViewController.swift */,
-				1AE3A3F82BD7635600021239 /* RegisterViewController.swift */,
+				1AE3A3F32BD65D2B00021239 /* BaseLoginViewController.swift */,
+				1AE3A3F82BD7635600021239 /* BaseRegisterViewController.swift */,
+				1AE3A3F62BD753D900021239 /* LoginViewController.swift */,
+				1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		1AE3A3F52BD7535900021239 /* View */ = {
+		1AE3A3FE2BD8E11800021239 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				1AE3A3F62BD753D900021239 /* SetupLoginViewController.swift */,
-				1AE3A3FA2BD7638600021239 /* SetupRegisterViewController.swift */,
-				1AE3A3FC2BD8D66600021239 /* UpcomingMovieViewController.swift */,
+				1AE3A3FF2BD8E13400021239 /* UpcomingMovie.swift */,
 			);
-			path = View;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1AE3A4012BD8E1FA00021239 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				1AE3A4022BD8E2A300021239 /* UpcomingMovieApiManager.swift */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 		B5EC629C2BD631B90006E956 = {
@@ -127,6 +136,7 @@
 		B5EC62BC2BD6321F0006E956 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1AE3A3FE2BD8E11800021239 /* Login */,
 				B5EC62C62BD63DF50006E956 /* Base */,
 			);
 			path = Model;
@@ -135,6 +145,7 @@
 		B5EC62BD2BD632300006E956 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1AE3A4012BD8E1FA00021239 /* login */,
 				B5EC62C72BD63E010006E956 /* Base */,
 			);
 			path = Network;
@@ -294,17 +305,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AE3A3F42BD65D2B00021239 /* LoginViewController.swift in Sources */,
+				1AE3A3F42BD65D2B00021239 /* BaseLoginViewController.swift in Sources */,
 				B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */,
-				1AE3A3F72BD753D900021239 /* SetupLoginViewController.swift in Sources */,
-				1AE3A3F92BD7635600021239 /* RegisterViewController.swift in Sources */,
+				1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */,
+				1AE3A4032BD8E2A300021239 /* UpcomingMovieApiManager.swift in Sources */,
+				1AE3A3F92BD7635600021239 /* BaseRegisterViewController.swift in Sources */,
+				1AE3A4002BD8E13400021239 /* UpcomingMovie.swift in Sources */,
 				B5EC62C92BD63F0D0006E956 /* BaseNetwork.swift in Sources */,
-				1AE3A3FB2BD7638600021239 /* SetupRegisterViewController.swift in Sources */,
+				1AE3A3FB2BD7638600021239 /* RegisterViewController.swift in Sources */,
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
 				B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */,
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
-				1AE3A3FD2BD8D66600021239 /* UpcomingMovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
