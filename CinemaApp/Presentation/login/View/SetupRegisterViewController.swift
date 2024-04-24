@@ -35,11 +35,14 @@ class SetupRegisterViewController: RegisterViewController {
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
-//        self.showAlertIfDataIncomplete(userName: nameViewTextField.text, userID: idViewTextField.text, userPW: pwViewTextField.text)
         // 데이터 안 채우고 가입하기 버튼 눌렀을 경우
         guard let userName = nameViewTextField.text,
               let userID = idViewTextField.text,
-              let userPW = pwViewTextField.text else {
+              let userPW = pwViewTextField.text,
+              !userName.isEmpty, // TextField가 비어있으면 nil이 아니라 ""이기 때문에 필요.
+              !userID.isEmpty,
+              !userPW.isEmpty
+        else {
             self.showAlertIfDataIncomplete(userName: nameViewTextField.text, userID: idViewTextField.text, userPW: pwViewTextField.text)
             return
         }
@@ -48,6 +51,7 @@ class SetupRegisterViewController: RegisterViewController {
         UserDefaults.standard.set(userName, forKey: "userName")
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.set(userPW, forKey: "userPW")
+        self.showAlertIfDataComplete()
         print("가입 완료: \(UserDefaults.standard.value(forKey: "userName")) / \(UserDefaults.standard.value(forKey: "userID")) / \(UserDefaults.standard.value(forKey: "userPW"))")
     }
     
