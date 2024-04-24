@@ -48,6 +48,7 @@ class LoginViewController: BaseLoginViewController {
     
     // MARK: - UI Setting functions
     override func setupUI() {
+        super.setupUI()
         updateAutoLoginCheckImage()
         setBackgroundUI()
         setAppLogoUI()
@@ -58,15 +59,21 @@ class LoginViewController: BaseLoginViewController {
     }
     
     override func setupConstraints() {
+        super.setupConstraints()
         setTranslatesAutoresizingMaskIntoConstraintsFalse()
         setBackgroundConstraints()
         setLoginComponentsConstraints()
     }
     
- 
+    override func setBackgroundPosterImage() {
+        super.setBackgroundPosterImage()
+        
+    }
+    
+    
+    
     
     // MARK: - Setup UI
-    
     // AutoLogin check 이미지 변경 함수
     func updateAutoLoginCheckImage() {
         if autoLoginStatus {

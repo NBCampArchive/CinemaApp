@@ -14,8 +14,7 @@ class BaseLoginViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
-        let upcomingApiManager = UpcomingMovieApiManager()
-        upcomingApiManager.fetchUpcomingMovie()
+        //setBackgroundPosterImage()
     }
     
 
@@ -27,4 +26,10 @@ class BaseLoginViewController: UIViewController {
     
     func setupConstraints() {
     }
+    
+    // MARK: - background poster
+//    func setBackgroundPosterImage() {
+//        let upcomingApiManager = UpcomingMovieApiManager()
+//        upcomingApiManager.fetchUpcomingMovie()
+//    }
 }
