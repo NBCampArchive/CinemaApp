@@ -138,7 +138,7 @@ class SetupRegisterViewController: RegisterViewController {
         [self.nameViewTextField,
          self.idViewTextField,
          self.pwViewTextField].forEach {
-            $0.clipsToBounds = true
+            $0.clipsToBounds = true // TextField는 여러 뷰로 구성됨 -> clipsToBounds = true 해야 cornerRadius 제대로 적용 가능
             $0.layer.cornerRadius = 20 // height이 설정된 후에 실행되어야 함
         }
     }
