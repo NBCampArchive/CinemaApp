@@ -99,14 +99,24 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="z1Y-I6-DmX"/>
                                 </connections>
                             </searchBar>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안내문구" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bI3-ea-TNm" userLabel="noticeLabel">
+                                <rect key="frame" x="10" y="69" width="373" height="739"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bI3-ea-TNm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="3sU-lW-uj7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="W1I-eL-Fc2" secondAttribute="trailing" id="5sJ-8C-s8Y"/>
+                            <constraint firstItem="bI3-ea-TNm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="8Eu-8J-7xw"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Df6-oE-gmR" secondAttribute="bottom" id="AjB-n4-6IK"/>
                             <constraint firstItem="Df6-oE-gmR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ey3-lf-A3r"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Df6-oE-gmR" secondAttribute="trailing" id="MLF-JX-d96"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bI3-ea-TNm" secondAttribute="trailing" constant="10" id="R6T-MT-Cnj"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bI3-ea-TNm" secondAttribute="bottom" constant="10" id="SwU-oG-e3d"/>
                             <constraint firstItem="W1I-eL-Fc2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Yop-GA-J1d"/>
                             <constraint firstItem="Df6-oE-gmR" firstAttribute="top" secondItem="W1I-eL-Fc2" secondAttribute="bottom" constant="10" id="afk-CR-Vkm"/>
                             <constraint firstItem="W1I-eL-Fc2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="f14-tP-YOE"/>
@@ -114,6 +124,7 @@
                     </view>
                     <connections>
                         <outlet property="movieListCollectionView" destination="Df6-oE-gmR" id="gol-qq-Mfx"/>
+                        <outlet property="noticeLabel" destination="bI3-ea-TNm" id="olJ-5f-4Yj"/>
                         <outlet property="searchBar" destination="W1I-eL-Fc2" id="Ov8-Vj-sbn"/>
                     </connections>
                 </viewController>
