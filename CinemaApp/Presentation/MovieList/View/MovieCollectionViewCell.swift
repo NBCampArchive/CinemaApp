@@ -64,36 +64,47 @@ class MovieCollectionViewCell: UICollectionViewCell{
         }
     }
     
-    
-
     private func checkIfLiked(_ movie: Movie) -> Bool {
-        let defaults = UserDefaults.standard
-        if let encodedMovies = defaults.data(forKey: "likedMovies"),
-           let likedMovies = try? PropertyListDecoder().decode([Movie].self, from: encodedMovies),
-           likedMovies.contains(where: { $0.title == movie.title }) {
-            return true
-        } else {
-            return false
-        }
+        let likedMovies = decodeUserDefaultsValue(key: "likedMovies", type: [LikedMovie].self) ?? []
+        return likedMovies.contains(where: { $0.id == movie.id })
     }
     
     @objc private func likeButtonTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
+        
         guard let movie = self.movieData else { return }
+        
+        var likedMovies = decodeUserDefaultsValue(key: "likedMovies", type: [LikedMovie].self) ?? []
+        
+        if sender.isSelected {
+            let likedMovie = LikedMovie(id: movie.id, posterPath: movie.posterPath, title: movie.title)
+            likedMovies.append(likedMovie)
+        } else {
+            likedMovies.removeAll(where: { $0.id == movie.id })
+        }
+        
+        encodeUserDefaultsValue(value: likedMovies, key: "likedMovies")
+    }
+    
+    private func encodeUserDefaultsValue<T: Encodable>(value: T, key: String) {
+        let defaults = UserDefaults.standard
+        let encodedData = try? JSONEncoder().encode(value)
+        defaults.set(encodedData, forKey: key)
+    }
 
-           let isLiked = !checkIfLiked(movie)
-           let defaults = UserDefaults.standard
-           var likedMovies = defaults.array(forKey: "likedMovies") as? [Movie] ?? []
-
-           if isLiked {
-               likedMovies.append(movie)
-               print("likedMovies: \(likedMovies)")
-           } else {
-               likedMovies.removeAll(where: { $0.title == movie.title })
-           }
-
-           defaults.set(try? PropertyListEncoder().encode(likedMovies), forKey: "likedMovies")
-           sender.isSelected = isLiked
+    private func decodeUserDefaultsValue<T: Decodable>(key: String, type: T.Type) -> T? {
+        let defaults = UserDefaults.standard
+        if let encodedData = defaults.data(forKey: key) {
+            return try? JSONDecoder().decode(type, from: encodedData)
+        }
+        return nil
+    }
+    
+    func printLikedMovies() {
+        let likedMovies = decodeUserDefaultsValue(key: "likedMovies", type: [LikedMovie].self) ?? []
+        
+        print("Liked Movies:")
+        likedMovies.forEach { print("ID: \($0.id), Title: \($0.title), Poster Path: \($0.posterPath ?? "")") }
     }
     
     private let navigationButton = UIButton().then{
@@ -121,6 +132,7 @@ class MovieCollectionViewCell: UICollectionViewCell{
         
         setupLayout()
         likeButton.addTarget(self, action: #selector(likeButtonTapped(_:)), for: .touchUpInside)
+        printLikedMovies()
     }
     
     func setupLayout(){
