@@ -34,6 +34,25 @@ class SetupRegisterViewController: RegisterViewController {
         self.dismiss(animated: true)
     }
     
+    @IBAction func tappedRegisterButton(_ sender: UIButton) {
+//        self.showAlertIfDataIncomplete(userName: nameViewTextField.text, userID: idViewTextField.text, userPW: pwViewTextField.text)
+        // 데이터 안 채우고 가입하기 버튼 눌렀을 경우
+        guard let userName = nameViewTextField.text,
+              let userID = idViewTextField.text,
+              let userPW = pwViewTextField.text else {
+            self.showAlertIfDataIncomplete(userName: nameViewTextField.text, userID: idViewTextField.text, userPW: pwViewTextField.text)
+            return
+        }
+        
+        // userDefauts에 정보 저장
+        UserDefaults.standard.set(userName, forKey: "userName")
+        UserDefaults.standard.set(userID, forKey: "userID")
+        UserDefaults.standard.set(userPW, forKey: "userPW")
+        print("가입 완료: \(UserDefaults.standard.value(forKey: "userName")) / \(UserDefaults.standard.value(forKey: "userID")) / \(UserDefaults.standard.value(forKey: "userPW"))")
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

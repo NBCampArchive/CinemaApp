@@ -207,6 +207,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="가입하기"/>
+                                <connections>
+                                    <action selector="tappedRegisterButton:" destination="aap-l5-SSd" eventType="touchUpInside" id="938-Gm-URs"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DB-tQ-GUm" userLabel="비밀번호">
                                 <rect key="frame" x="43" y="369" width="307" height="104"/>
