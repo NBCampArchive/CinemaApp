@@ -33,6 +33,7 @@ class MovieCollectionViewCell: UICollectionViewCell{
     private let descriptionLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 17, weight: .regular)
         $0.textColor = .black
+        $0.numberOfLines = 0
     }
     
     private let likeButton = UIButton().then {
