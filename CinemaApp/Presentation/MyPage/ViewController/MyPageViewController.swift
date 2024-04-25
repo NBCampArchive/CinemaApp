@@ -40,6 +40,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch item.type {
         case .myProfile:
+            print("userName: \(UserDefaults.standard.value(forKey: "userName")) / \(UserDefaults.standard.value(forKey: "userID"))")
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: MyProfileTableViewCell.identifier,
                 for: indexPath) as? MyProfileTableViewCell else {
@@ -47,7 +48,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
                 return UITableViewCell()
             }
             
-            print("cell: \(cell.userNameLabel.text)") // 데이터는 잘 가져와지는데 셀이 안 그려짐...
+            print("cell: \(cell.userNameLabel.text)")
             cell.configure()
             cell.selectionStyle = .none
             cell.backgroundColor = .red

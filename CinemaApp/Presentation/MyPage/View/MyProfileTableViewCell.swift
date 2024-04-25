@@ -15,10 +15,10 @@ class MyProfileTableViewCell: UITableViewCell {
     static let identifier = "myProfileCell"
     
     func configure() {
-        userNameLabel.text = "유저이름"
-        userIDLabel.text = "User ID"
-//        userNameLabel.text = UserDefaults.standard.value(forKey: "userName") as? String
-//        userIDLabel.text = UserDefaults.standard.value(forKey: "userID") as? String
+        let userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
+        let userID = UserDefaults.standard.value(forKey: "userID") as? String ?? ""
+        userNameLabel.text = "\(userName)님"
+        userIDLabel.text = "ID: \(userID)"
     }
     
     
