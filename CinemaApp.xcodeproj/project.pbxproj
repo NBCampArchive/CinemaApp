@@ -44,6 +44,7 @@
 		B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */; };
 		B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */; };
 		B5EC62FA2BDA808F0006E956 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC62F92BDA808F0006E956 /* FloatingPanel */; };
+		B5EC62FF2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		B5EC62F12BD9E91E0006E956 /* BottomTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabController.swift; sourceTree = "<group>"; };
 		B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieMap.storyboard; sourceTree = "<group>"; };
 		B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapViewController.swift; sourceTree = "<group>"; };
+		B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapFloatingPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +344,7 @@
 			children = (
 				B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */,
 				B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */,
+				B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EC62FF2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift in Sources */,
 				1AE3A3F42BD65D2B00021239 /* BaseLoginViewController.swift in Sources */,
 				B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */,
 				1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */,
