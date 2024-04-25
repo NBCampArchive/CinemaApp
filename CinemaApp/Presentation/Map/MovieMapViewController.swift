@@ -25,10 +25,29 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate, FloatingPanel
     var theaterAddress: String = ""
     var theaterPhone: String = ""
     
+    let locationButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "location.fill"), for: .normal)
+        $0.tintColor = .black
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 10
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+        $0.layer.shadowRadius = 2
+        $0.layer.shadowOpacity = 0.5
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(named: "backgroundColor")
+        
+        view.addSubview(locationButton)
+        locationButton.snp.makeConstraints {
+            $0.width.height.equalTo(50)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.bottom.equalToSuperview().offset(-100)
+        }
+        locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
         
         mapView.delegate = self
         
@@ -51,6 +70,14 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate, FloatingPanel
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+    }
+    
+    @objc func locationButtonTapped() {
+        locationManager.startUpdatingLocation()
+        if let userLocation = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
+        }
     }
     
     func searchNearbyTheaters(location: CLLocation) {
