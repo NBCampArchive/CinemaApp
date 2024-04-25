@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LoginViewController: UIViewController {
     
@@ -30,6 +31,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var searchIDButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
+    // 영화 목록을 저장할 배열
+    var upcomingMovies: [Movie] = []
+    var randomUpcomingMovie: Movie?
+    
+    // 자동 로그인 상태
     var autoLoginStatus: Bool = true {
         didSet {
             updateAutoLoginCheckImage()
@@ -58,7 +64,7 @@ class LoginViewController: UIViewController {
     // MARK: - UI Setting functions
     func setupUI() {
         updateAutoLoginCheckImage()
-        setBackgroundUI()
+        setBackgroundUI(listType: "Upcoming")
         setAppLogoUI()
         setCornerRadius()
         setFont()
@@ -72,12 +78,6 @@ class LoginViewController: UIViewController {
         setLoginComponentsConstraints()
     }
     
-//    override func setBackgroundPosterImage() {
-//        super.setBackgroundPosterImage()
-//        
-//    }
-    
-    
     
     
     // MARK: - Setup UI
@@ -90,10 +90,18 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func setBackgroundUI() {
-        // 포스터 이미지
-        let image = UIImage(systemName: "viewfinder.circle.fill")
-        self.bgPosterImage.image = image
+    // 배경 포스터 이미지 설정 함수
+    func setBackgroundUI(listType: String) {
+        let customSerialQueue = DispatchQueue(label: "setBgImage")
+        customSerialQueue.sync {
+            self.fetchUpcomingMovieData(listType: "upcoming")
+        }
+        customSerialQueue.asyncAfter(deadline: .now() + 0.1, execute: {
+            self.pickRandomMovieData()
+        })
+        customSerialQueue.asyncAfter(deadline: .now() + 0.1, execute: {
+            self.setBackgroundPosterImage()
+        })
         self.bgPosterImage.contentMode = .scaleAspectFill
         
         // 투명도 80% 검정으로 덮기
@@ -263,4 +271,44 @@ class LoginViewController: UIViewController {
             $0.trailing.equalTo(loginComponentsView.snp.trailing)
         }
     }
+    
+    
+    // MARK: - 배경 포스터 이미지 가져오는 함수 set
+    // #1. API로 upcomingMovies 데이터 가져오기
+    func fetchUpcomingMovieData(listType: String) {
+        print("start: fetchUpcomingMovieData / Thread: \(Thread.current)")
+        MovieListApiManager.shared.fetchMovieList(listType: listType, page: 1) { result in
+            switch result {
+            case .success(let movies):
+                print(">>>> Category:\(listType) Page: 1 Success")
+                self.upcomingMovies.append(contentsOf: movies.results)
+                print(">>>> append success! \(self.upcomingMovies[1].title)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // #2. Upcoming Movies에서 랜덤으로 하나 뽑기
+    func pickRandomMovieData() {
+        print("start: pickRandomMovieData / Thread: \(Thread.current)")
+        let randomIndex = Int.random(in: 0..<upcomingMovies.count)
+        self.randomUpcomingMovie = upcomingMovies[randomIndex]
+    }
+    
+    // #3. randomUpcomingMovie 포스터 이미지를 컴포넌트에 연결하기
+    func setBackgroundPosterImage() {
+        print("start: setBackgroundPosterImage / Thread: \(Thread.current)")
+        if let imageURL = randomUpcomingMovie?.posterPath {
+            let urlString = "https://image.tmdb.org/t/p/w500\(imageURL)"
+            let fullImageURL = URL(string: urlString)
+            DispatchQueue.main.async {
+                print("start: 포스터 업로드 / Thread: \(Thread.current)")
+                self.bgPosterImage.kf.setImage(with: fullImageURL)
+            }
+        }
+    }
+    
+    
+    
 }
