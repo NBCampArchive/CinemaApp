@@ -41,15 +41,14 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
     func noticeLabelUI() {
         noticeLabel.text = "검색어 없음"
         noticeLabel.font = UIFont.systemFont(ofSize: 20)
-        noticeLabel.textColor = UIColor(named: "customPrimaryColor")
+        noticeLabel.textColor = UIColor(named: "LabelTextColor")
         noticeLabel.isHidden = false
-        
+        movieListCollectionView.backgroundColor = UIColor(named: "customPrimaryColor")
     }
     
-    // TODO: x 버튼 컬러 잘보이도록 바꾸기 / 입력값 없을 때, 해당 입력값 없을 때 나오는 문구 만들기
     func setSearchBar() {
         searchBar.placeholder = "영화 제목을 검색하세요."
-        searchBar.setImage(UIImage(named: "icSearchNonW"), for: UISearchBar.Icon.search, state: .normal)
+        searchBar.setImage(UIImage(named: "icClear"), for: UISearchBar.Icon.search, state: .normal)
         searchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
         searchBar.barTintColor = UIColor(named: "customPrimaryColor")
         // cancel button color 변경
@@ -63,7 +62,7 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
             textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
             
             textfield.textColor = UIColor.white
-            //왼쪽 아이콘 이미지
+            // 왼쪽 아이콘 이미지
             if let leftView = textfield.leftView as? UIImageView {
                 leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
                 leftView.tintColor = UIColor.white
@@ -165,7 +164,7 @@ extension SearchMovieViewController: UISearchBarDelegate {
                 DispatchQueue.main.async {
                     self.noticeLabel.isHidden = false
                     self.noticeLabel.text = "이런! 찾으시는 작품이 없습니다."
-                    self.noticeLabel.textColor = UIColor(named: "customPrimaryColor") }
+                    self.noticeLabel.textColor = UIColor(named: "LabelTextColor") }
             } else if self.movieList.count != 0 {
                 DispatchQueue.main.async {
                     self.noticeLabel.isHidden = true }
@@ -173,7 +172,7 @@ extension SearchMovieViewController: UISearchBarDelegate {
                 DispatchQueue.main.async {
                     self.noticeLabel.isHidden = false
                     self.noticeLabel.text = "검색어 없음"
-                    self.noticeLabel.textColor = UIColor(named: "customPrimaryColor") }
+                    self.noticeLabel.textColor = UIColor(named: "LabelTextColor") }
             }
         }
     }
