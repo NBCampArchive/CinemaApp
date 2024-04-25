@@ -43,6 +43,7 @@
 		B5EC62F22BD9E91E0006E956 /* BottomTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F12BD9E91E0006E956 /* BottomTabController.swift */; };
 		B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */; };
 		B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */; };
+		B5EC62FA2BDA808F0006E956 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC62F92BDA808F0006E956 /* FloatingPanel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 				B5EC62DB2BD685FA0006E956 /* Alamofire in Frameworks */,
 				B5EC62DD2BD685FA0006E956 /* AlamofireDynamic in Frameworks */,
 				B5EC62D22BD668F90006E956 /* Then in Frameworks */,
+				B5EC62FA2BDA808F0006E956 /* FloatingPanel in Frameworks */,
 				B5EC62D52BD669030006E956 /* SnapKit in Frameworks */,
 				B5EC62E32BD693920006E956 /* Kingfisher in Frameworks */,
 			);
@@ -366,6 +368,7 @@
 				B5EC62DA2BD685FA0006E956 /* Alamofire */,
 				B5EC62DC2BD685FA0006E956 /* AlamofireDynamic */,
 				B5EC62E22BD693920006E956 /* Kingfisher */,
+				B5EC62F92BDA808F0006E956 /* FloatingPanel */,
 			);
 			productName = CinemaApp;
 			productReference = B5EC62A52BD631B90006E956 /* CinemaApp.app */;
@@ -400,6 +403,7 @@
 				B5EC62D32BD669030006E956 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B5EC62D92BD685FA0006E956 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B5EC62E12BD693920006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = B5EC62A62BD631B90006E956 /* Products */;
 			projectDirPath = "";
@@ -607,7 +611,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FB44T8T3FL;
+				DEVELOPMENT_TEAM = 8B78U37C85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CinemaApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -635,7 +639,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FB44T8T3FL;
+				DEVELOPMENT_TEAM = 8B78U37C85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CinemaApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -712,6 +716,14 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -739,6 +751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B5EC62E12BD693920006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		B5EC62F92BDA808F0006E956 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
