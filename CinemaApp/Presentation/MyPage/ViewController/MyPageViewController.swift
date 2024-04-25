@@ -49,7 +49,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             print("cell: \(cell.userNameLabel.text)")
             
             // MARK: 회원정보 수정 버튼 눌렀을 때 실행할 함수 선언
-            cell.editUserInfoButton = { [unowned self] in
+//            cell.editUserInfoButton = { [unowned self] in
                 // 1. 회원가입 뷰 present
 //                guard let registerVC = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") else { return }
 //                self.present(registerVC, animated: true)
@@ -59,7 +59,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
 //                registerVC.pwViewTextField.text = UserDefaults.standard.string(forKey: "userPW")
                 // 3. 가입하기 버튼 타이틀을 "수정하기"로 바꾸기
 //                registerVC.registerButton.titleLabel?.text = "수정하기"
-            }
+//            }
             cell.configure()
             cell.selectionStyle = .none
             cell.backgroundColor = .red

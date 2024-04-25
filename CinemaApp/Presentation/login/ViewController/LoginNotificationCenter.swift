@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Notification.Name {
     static let updateLoginView = Notification.Name("updateLoginView")

@@ -62,20 +62,30 @@ class LoginViewController: UIViewController {
         self.setupUI()
         self.setupConstraints()
         self.conductAutoLogin()
-        // NotificationCenter에 Observer 등록하기
-        NotificationCenter.default
-            .addObserver(
-                self,
-                selector: #selector(viewUpdate(notification:)),
-                name: Notification.Name.updateLoginView,
-                object: nil
-            )
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // MARK: NotificationCenter에 Observer 등록하기
+        // 로그인 뷰 업데이트
+        NotificationCenter.default.addObserver(self, selector: #selector(viewUpdate(notification:)), name: Notification.Name.updateLoginView, object: nil)
+        // 키보드 유무에 따라 뷰 위치 변경
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // MARK: - notification으로 실행시킬 함수
     @objc func viewUpdate(notification: Notification) {
-        // notification으로 실행시킬 함수
         setBackgroundUI()
         conductAutoLogin()
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        self.loginComponentsView.frame.origin.y = 130
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        self.loginComponentsView.frame.origin.y = 330
     }
     
     // MARK: - Auto Login
@@ -247,7 +257,7 @@ class LoginViewController: UIViewController {
         // 컴포넌트 엄마뷰: bottom, height, horizontalEdges
         //self.loginComponentsView.backgroundColor = .systemPink
         self.loginComponentsView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(140) // bottom
+            $0.top.equalToSuperview().offset(330) // bottom
             $0.height.equalTo(360) // height
             $0.horizontalEdges.equalToSuperview().inset(35)
         }
