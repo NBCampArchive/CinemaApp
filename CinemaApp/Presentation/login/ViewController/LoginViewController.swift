@@ -63,14 +63,17 @@ class LoginViewController: UIViewController {
         self.setupConstraints()
         self.conductAutoLogin()
         // NotificationCenter에 Observer 등록하기
-        NotificationCenter.default.addObserver(self, 
-                                               selector: #selector(viewUpdate(notification:)),
-                                               name: Notification.Name.updateLoginView,
-                                               object: nil)
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(viewUpdate(notification:)),
+                name: Notification.Name.updateLoginView,
+                object: nil
+            )
     }
     
     @objc func viewUpdate(notification: Notification) {
-        // notification.userInfo 값을 받아온다.
+        // notification으로 실행시킬 함수
         setBackgroundUI()
         conductAutoLogin()
     }
