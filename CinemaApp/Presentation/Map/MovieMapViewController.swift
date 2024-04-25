@@ -114,6 +114,9 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate {
             return
         }
         
+        // 이전에 그려진 경로 제거
+        mapView.removeOverlays(mapView.overlays)
+        
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation.coordinate))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate))
@@ -134,7 +137,7 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate {
             }
             
             self.mapView.addOverlay(route.polyline)
-            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
+            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50), animated: true)
         }
     }
     
@@ -142,7 +145,7 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate {
         if let polyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: polyline)
             renderer.strokeColor = UIColor(named: "customPrimaryColor")
-            renderer.lineWidth = 3
+            renderer.lineWidth = 5
             return renderer
         }
         return MKOverlayRenderer()
