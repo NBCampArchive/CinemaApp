@@ -65,10 +65,10 @@ class LoginViewController: BaseLoginViewController {
         setLoginComponentsConstraints()
     }
     
-    override func setBackgroundPosterImage() {
-        super.setBackgroundPosterImage()
-        
-    }
+//    override func setBackgroundPosterImage() {
+//        super.setBackgroundPosterImage()
+//        
+//    }
     
     
     
