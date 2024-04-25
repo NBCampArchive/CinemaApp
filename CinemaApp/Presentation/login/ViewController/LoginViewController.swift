@@ -42,24 +42,57 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func tappedAutoLoginCheckButton(_ sender: UIButton) {
-        autoLoginStatus = !autoLoginStatus
-    }
-    
-    
     // color set
     let BackgroundColor = UIColor(named: "BackgroundColor")
     let customPrimaryColor = UIColor(named: "customPrimaryColor")
     let PrimaryContainerColor = UIColor(named: "PrimaryContainerColor")
     let LabelTextColor = UIColor(named: "LabelTextColor")
     
+    @IBAction func tappedAutoLoginCheckButton(_ sender: UIButton) {
+        autoLoginStatus = !autoLoginStatus
+    }
+    
+    @IBAction func tappedLoginButton(_ sender: UIButton) {
+        conductLogin()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
-        //setBackgroundPosterImage()
+        conductAutoLogin()
     }
+    
+    // MARK: - Auto Login
+    func conductAutoLogin() {
+        // autoLoginStatus 체크
+        if autoLoginStatus == true {
+            conductLogin()
+        }
+        
+    }
+    
+    func conductLogin() {
+        // 1. ID & PW 일치 확인
+        if idTextField.text == UserDefaults.standard.string(forKey: "userID"),
+           pwTextField.text == UserDefaults.standard.string(forKey: "userPW") {
+            // TODO: 화면 이동 함수 추가
+        } else {
+            // Alert: 로그인 정보가 일치하지 않습니다
+            EasyAlert.showAlert(title: "로그인 실패", message: "로그인 정보가 일치하지 않습니다.", vc: self)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // MARK: - UI Setting functions
     func setupUI() {
