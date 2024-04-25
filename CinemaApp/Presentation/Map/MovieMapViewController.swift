@@ -214,10 +214,10 @@ extension MovieMapViewController{
                 outgoing.font = .boldSystemFont(ofSize: 17)
                 return outgoing
             }
-
+            $0.tag = 0
             $0.configuration = configuration
         }
-        walkRouteButton.addTarget(self, action: #selector(showWalkRoute), for: .touchUpInside)
+        walkRouteButton.addTarget(self, action: #selector(showRoute), for: .touchUpInside)
         
         let carRouteButton = UIButton().then {
             var configuration = UIButton.Configuration.filled()
@@ -235,10 +235,10 @@ extension MovieMapViewController{
                 outgoing.font = .boldSystemFont(ofSize: 17)
                 return outgoing
             }
-
+            $0.tag = 1
             $0.configuration = configuration
         }
-        carRouteButton.addTarget(self, action: #selector(showCarRoute), for: .touchUpInside)
+        carRouteButton.addTarget(self, action: #selector(showRoute), for: .touchUpInside)
         
         let urlButton = UIButton().then {
             var configuration = UIButton.Configuration.filled()
@@ -256,7 +256,7 @@ extension MovieMapViewController{
                 outgoing.font = .boldSystemFont(ofSize: 17)
                 return outgoing
             }
-
+            
             $0.configuration = configuration
         }
         urlButton.addTarget(self, action: #selector(openURL), for: .touchUpInside)
@@ -291,16 +291,22 @@ extension MovieMapViewController{
             UIApplication.shared.open(url)
         }
     }
-    @objc func showRoute(_ sender: Any, transportType: MKDirectionsTransportType) {
-        showRouteToAnnotation(annotation, transportType: transportType)
-    }
-    @objc func showCarRoute(transportType: MKDirectionsTransportType = .automobile) {
-        showRouteToAnnotation(annotation, transportType: transportType)
-    }
     
-    @objc func showWalkRoute(transportType: MKDirectionsTransportType = .walking) {
+    @objc func showRoute(_ sender: UIButton) {
+        let transportType: MKDirectionsTransportType
+        switch sender.tag {
+        case 0:
+            transportType = .walking
+        case 1:
+            transportType = .automobile
+        default:
+            transportType = .automobile
+        }
+        print(sender.tag)
+        
         showRouteToAnnotation(annotation, transportType: transportType)
     }
+
 }
 
 class CustomFloatingPanelLayout: FloatingPanelLayout{
