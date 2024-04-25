@@ -192,7 +192,7 @@ class MovieCollectionViewCell: UICollectionViewCell{
         likeButton.isSelected = isLiked
         
         if let imageURL = movie.posterPath {
-            let urlString = "https://image.tmdb.org/t/p/w500\(imageURL)"
+            let urlString = "https://image.tmdb.org/t/p/w400\(imageURL)"
             let fullImageURL = URL(string: urlString)
             imageView.kf.setImage(with: fullImageURL)
         }
