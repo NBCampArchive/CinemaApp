@@ -55,10 +55,10 @@ class MovieDetailsViewController: UIViewController {
                    let MovieDetail = try? JSONDecoder().decode(MovieDetail.self, from: data) {
                     
                     DispatchQueue.main.async {
-                        self?.titleLabel.text = MovieDetail.movieTitle
-                        self?.detailLabel.text = MovieDetail.movieDetail
-                        self?.ratedLabel.text = "\(MovieDetail.rating)"
-                        self?.releasedateLabel.text = "\(MovieDetail.releaseDate)"
+//                        self?.titleLabel.text = MovieDetail.movieTitle
+//                        self?.detailLabel.text = MovieDetail.movieDetail
+//                        self?.ratedLabel.text = "\(MovieDetail.rating)"
+//                        self?.releasedateLabel.text = "\(MovieDetail.releaseDate)"
                     }
                     
                     let imageRequest = URLRequest(url: url)
@@ -83,11 +83,11 @@ class MovieDetailsViewController: UIViewController {
                             }
                         }
                     }
-                    print(MovieDetail.movieTitle)
-                    print(MovieDetail.movieDetail)
-                    print(MovieDetail.movieImage)
-                    print(MovieDetail.rating)
-                    print(MovieDetail.releaseDate)
+//                    print(MovieDetail.movieTitle)
+//                    print(MovieDetail.movieDetail)
+//                    print(MovieDetail.movieImage)
+//                    print(MovieDetail.rating)
+//                    print(MovieDetail.releaseDate)
                     
                 }
                 
