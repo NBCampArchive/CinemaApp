@@ -62,12 +62,17 @@ class LoginViewController: UIViewController {
         self.setupUI()
         self.setupConstraints()
         self.conductAutoLogin()
+        // NotificationCenter에 Observer 등록하기
+        NotificationCenter.default.addObserver(self, 
+                                               selector: #selector(viewUpdate(notification:)),
+                                               name: Notification.Name.updateLoginView,
+                                               object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.setBackgroundUI()
-        print("yyyyyyyy")
+    @objc func viewUpdate(notification: Notification) {
+        // notification.userInfo 값을 받아온다.
+        setBackgroundUI()
+        conductAutoLogin()
     }
     
     // MARK: - Auto Login

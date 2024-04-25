@@ -35,7 +35,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
-        // 데이터 안 채우고 가입하기 버튼 눌렀을 경우
+        // 1. 데이터 다 작성됐는지 확인
         guard let userName = nameViewTextField.text,
               let userID = idViewTextField.text,
               let userPW = pwViewTextField.text,
@@ -43,14 +43,20 @@ class RegisterViewController: UIViewController {
               !userID.isEmpty,
               !userPW.isEmpty
         else {
+            // 2-1. 데이터 다 안 채웠을 경우 경고 Alert
             self.showAlertIfDataIncomplete(userName: nameViewTextField.text, userID: idViewTextField.text, userPW: pwViewTextField.text)
             return
         }
         
-        // userDefauts에 정보 저장
+        // 2-2. 데이터 다 채웠을 경우 userDefauts 업데이트
         UserDefaults.standard.set(userName, forKey: "userName")
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.set(userPW, forKey: "userPW")
+        
+        // 3. login 화면으로 notification 보내기
+        NotificationCenter.default.post(name: Notification.Name.updateLoginView, object: nil)
+        
+        // 4. 회원가입 성공 Alert 띄우기
         self.showAlertIfDataComplete()
         print("가입 완료: \(UserDefaults.standard.value(forKey: "userName")) / \(UserDefaults.standard.value(forKey: "userID")) / \(UserDefaults.standard.value(forKey: "userPW"))")
     }

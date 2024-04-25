@@ -11,6 +11,7 @@
 		1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F62BD753D900021239 /* LoginViewController.swift */; };
 		1AE3A3FB2BD7638600021239 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */; };
 		1AE3A4052BDA27E600021239 /* EasyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A4042BDA27E500021239 /* EasyAlert.swift */; };
+		1AE3A4072BDA3B0000021239 /* LoginNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A4062BDA3B0000021239 /* LoginNotificationCenter.swift */; };
 		68E614FB2BD6510E003E623C /* SearchMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E614FA2BD6510E003E623C /* SearchMovie.storyboard */; };
 		68E614FD2BD65176003E623C /* SerachMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E614FC2BD65176003E623C /* SerachMovieViewController.swift */; };
 		68E615022BD657CC003E623C /* MovieListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E615012BD657CC003E623C /* MovieListCollectionViewCell.swift */; };
@@ -45,6 +46,7 @@
 		1AE3A3F62BD753D900021239 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1AE3A4042BDA27E500021239 /* EasyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyAlert.swift; sourceTree = "<group>"; };
+		1AE3A4062BDA3B0000021239 /* LoginNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNotificationCenter.swift; sourceTree = "<group>"; };
 		68E614FA2BD6510E003E623C /* SearchMovie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchMovie.storyboard; sourceTree = "<group>"; };
 		68E614FC2BD65176003E623C /* SerachMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachMovieViewController.swift; sourceTree = "<group>"; };
 		68E615012BD657CC003E623C /* MovieListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				1AE3A3F62BD753D900021239 /* LoginViewController.swift */,
 				1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */,
 				1AE3A4042BDA27E500021239 /* EasyAlert.swift */,
+				1AE3A4062BDA3B0000021239 /* LoginNotificationCenter.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
 				B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */,
 				B5EC62ED2BD928090006E956 /* LikedMovie.swift in Sources */,
+				1AE3A4072BDA3B0000021239 /* LoginNotificationCenter.swift in Sources */,
 				68E614FD2BD65176003E623C /* SerachMovieViewController.swift in Sources */,
 				1AE3A4052BDA27E600021239 /* EasyAlert.swift in Sources */,
 				68E615022BD657CC003E623C /* MovieListCollectionViewCell.swift in Sources */,
