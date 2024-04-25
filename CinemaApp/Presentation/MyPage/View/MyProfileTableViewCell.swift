@@ -8,11 +8,15 @@
 import UIKit
 
 class MyProfileTableViewCell: UITableViewCell {
+    static let identifier = "myProfileCell"
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userIDLabel: UILabel!
     
-    static let identifier = "myProfileCell"
+    @IBAction func tappedEditUserInfoButton(_ sender: UIButton) {
+        
+    }
+    
     
     func configure() {
         let userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
