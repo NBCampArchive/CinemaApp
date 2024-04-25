@@ -18,6 +18,8 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor(named: "backgroundColor")
+        
         mapView.delegate = self
         
         // 지도 설정
@@ -60,6 +62,7 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate {
                 annotation.coordinate = item.placemark.coordinate
                 annotation.title = item.name
                 annotation.subtitle = item.url?.absoluteString
+                print(item)
                 self.mapView.addAnnotation(annotation)
             }
             
@@ -84,6 +87,65 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate {
         print("Theater Name: \(theaterName)")
         print("Theater URL: \(theaterURL)")
         print("Theater Coordinate: \(theaterDescription)")
+        
+        let alertController = UIAlertController(title: theaterName, message: nil, preferredStyle: .actionSheet)
+        
+        let urlAction = UIAlertAction(title: "Open URL", style: .default) { _ in
+            if let url = URL(string: theaterURL) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
+        let routeAction = UIAlertAction(title: "Show Route", style: .default) { [weak self] _ in
+            self?.showRouteToAnnotation(annotation)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(urlAction)
+        alertController.addAction(routeAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showRouteToAnnotation(_ annotation: MKPointAnnotation) {
+        guard let userLocation = mapView.userLocation.location else {
+            return
+        }
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation.coordinate))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate))
+        request.transportType = .walking
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { [weak self] response, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                print("Error calculating route: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let route = response?.routes.first else {
+                print("No route found")
+                return
+            }
+            
+            self.mapView.addOverlay(route.polyline)
+            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = UIColor(named: "customPrimaryColor")
+            renderer.lineWidth = 3
+            return renderer
+        }
+        return MKOverlayRenderer()
     }
 }
 
