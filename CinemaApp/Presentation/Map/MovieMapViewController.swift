@@ -19,9 +19,11 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate, FloatingPanel
     var fpc: FloatingPanelController!
     var floatingPanelController: FloatingPanelController?
     var contentVC: UIViewController!
-    var theaterName: String = ""
     var annotation: MKPointAnnotation!
+    var theaterName: String = ""
     var theaterURL: String = ""
+    var theaterAddress: String = ""
+    var theaterPhone: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +67,12 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate, FloatingPanel
             
             // 검색 결과를 지도에 추가
             for item in response.mapItems {
-                let annotation = MKPointAnnotation()
+                let annotation = CustomAnnotation()
                 annotation.coordinate = item.placemark.coordinate
                 annotation.title = item.name
-                annotation.subtitle = item.url?.absoluteString
-                print(item.placemark.title)
+                annotation.url = item.url?.absoluteString
+                annotation.address = item.placemark.title
+                annotation.phone = item.phoneNumber
                 self.mapView.addAnnotation(annotation)
             }
             
@@ -81,18 +84,21 @@ class MovieMapViewController: UIViewController, MKMapViewDelegate, FloatingPanel
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let annotation = view.annotation as? MKPointAnnotation else {
+        guard let annotation = view.annotation as? CustomAnnotation else {
             return
         }
         self.annotation = annotation
         // 선택한 핀포인트의 정보 가져오기
         self.theaterName = annotation.title ?? "Unknown Theater"
-        self.theaterURL = annotation.subtitle ?? "Phone Not Available"
+        self.theaterURL = annotation.url ?? "Phone Not Available"
+        self.theaterAddress = annotation.address ?? "Unknown Place"
+        self.theaterPhone = annotation.phone ?? "Phone Not Available"
         let theaterDescription = annotation.coordinate
         // 영화관 정보 출력
         print("Theater Name: \(theaterName)")
         print("Theater URL: \(theaterURL)")
-        print("Theater Coordinate: \(theaterDescription)")
+        print("Theater Address: \(theaterAddress)")
+        print("Theater PhoneNumber: \(theaterPhone)")
         
         showFloatingPanel()
     }
@@ -179,3 +185,8 @@ extension MovieMapViewController: CLLocationManagerDelegate {
     }
 }
 
+class CustomAnnotation: MKPointAnnotation {
+    var url: String?
+    var address: String?
+    var phone: String?
+}
