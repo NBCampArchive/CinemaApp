@@ -81,10 +81,12 @@ class LoginViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: Notification) {
+        print("keyboardWillShow")
         self.loginComponentsView.frame.origin.y = 130
     }
     
     @objc func keyboardWillHide(notification: Notification) {
+        print("keyboardWillHide")
         self.loginComponentsView.frame.origin.y = 330
     }
     
@@ -211,12 +213,22 @@ class LoginViewController: UIViewController {
         // 텍스트
         idTextField.attributedPlaceholder = NSAttributedString(string: "아이디를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         pwTextField.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        // 패딩
+        
+        // 패딩 및 속성
         [self.idTextField,
          self.pwTextField].forEach {
+            // 1. 패딩
             $0?.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0))
             $0?.leftViewMode = .always
+            // 2. Capitalization, Correction, SpellChecking 없애기
+            $0?.autocapitalizationType = .none
+            $0?.autocorrectionType = .no
+            $0?.spellCheckingType = .no
+            
         }
+        // 비밀번호 가리기
+        pwTextField.isSecureTextEntry = true
+        pwTextField.textContentType = .oneTimeCode
     }
     
     

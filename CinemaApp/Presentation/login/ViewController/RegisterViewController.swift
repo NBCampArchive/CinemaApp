@@ -152,11 +152,21 @@ class RegisterViewController: UIViewController {
         self.nameViewTextField.attributedPlaceholder = NSAttributedString(string: "이름을 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         self.idViewTextField.attributedPlaceholder = NSAttributedString(string: "아이디를 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         self.pwViewTextField.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        // font
+        // 비밀번호 가리기
+        pwViewTextField.isSecureTextEntry = true
+        pwViewTextField.textContentType = .oneTimeCode
+        
+        // font 및 속성
         [self.nameViewTextField,
          self.idViewTextField,
          self.pwViewTextField].forEach {
+            // 1. 폰트
             $0?.font = UIFont.systemFont(ofSize: 18)
+            
+            // 2. Capitalization, Correction, SpellChecking 없애기
+            $0?.autocapitalizationType = .none
+            $0?.autocorrectionType = .no
+            $0?.spellCheckingType = .no
         }
         
         // MARK: Register button <- 적용 안 됨....
