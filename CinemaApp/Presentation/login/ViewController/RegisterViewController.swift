@@ -297,13 +297,7 @@ class RegisterViewController: UIViewController {
         } else if userPW == nil || userPW == "" {
             alertTitle = "비밀번호를 입력하세요"
         }
-        // Alert 확인 action 설정
-        let ok = UIAlertAction(title: "확인", style: .cancel)
-
-        // Alert Controller 세팅, 띄우기
-        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
+        EasyAlert.showAlert(title: alertTitle, message: nil, vc: self)
     }
     
     // MARK: - Alert: 정상 가입 되었을 경우

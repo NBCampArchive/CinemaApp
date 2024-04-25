@@ -87,6 +87,7 @@ class LoginViewController: UIViewController {
         if idTextField.text == UserDefaults.standard.string(forKey: "userID"),
            pwTextField.text == UserDefaults.standard.string(forKey: "userPW") {
             // TODO: 화면 이동 함수 추가
+            
         } else {
             // Alert: 로그인 정보가 일치하지 않습니다
             EasyAlert.showAlert(title: "로그인 실패", message: "로그인 정보가 일치하지 않습니다.", vc: self)
