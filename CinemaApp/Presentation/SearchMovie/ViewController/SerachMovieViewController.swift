@@ -10,12 +10,15 @@ import Kingfisher
 
 class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var genreSegmentedControl: UISegmentedControl!
     @IBOutlet weak var movieListCollectionView: UICollectionView!
     @IBOutlet weak var noticeLabel: UILabel!
     
     // TODO: Key를 발급받아 채워주세요.
     let authenticationKey = ""
     let urlString = "https://api.themoviedb.org/3/search/movie"
+    let genreListUrl = "https://api.themoviedb.org/3/genre/movie/list"
+    
     let interSpacing: CGFloat = 2
     
     var movieList: [Results] = [] {
@@ -26,6 +29,9 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
+    var filteredMovieList: [Results] = []
+    var isFiltered = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -35,6 +41,9 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         getData(query: "") { a in }
         setSearchBar()
         noticeLabelUI()
+        getGenreData()
+        
+        self.genreSegmentedControl.addTarget(self, action: #selector(genreChanged(segment:)), for: .valueChanged)
         
     }
     
@@ -58,9 +67,7 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.backgroundColor = UIColor(named: "customPrimaryColor")
             textfield.textColor = UIColor(named: "LabelTextColor")
-            
             textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-            
             textfield.textColor = UIColor.white
             // 왼쪽 아이콘 이미지
             if let leftView = textfield.leftView as? UIImageView {
@@ -75,7 +82,64 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
+    @objc func genreChanged(segment: UISegmentedControl) {
+        isFiltered = true
+        filterActionMovie(movieList: movieList)
+    
+        switch segment.selectedSegmentIndex {
+        case 0:
+            isFiltered = false
+        case 1:
+            filterAnimaionMovie(movieList: movieList)
+        case 2:
+            filterComedyMovie(movieList: movieList)
+        case 3:
+            filterFantasyMovie(movieList: movieList)
+        case 4:
+            filterThillerMovie(movieList: movieList)
+        case 5:
+            filterActionMovie(movieList: movieList)
+        default:
+            break
+        }
+            
+        movieListCollectionView.reloadData()
+    }
+    
+    func filterActionMovie(movieList: [Results]) {
+        filteredMovieList = movieList.filter {
+            $0.genre_ids.contains(28)
+        }
+    }
+    
+    func filterAnimaionMovie(movieList: [Results]) {
+        filteredMovieList = movieList.filter {
+            $0.genre_ids.contains(16)
+        }
+    }
+    
+    func filterComedyMovie(movieList: [Results]) {
+        filteredMovieList = movieList.filter {
+            $0.genre_ids.contains(35)
+        }
+    }
+    
+    func filterFantasyMovie(movieList: [Results]) {
+        filteredMovieList = movieList.filter {
+            $0.genre_ids.contains(14)
+        }
+    }
+    
+    func filterThillerMovie(movieList: [Results]) {
+        filteredMovieList = movieList.filter {
+            $0.genre_ids.contains(53)
+        }
+    }
+    
     func getData(query: String, completion: @escaping([Results]) -> Void ) {
+        isFiltered = false
+        filteredMovieList = []
+        
         guard let url = URL(string: urlString) else { return }
         // 파라미터 or 헤더를 추가 -> URLComponents -> URLRequest 안에 components?.url 넣기
         // 헤더 or 파라미터 필요 x -> URLRequest만 생성
@@ -109,14 +173,60 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         .resume()
     }
     
+    func getGenreData() {
+        guard let url = URL(string: genreListUrl) else { return }
+        
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        let languageParm: [URLQueryItem] = [URLQueryItem(name: "language", value: "ko")]
+        components?.queryItems = languageParm
+        
+        guard let componentUrl = components?.url else { return }
+        var urlRequest = URLRequest(url: componentUrl)
+
+        urlRequest.allHTTPHeaderFields = [
+          "accept": "application/json",
+          "Authorization": "Bearer \(authenticationKey)"
+        ]
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data else { return }
+            // print("data: \(data)")
+            // guard let encodedData = String(data: data, encoding: .utf8) else { return }
+            // print("unwrappedData:\(encodedData)")
+            
+            // 통신에 실패했을 경우 alert 띄우기
+            guard error == nil else {
+                let cancelAction = UIAlertAction(title: "닫기", style: .default)
+                let alertController = UIAlertController(title: "⚠️ 경고 ⚠️", message: "네트워크 오류가 발생했습니다.\n다시 시도해 주세요.", preferredStyle: .alert)
+                alertController.addAction(cancelAction)
+                DispatchQueue.main.async {
+                    self.present(alertController, animated: true)
+                }
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(GenresMovieList.self, from: data)
+            } catch {
+                print("genre data error: \(error)")
+            } 
+        }
+        .resume()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movieList.count
+        if isFiltered {
+            filteredMovieList.count
+        } else {
+            movieList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = self.movieListCollectionView.dequeueReusableCell(withReuseIdentifier: MovieListCollectionViewCell.indentifier, for: indexPath) as? MovieListCollectionViewCell else { return UICollectionViewCell() }
         
-        let movie = movieList[indexPath.item]
+        let movie = isFiltered ? filteredMovieList[indexPath.item] : movieList[indexPath.item]
         
         cell.movieImage.contentMode = .scaleAspectFill
         cell.movieImage.backgroundColor = UIColor(named: "BackgroundColor")
@@ -164,15 +274,21 @@ extension SearchMovieViewController: UISearchBarDelegate {
                 DispatchQueue.main.async {
                     self.noticeLabel.isHidden = false
                     self.noticeLabel.text = "이런! 찾으시는 작품이 없습니다."
-                    self.noticeLabel.textColor = UIColor(named: "LabelTextColor") }
+                    self.noticeLabel.textColor = UIColor(named: "LabelTextColor")
+                    self.genreSegmentedControl.selectedSegmentIndex = 0
+                }
             } else if self.movieList.count != 0 {
                 DispatchQueue.main.async {
-                    self.noticeLabel.isHidden = true }
+                    self.noticeLabel.isHidden = true
+                    self.genreSegmentedControl.selectedSegmentIndex = 0
+                }
             } else {
                 DispatchQueue.main.async {
                     self.noticeLabel.isHidden = false
                     self.noticeLabel.text = "검색어 없음"
-                    self.noticeLabel.textColor = UIColor(named: "LabelTextColor") }
+                    self.noticeLabel.textColor = UIColor(named: "LabelTextColor")
+                    self.genreSegmentedControl.selectedSegmentIndex = 0
+                }
             }
         }
     }
@@ -181,3 +297,4 @@ extension SearchMovieViewController: UISearchBarDelegate {
         view.endEditing(true)
     }
 }
+
