@@ -68,6 +68,9 @@ class LoginViewController: UIViewController {
     func conductAutoLogin() {
         // autoLoginStatus 체크
         if autoLoginStatus == true {
+            // 1. text에 userDefaults 정보 넣기
+            idTextField.text = UserDefaults.standard.string(forKey: "userID")
+            pwTextField.text = UserDefaults.standard.string(forKey: "userPW") 
             conductLogin()
         }
         
