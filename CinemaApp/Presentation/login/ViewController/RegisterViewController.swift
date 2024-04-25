@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class RegisterViewController: BaseRegisterViewController {
+class RegisterViewController: UIViewController {
     
     @IBOutlet weak var pageTitleLabel: UILabel!
     @IBOutlet weak var pageSubtitleLabel: UILabel!
@@ -35,7 +35,7 @@ class RegisterViewController: BaseRegisterViewController {
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
-        // 데이터 안 채우고 가입하기 버튼 눌렀을 경우
+        // 1. 데이터 다 작성됐는지 확인
         guard let userName = nameViewTextField.text,
               let userID = idViewTextField.text,
               let userPW = pwViewTextField.text,
@@ -43,32 +43,40 @@ class RegisterViewController: BaseRegisterViewController {
               !userID.isEmpty,
               !userPW.isEmpty
         else {
+            // 2-1. 데이터 다 안 채웠을 경우 경고 Alert
             self.showAlertIfDataIncomplete(userName: nameViewTextField.text, userID: idViewTextField.text, userPW: pwViewTextField.text)
             return
         }
         
-        // userDefauts에 정보 저장
+        // 2-2. 데이터 다 채웠을 경우 userDefauts 업데이트
         UserDefaults.standard.set(userName, forKey: "userName")
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.set(userPW, forKey: "userPW")
+        
+        // 3. login 화면으로 notification 보내기
+        NotificationCenter.default.post(name: Notification.Name.updateLoginView, object: nil)
+        
+        // 4. 회원가입 성공 Alert 띄우기
         self.showAlertIfDataComplete()
         print("가입 완료: \(UserDefaults.standard.value(forKey: "userName")) / \(UserDefaults.standard.value(forKey: "userID")) / \(UserDefaults.standard.value(forKey: "userPW"))")
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupConstraints()
+        setupUI()
     }
     
-    override func setupUI() {
+    
+    
+    func setupUI() {
         setColors()
         setFontAndText()
         setCornerRadius()
         setTextFieldPadding()
     }
     
-    override func setupConstraints() {
+    func setupConstraints() {
         setTranslatesAutoresizingMaskIntoConstraintsFalse()
         setTitleConstraints()
         setNameViewConstraints()
@@ -282,5 +290,33 @@ class RegisterViewController: BaseRegisterViewController {
             $0.width.height.equalTo(30)
         }
     }
+    
+    
+    // MARK: - Alert: 정보 다 안 채우고 가입하기 버튼 누를 경우
+    func showAlertIfDataIncomplete(userName: String?, userID: String?, userPW: String?) {
+        // Alert Title 설정
+        var alertTitle = ""
+        if userName == nil || userName == "" {
+            alertTitle = "이름을 입력하세요."
+        } else if userID == nil || userID == "" {
+            alertTitle = "아이디를 입력하세요"
+        } else if userPW == nil || userPW == "" {
+            alertTitle = "비밀번호를 입력하세요"
+        }
+        EasyAlert.showAlert(title: alertTitle, message: nil, vc: self)
+    }
+    
+    // MARK: - Alert: 정상 가입 되었을 경우
+    func showAlertIfDataComplete() {
+        let alert = UIAlertController(title: "회원가입 완료", message: "회원가입이 완료되었습니다.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .cancel) { [weak self] _ in
+            self?.dismiss(animated: true)
+        }
+        
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+    }
+    
+    
     
 }
