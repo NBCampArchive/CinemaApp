@@ -7,7 +7,8 @@
 
 import UIKit
 
-class LoginViewController: BaseLoginViewController {
+class LoginViewController: UIViewController {
+    
     
     // MARK: - UI Components 연결
     @IBOutlet weak var bgView: UIView!
@@ -46,9 +47,16 @@ class LoginViewController: BaseLoginViewController {
     let PrimaryContainerColor = UIColor(named: "PrimaryContainerColor")
     let LabelTextColor = UIColor(named: "LabelTextColor")
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        setupConstraints()
+        //setBackgroundPosterImage()
+    }
+    
     // MARK: - UI Setting functions
-    override func setupUI() {
-        super.setupUI()
+    func setupUI() {
         updateAutoLoginCheckImage()
         setBackgroundUI()
         setAppLogoUI()
@@ -58,8 +66,7 @@ class LoginViewController: BaseLoginViewController {
         setPlaceholderText()
     }
     
-    override func setupConstraints() {
-        super.setupConstraints()
+    func setupConstraints() {
         setTranslatesAutoresizingMaskIntoConstraintsFalse()
         setBackgroundConstraints()
         setLoginComponentsConstraints()
