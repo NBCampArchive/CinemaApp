@@ -61,6 +61,8 @@ class RegisterViewController: UIViewController {
         setupUI()
     }
     
+    
+    
     func setupUI() {
         setColors()
         setFontAndText()

@@ -59,9 +59,15 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        setupConstraints()
-        conductAutoLogin()
+        self.setupUI()
+        self.setupConstraints()
+        self.conductAutoLogin()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.setBackgroundUI()
+        print("yyyyyyyy")
     }
     
     // MARK: - Auto Login
@@ -70,7 +76,7 @@ class LoginViewController: UIViewController {
         if autoLoginStatus == true {
             // 1. text에 userDefaults 정보 넣기
             idTextField.text = UserDefaults.standard.string(forKey: "userID")
-            pwTextField.text = UserDefaults.standard.string(forKey: "userPW") 
+            pwTextField.text = UserDefaults.standard.string(forKey: "userPW")
             conductLogin()
         }
         
@@ -100,7 +106,7 @@ class LoginViewController: UIViewController {
     // MARK: - UI Setting functions
     func setupUI() {
         updateAutoLoginCheckImage()
-        setBackgroundUI(listType: "Upcoming")
+        setBackgroundUI()
         setAppLogoUI()
         setCornerRadius()
         setFont()
@@ -126,18 +132,10 @@ class LoginViewController: UIViewController {
         }
     }
     
-    // 배경 포스터 이미지 설정 함수
-    func setBackgroundUI(listType: String) {
-        let customSerialQueue = DispatchQueue(label: "setBgImage")
-        customSerialQueue.sync {
-            self.fetchUpcomingMovieData(listType: "upcoming")
-        }
-        customSerialQueue.asyncAfter(deadline: .now() + 0.1, execute: {
-            self.pickRandomMovieData()
-        })
-        customSerialQueue.asyncAfter(deadline: .now() + 0.1, execute: {
-            self.setBackgroundPosterImage()
-        })
+    
+    func setBackgroundUI() {
+        // 배경 포스터 이미지 설정
+        self.fetchUpcomingMovieData(listType: "upcoming")
         self.bgPosterImage.contentMode = .scaleAspectFill
         
         // 투명도 80% 검정으로 덮기
@@ -317,8 +315,15 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let movies):
                 print(">>>> Category:\(listType) Page: 1 Success")
-                self.upcomingMovies.append(contentsOf: movies.results)
+                self.upcomingMovies.append(contentsOf: movies.results) // escaping closure 사용?
                 print(">>>> append success! \(self.upcomingMovies[1].title)")
+                
+                // #2. Upcoming Movies에서 랜덤으로 하나 뽑기
+                self.pickRandomMovieData()
+                
+                // #3. randomUpcomingMovie 포스터 이미지를 컴포넌트에 연결하기
+                self.setBackgroundPosterImage()
+                
             case .failure(let error):
                 print(error)
             }
