@@ -19,11 +19,11 @@ class MyProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userIDLabel: UILabel!
     
-    //var editUserInfoButton: (() -> ()) = {}
-    
-    @IBAction func tappedEditUserInfoButton(_ sender: UIButton) {
-        //editUserInfoButton()
-    }
+//    var editUserInfoButton: (() -> ()) = {}
+//    
+//    @IBAction func tappedEditUserInfoButton(_ sender: UIButton) {
+//        editUserInfoButton()
+//    }
     
     
     func configure() {
