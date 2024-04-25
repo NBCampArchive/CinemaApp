@@ -9,15 +9,16 @@ import UIKit
 
 class myMenuTableViewCell: UITableViewCell {
     
-    var menuTitle: String?
+    @IBOutlet weak var myMenuTitleLabel: UILabel!
+    var myMenuTitle: String?
     
     var item: ViewModelItem? {
         didSet {
             guard let item = item as? MyMenuItem else { return }
-            menuTitle = item.menuTitle
+            myMenuTitle = item.menuTitle
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,8 +26,11 @@ class myMenuTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    
+    func configure() {
+        print("myMenuTitle: \(myMenuTitle)")
+        myMenuTitleLabel.text = myMenuTitle
+    }
 }

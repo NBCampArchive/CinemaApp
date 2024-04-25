@@ -20,7 +20,6 @@ class MyPageViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        //tableView.register(MyProfileTableViewCell.self, forCellReuseIdentifier: "myProfileCell")
     }
     
     
@@ -58,11 +57,10 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "myMenuCell", for: indexPath) as? myMenuTableViewCell else {
                 return UITableViewCell()
             }
-            
+            cell.item = item
+            cell.configure()
             cell.selectionStyle = .none
             return cell
-//        default:
-//            return UITableViewCell()
         }
     }
     

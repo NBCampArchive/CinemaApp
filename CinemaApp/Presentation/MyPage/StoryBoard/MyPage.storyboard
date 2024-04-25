@@ -136,6 +136,9 @@
                                                 <constraint firstItem="6l8-6k-jBE" firstAttribute="leading" secondItem="jbB-Aq-Wq8" secondAttribute="leading" constant="30" id="tC1-RL-DEB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myMenuTitleLabel" destination="6l8-6k-jBE" id="eA6-lr-hgH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
