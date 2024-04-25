@@ -41,6 +41,8 @@
 		B5EC62ED2BD928090006E956 /* LikedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62EC2BD928090006E956 /* LikedMovie.swift */; };
 		B5EC62F02BD9E7620006E956 /* BottomTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62EF2BD9E7620006E956 /* BottomTab.storyboard */; };
 		B5EC62F22BD9E91E0006E956 /* BottomTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F12BD9E91E0006E956 /* BottomTabController.swift */; };
+		B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */; };
+		B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		B5EC62EC2BD928090006E956 /* LikedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedMovie.swift; sourceTree = "<group>"; };
 		B5EC62EF2BD9E7620006E956 /* BottomTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomTab.storyboard; sourceTree = "<group>"; };
 		B5EC62F12BD9E91E0006E956 /* BottomTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabController.swift; sourceTree = "<group>"; };
+		B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieMap.storyboard; sourceTree = "<group>"; };
+		B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,7 @@
 		B5EC62BF2BD6323D0006E956 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC62F32BD9F07C0006E956 /* Map */,
 				B5EC62EE2BD9E7480006E956 /* BottomTab */,
 				68E614F42BD65021003E623C /* SearchMovie */,
 				B5EC62C42BD6328D0006E956 /* Launch */,
@@ -330,6 +335,15 @@
 			path = BottomTab;
 			sourceTree = "<group>";
 		};
+		B5EC62F32BD9F07C0006E956 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */,
+				B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -401,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */,
 				B5EC62F02BD9E7620006E956 /* BottomTab.storyboard in Resources */,
 				1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */,
 				B5EC62E72BD7C31D0006E956 /* TwelveCinemaInfo.plist in Resources */,
@@ -439,6 +454,7 @@
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
 				B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */,
+				B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */,
 				B5EC62EB2BD924260006E956 /* MovieDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
