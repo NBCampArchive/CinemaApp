@@ -93,12 +93,35 @@ extension MovieMapViewController{
         }
         urlButton.addTarget(self, action: #selector(openURL), for: .touchUpInside)
         
+        let addressTitle = UILabel().then{
+            $0.text = "Address"
+            $0.font = .boldSystemFont(ofSize: 20)
+        }
+        let addressLabel = UILabel().then{
+            $0.text = theaterAddress
+            $0.font = .systemFont(ofSize: 17)
+            $0.numberOfLines = 0
+        }
+        
+        let phoneTitle = UILabel().then{
+            $0.text = "Phone"
+            $0.font = .boldSystemFont(ofSize: 20)
+        }
+        let phoneLabel = UILabel().then{
+            $0.text = theaterPhone
+            $0.font = .systemFont(ofSize: 17)
+        }
+        
         
         contentVC.view.addSubview(titleLabel)
         contentVC.view.addSubview(stackView)
         stackView.addArrangedSubview(walkRouteButton)
         stackView.addArrangedSubview(carRouteButton)
         stackView.addArrangedSubview(urlButton)
+        contentVC.view.addSubview(addressTitle)
+        contentVC.view.addSubview(addressLabel)
+        contentVC.view.addSubview(phoneTitle)
+        contentVC.view.addSubview(phoneLabel)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(contentVC.view.snp.topMargin).offset(20)
@@ -106,8 +129,26 @@ extension MovieMapViewController{
         }
         
         stackView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
-            $0.leading.trailing.equalToSuperview().inset(20) // 좌우 여백 추가
+            $0.top.equalTo(titleLabel.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        addressTitle.snp.makeConstraints {
+            $0.top.equalTo(stackView.snp.bottom).offset(16)
+            $0.leading.equalTo(contentVC.view.snp.leading).offset(16)
+        }
+        addressLabel.snp.makeConstraints {
+            $0.top.equalTo(addressTitle.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        phoneTitle.snp.makeConstraints {
+            $0.top.equalTo(addressLabel.snp.bottom).offset(16)
+            $0.leading.equalTo(contentVC.view.snp.leading).offset(16)
+        }
+        phoneLabel.snp.makeConstraints {
+            $0.top.equalTo(phoneTitle.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
         
         fpc = FloatingPanelController()
