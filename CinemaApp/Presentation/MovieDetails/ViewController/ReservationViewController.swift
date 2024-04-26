@@ -9,16 +9,37 @@ import UIKit
 
 class ReservationViewContrroller: UIViewController {
     
+    @IBOutlet weak var reservationLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var numberStepper: UIStepper!
     @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var numberStepper: UIStepper!
+    @IBOutlet weak var payButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
-    
-    @IBOutlet weak var payButton: UIButton! // payButton IBOutlet 추가
-    
+    @IBOutlet weak var groundView: UIView!
+    @IBOutlet weak var movietitleLabel: UILabel!
+    @IBOutlet weak var totalpriceLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var humannumberLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+        groundView.backgroundColor = UIColor(named:"PrimaryContainerColor")
+        titleLabel.backgroundColor = UIColor.clear
+        titleLabel.textColor = UIColor(named: "LabelTextColor")
+        numberLabel.backgroundColor = UIColor.clear
+        numberLabel.textColor = UIColor(named: "LabelTextColor")
+        priceLabel.backgroundColor = UIColor.clear
+        priceLabel.textColor = UIColor(named: "LabelTextColor")
+        movietitleLabel.backgroundColor = UIColor.clear
+        priceLabel.textColor = UIColor(named: "LabelTextColor")
+        totalpriceLabel.backgroundColor = UIColor.clear
+        totalpriceLabel.textColor = UIColor(named: "LabelTextColor")
+        dateLabel.backgroundColor = UIColor.clear
+        dateLabel.textColor = UIColor(named: "LabelTextColor")
+        humannumberLabel.backgroundColor = UIColor.clear
+        humannumberLabel.textColor = UIColor(named: "LabelTextColor")
         
         // stepper의 최솟값, 최댓값, 초기값 설정
         numberStepper.minimumValue = 0
@@ -30,6 +51,21 @@ class ReservationViewContrroller: UIViewController {
         
         // stepper의 Value Changed 이벤트에 대한 액션 추가
         numberStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        
+        // numberLabel의 텍스트를 숫자로 변환
+        if let number = Int(numberLabel.text ?? "0") {
+            let result = number * 10000
+            priceLabel.text = "\(result)원"
+        } else {
+            priceLabel.text = "계산 불가"
+        }
+        
+        // 코너 반경 설정
+        payButton.layer.cornerRadius = 10 // 적절한 값을 넣어주세요
+        
+        // 추가적인 스타일링
+        payButton.backgroundColor = UIColor.blue
+        payButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     @objc func stepperValueChanged(_ sender: UIStepper) {
