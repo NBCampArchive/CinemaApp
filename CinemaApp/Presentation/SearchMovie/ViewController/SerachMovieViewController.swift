@@ -289,6 +289,17 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         return interSpacing
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let pushVC = UIStoryboard(name: "MovieDetails", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else {
+            print("Failed to instantiate MovieDetailsViewController")
+            return
+        }
+        let movie = isFiltered ? filteredMovieList[indexPath.item] : movieList[indexPath.item]
+
+        pushVC.movieId = movie.id
+        present(pushVC, animated: true)
+    }
+    
 }
 
 extension SearchMovieViewController: UISearchBarDelegate {
