@@ -21,6 +21,17 @@ class MyPageViewController: UIViewController {
         tableView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // 로그인 뷰 업데이트 Notification Observer
+        print("userDefault Id:", UserDefaults.standard.string(forKey: "userID"))
+        NotificationCenter.default.addObserver(self, selector: #selector(viewUpdate(notification:)), name: Notification.Name.userDefaultsChanged, object: nil)
+    }
+    // MARK: - notification으로 실행시킬 함수
+    @objc func viewUpdate(notification: Notification) {
+        print("데이터 리로드!")
+        self.tableView.reloadData()
+    }
     
 }
 
@@ -50,15 +61,9 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             
              //MARK: 회원정보 수정 버튼 눌렀을 때 실행할 함수 선언
             cell.editUserInfoButton = { [unowned self] in
-                 //1. 회원가입 뷰 present
+                 //회원가입 뷰 present
                 let registerVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
                 self.present(registerVC, animated: true)
-//                // 2. 이름, id, pw값 텍스트필드에 기본으로 넣기
-//                registerVC.nameViewTextField.text = UserDefaults.standard.string(forKey: "userName")
-//                registerVC.idViewTextField.text = UserDefaults.standard.string(forKey: "userID")
-//                registerVC.pwViewTextField.text = UserDefaults.standard.string(forKey: "userPW")
-//                // 3. 가입하기 버튼 타이틀을 "수정하기"로 바꾸기
-//                registerVC.registerButton.titleLabel?.text = "수정하기"
             }
             cell.configure()
             cell.selectionStyle = .none

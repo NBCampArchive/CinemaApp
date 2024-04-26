@@ -62,13 +62,14 @@ class LoginViewController: UIViewController {
         self.setupUI()
         self.setupConstraints()
         self.conductAutoLogin()
+        print("userDefault Id:", UserDefaults.standard.string(forKey: "userID"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         // MARK: NotificationCenter에 Observer 등록하기
         // 로그인 뷰 업데이트
-        NotificationCenter.default.addObserver(self, selector: #selector(viewUpdate(notification:)), name: Notification.Name.updateLoginView, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewUpdate(notification:)), name: Notification.Name.userDefaultsChanged, object: nil)
         // 키보드 유무에 따라 뷰 위치 변경
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)

@@ -53,8 +53,8 @@ class RegisterViewController: UIViewController {
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.set(userPW, forKey: "userPW")
         
-        // 3. login 화면으로 notification 보내기
-        NotificationCenter.default.post(name: Notification.Name.updateLoginView, object: nil)
+        // 3. login 화면, MyPage 화면으로 notification 보내기
+        NotificationCenter.default.post(name: Notification.Name.userDefaultsChanged, object: nil)
         
         // 4. 회원가입 성공 Alert 띄우기
         self.showAlertIfDataComplete()
@@ -176,7 +176,7 @@ class RegisterViewController: UIViewController {
     func setRegisterButton(status: String) {
         // MARK: Register button
         self.registerButton.setTitle(status, for: .normal)
-            self.registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        self.registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
     }
     
     func setIfHaveUserDefault() {

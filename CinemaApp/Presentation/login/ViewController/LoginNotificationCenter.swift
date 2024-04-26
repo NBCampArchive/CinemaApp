@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 extension Notification.Name {
-    static let updateLoginView = Notification.Name("updateLoginView")
+    static let userDefaultsChanged = Notification.Name("userDefaultsChanged")
 }

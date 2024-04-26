@@ -13,8 +13,8 @@ protocol EditUserInfoDelegate: AnyObject {
 
 class MyProfileTableViewCell: UITableViewCell {
     static let identifier = "myProfileCell"
-    let userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
-    let userID = UserDefaults.standard.value(forKey: "userID") as? String ?? ""
+    var userName = ""
+    var userID = ""
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userIDLabel: UILabel!
@@ -25,11 +25,15 @@ class MyProfileTableViewCell: UITableViewCell {
         editUserInfoButton()
     }
     
+    func fetchUserData() {
+        userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
+        userID = UserDefaults.standard.value(forKey: "userID") as? String ?? ""
+    }
     
     func configure() {
-        
-        userNameLabel.text = "\(userName)님"
-        userIDLabel.text = "ID: \(userID)"
+        fetchUserData()
+        userNameLabel.text = "\(self.userName)님"
+        userIDLabel.text = "ID: \(self.userID)"
     }
     
     
