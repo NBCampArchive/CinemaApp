@@ -25,6 +25,10 @@
 		68E614FB2BD6510E003E623C /* SearchMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E614FA2BD6510E003E623C /* SearchMovie.storyboard */; };
 		68E614FD2BD65176003E623C /* SerachMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E614FC2BD65176003E623C /* SerachMovieViewController.swift */; };
 		68E615022BD657CC003E623C /* MovieListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E615012BD657CC003E623C /* MovieListCollectionViewCell.swift */; };
+		B5A97CD32BDBD9B900733884 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A97CD22BDBD9B900733884 /* Reservation.swift */; };
+		B5A97CD52BDBDC1F00733884 /* ReservationList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A97CD42BDBDC1F00733884 /* ReservationList.storyboard */; };
+		B5A97CD72BDBDC6B00733884 /* ReservationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A97CD62BDBDC6B00733884 /* ReservationListViewController.swift */; };
+		B5A97CD92BDBDD0000733884 /* ReservationListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A97CD82BDBDD0000733884 /* ReservationListViewCell.swift */; };
 		B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62A82BD631B90006E956 /* AppDelegate.swift */; };
 		B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */; };
 		B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62AC2BD631B90006E956 /* MovieListViewController.swift */; };
@@ -77,6 +81,10 @@
 		68E614FA2BD6510E003E623C /* SearchMovie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchMovie.storyboard; sourceTree = "<group>"; };
 		68E614FC2BD65176003E623C /* SerachMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachMovieViewController.swift; sourceTree = "<group>"; };
 		68E615012BD657CC003E623C /* MovieListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5A97CD22BDBD9B900733884 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		B5A97CD42BDBDC1F00733884 /* ReservationList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReservationList.storyboard; sourceTree = "<group>"; };
+		B5A97CD62BDBDC6B00733884 /* ReservationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListViewController.swift; sourceTree = "<group>"; };
+		B5A97CD82BDBDD0000733884 /* ReservationListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListViewCell.swift; sourceTree = "<group>"; };
 		B5EC62A52BD631B90006E956 /* CinemaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EC62A82BD631B90006E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EC62AA2BD631B90006E956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 			children = (
 				B5EC63002BDB5EA10006E956 /* LikeMovie.storyboard */,
 				1AE3A40A2BDA4C1300021239 /* MyPage.storyboard */,
+				B5A97CD42BDBDC1F00733884 /* ReservationList.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -176,6 +185,7 @@
 			children = (
 				B5EC63022BDB5EB00006E956 /* LikeMovieViewController.swift */,
 				1AE3A40D2BDA4EF600021239 /* MyPageViewController.swift */,
+				B5A97CD62BDBDC6B00733884 /* ReservationListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -194,6 +204,7 @@
 				1AE3A4152BDA6B8B00021239 /* MyProfileTableViewCell.swift */,
 				1AE3A4172BDA6CAB00021239 /* myMenuTableViewCell.swift */,
 				B5EC63042BDB5EC20006E956 /* LikeMovieTableCell.swift */,
+				B5A97CD82BDBDD0000733884 /* ReservationListViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -415,6 +426,7 @@
 				B5EC62DF2BD687B10006E956 /* MovieListResponse.swift */,
 				B5EC62EA2BD924260006E956 /* MovieDetail.swift */,
 				B5EC62EC2BD928090006E956 /* LikedMovie.swift */,
+				B5A97CD22BDBD9B900733884 /* Reservation.swift */,
 			);
 			path = MovieList;
 			sourceTree = "<group>";
@@ -514,6 +526,7 @@
 				B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */,
 				B5EC62F02BD9E7620006E956 /* BottomTab.storyboard in Resources */,
 				1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */,
+				B5A97CD52BDBDC1F00733884 /* ReservationList.storyboard in Resources */,
 				B5EC62E72BD7C31D0006E956 /* TwelveCinemaInfo.plist in Resources */,
 				1AE3A40B2BDA4C1300021239 /* MyPage.storyboard in Resources */,
 				B5EC62B22BD631BB0006E956 /* Assets.xcassets in Resources */,
@@ -546,6 +559,7 @@
 				B5EC62A92BD631B90006E956 /* AppDelegate.swift in Sources */,
 				B5EC62ED2BD928090006E956 /* LikedMovie.swift in Sources */,
 				1AE3A4072BDA3B0000021239 /* LoginNotificationCenter.swift in Sources */,
+				B5A97CD32BDBD9B900733884 /* Reservation.swift in Sources */,
 				1AE3A4112BDA642E00021239 /* MyPageCellType.swift in Sources */,
 				68E614FD2BD65176003E623C /* SerachMovieViewController.swift in Sources */,
 				3F11B3CA2BDA23D000A4DE8E /* MovieDetailsViewController.swift in Sources */,
@@ -560,8 +574,10 @@
 				1AE3A40E2BDA4EF600021239 /* MyPageViewController.swift in Sources */,
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
+				B5A97CD92BDBDD0000733884 /* ReservationListViewCell.swift in Sources */,
 				B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */,
 				B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */,
+				B5A97CD72BDBDC6B00733884 /* ReservationListViewController.swift in Sources */,
 				B5EC63052BDB5EC20006E956 /* LikeMovieTableCell.swift in Sources */,
 				B5EC62EB2BD924260006E956 /* MovieDetail.swift in Sources */,
 			);
