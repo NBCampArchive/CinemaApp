@@ -35,6 +35,8 @@ class MyPageViewController: UIViewController {
     
 }
 
+
+
 extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,12 +61,20 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             
             print("cell: \(cell.userNameLabel.text)")
             
-             //MARK: 회원정보 수정 버튼 눌렀을 때 실행할 함수 선언
+             // 회원정보 수정 버튼 눌렀을 때 실행할 클로저 정의
             cell.editUserInfoButton = { [unowned self] in
-                 //회원가입 뷰 present
                 let registerVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
-                self.present(registerVC, animated: true)
+                self.present(registerVC, animated: true) //회원가입 뷰 present
             }
+            
+            // 로그아웃 버튼 눌렀을 때 실행할 클로저 정의
+            cell.logoutButton = { [unowned self] in
+                let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+                self.navigationController?.pushViewController(loginVC, animated: true) //로그인 뷰 push
+            }
+            
+            
+            
             cell.configure()
             cell.selectionStyle = .none
             cell.backgroundColor = .red
