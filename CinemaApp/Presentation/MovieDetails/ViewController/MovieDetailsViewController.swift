@@ -93,6 +93,8 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         guard let pushVC = UIStoryboard(name: "MovieDetails", bundle:nil).instantiateViewController(withIdentifier: "ReservationViewContrroller") as? ReservationViewContrroller else{
             return
         }
+        
+        pushVC.posterPath = movieDetail?.posterPath
         pushVC.movieTitle = movieDetail?.title
         pushVC.movieId = movieDetail?.id
         
