@@ -11,6 +11,10 @@ import Then
 import Kingfisher
 import Alamofire
 
+protocol MovieCollectionViewCellDelegate: AnyObject {
+    func movieCollectionViewCell(_ cell: MovieCollectionViewCell, didTapNavigationButtonWith movie: Movie?)
+}
+
 class MovieCollectionViewCell: UICollectionViewCell{
     
     //MARK: - Properties
@@ -128,11 +132,19 @@ class MovieCollectionViewCell: UICollectionViewCell{
         $0.configuration = configuration
     }
     
+    weak var delegate: MovieCollectionViewCellDelegate?
+    
+    @objc func navigationButtonTapped(_ sender: UIButton){
+        delegate?.movieCollectionViewCell(self, didTapNavigationButtonWith: movieData)
+        print("Buy Ticket Button Tapped")
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupLayout()
         likeButton.addTarget(self, action: #selector(likeButtonTapped(_:)), for: .touchUpInside)
+        navigationButton.addTarget(self, action: #selector(navigationButtonTapped(_:)), for: .touchUpInside)
         printLikedMovies()
     }
     
