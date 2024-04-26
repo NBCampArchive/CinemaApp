@@ -10,6 +10,8 @@ import Foundation
 struct Reservation: Codable {
     let movieId: Int
     let movieTitle: String
-    let numberOfPeople: Int
+    let posterPath: String?
+    let people: Int
     let price: Int
+    let date: Date
 }
