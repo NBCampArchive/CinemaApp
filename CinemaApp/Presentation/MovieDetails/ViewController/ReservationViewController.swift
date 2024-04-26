@@ -21,11 +21,15 @@ class ReservationViewContrroller: UIViewController {
     @IBOutlet weak var totalpriceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var humannumberLabel: UILabel!
+    
+    var movieTitle: String?
+    var movieId: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(named: "BackgroundColor")
-        groundView.backgroundColor = UIColor(named:"PrimaryContainerColor")
+        groundView.backgroundColor = UIColor(named:"BackgroundColor")
         titleLabel.backgroundColor = UIColor.clear
         titleLabel.textColor = UIColor(named: "LabelTextColor")
         numberLabel.backgroundColor = UIColor.clear
@@ -47,18 +51,11 @@ class ReservationViewContrroller: UIViewController {
         numberStepper.value = 0
         
         // 초기 라벨 값 설정
+        titleLabel.text = movieTitle
         numberLabel.text = "0"
         
         // stepper의 Value Changed 이벤트에 대한 액션 추가
         numberStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
-        
-        // numberLabel의 텍스트를 숫자로 변환
-        if let number = Int(numberLabel.text ?? "0") {
-            let result = number * 10000
-            priceLabel.text = "\(result)원"
-        } else {
-            priceLabel.text = "계산 불가"
-        }
         
         // 코너 반경 설정
         payButton.layer.cornerRadius = 10 // 적절한 값을 넣어주세요
@@ -71,6 +68,33 @@ class ReservationViewContrroller: UIViewController {
     @objc func stepperValueChanged(_ sender: UIStepper) {
         // stepper의 값이 변경될 때마다 라벨에 반영
         numberLabel.text = "\(Int(sender.value))"
+        // numberLabel의 텍스트를 숫자로 변환
+        if let number = Int(numberLabel.text ?? "0") {
+            let result = number * 10000
+            priceLabel.text = "\(result)원"
+        } else {
+            priceLabel.text = "계산 불가"
+        }
+    }
+    
+    func saveReservation(_ reservation: Reservation) {
+        var reservations = loadReservations()
+        reservations.append(reservation)
+        
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(reservations) {
+            UserDefaults.standard.set(encodedData, forKey: "reservations")
+        }
+    }
+    
+    func loadReservations() -> [Reservation] {
+        if let data = UserDefaults.standard.data(forKey: "reservations") {
+            let decoder = JSONDecoder()
+            if let reservations = try? decoder.decode([Reservation].self, from: data) {
+                return reservations
+            }
+        }
+        return []
     }
     
     @IBAction func payButtonTapped(_ sender: Any) {
@@ -97,6 +121,16 @@ class ReservationViewContrroller: UIViewController {
                 successAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (_) in
                     // 결제가 완료되면 numberLabel의 값을 다시 0으로 설정
                     self.numberLabel.text = "0"
+                    
+                    // 예매 정보 저장
+                    if let movieId = self.movieId,
+                       let movieTitle = self.movieTitle,
+                       let numberOfPeople = Int(self.numberLabel.text ?? "0"),
+                       let price = Int(self.priceLabel.text?.replacingOccurrences(of: "원", with: "") ?? "0") {
+                        let reservation = Reservation(movieId: movieId, movieTitle: movieTitle, numberOfPeople: numberOfPeople, price: price)
+                        self.saveReservation(reservation)
+                    }
+                    self.dismiss(animated: true)
                 }))
                 self.present(successAlert, animated: true, completion: nil)
             }))
