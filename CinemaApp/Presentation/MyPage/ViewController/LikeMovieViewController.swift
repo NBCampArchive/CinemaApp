@@ -52,4 +52,14 @@ extension LikeMovieViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let pushVC = UIStoryboard(name: "MovieDetails", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else {
+            print("Failed to instantiate MovieDetailsViewController")
+            return
+        }
+
+        pushVC.movieId = likeMovieList[indexPath.row].id
+        present(pushVC, animated: true)
+    }
 }
