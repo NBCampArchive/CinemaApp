@@ -90,6 +90,7 @@
                             </collectionView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qtj-aK-sCD">
                                 <rect key="frame" x="5" y="125" width="383" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Ani"/>
@@ -98,6 +99,7 @@
                                     <segment title="Thriller"/>
                                     <segment title="Action"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" red="0.546190296954287" green="0.5135313336723264" blue="0.83450789304123707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </segmentedControl>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1I-eL-Fc2">
                                 <rect key="frame" x="0.0" y="59" width="393" height="56"/>
