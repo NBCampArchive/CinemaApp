@@ -62,20 +62,43 @@ class LoginViewController: UIViewController {
         self.setupUI()
         self.setupConstraints()
         self.conductAutoLogin()
-        // NotificationCenter에 Observer 등록하기
-        NotificationCenter.default
-            .addObserver(
-                self,
-                selector: #selector(viewUpdate(notification:)),
-                name: Notification.Name.updateLoginView,
-                object: nil
-            )
+        print("userDefault Id:", UserDefaults.standard.string(forKey: "userID"))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // MARK: NotificationCenter에 Observer 등록하기
+        // 로그인 뷰 업데이트
+        NotificationCenter.default.addObserver(self, selector: #selector(viewUpdate(notification:)), name: Notification.Name.userDefaultsChanged, object: nil)
+        // 키보드 유무에 따라 뷰 위치 변경
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // MARK: - notification으로 실행시킬 함수
     @objc func viewUpdate(notification: Notification) {
-        // notification으로 실행시킬 함수
         setBackgroundUI()
         conductAutoLogin()
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        print("keyboardWillShow")
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            self.loginComponentsView.snp.remakeConstraints {
+                $0.bottom.equalToSuperview().inset(keyboardFrame.cgRectValue.height + 15)
+                $0.height.equalTo(360) // height
+                $0.horizontalEdges.equalToSuperview().inset(35)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        print("keyboardWillHide")
+        self.loginComponentsView.snp.remakeConstraints {
+            $0.bottom.equalToSuperview().inset(150)
+            $0.height.equalTo(360) // height
+            $0.horizontalEdges.equalToSuperview().inset(35)
+        }
     }
     
     // MARK: - Auto Login
@@ -201,12 +224,25 @@ class LoginViewController: UIViewController {
         // 텍스트
         idTextField.attributedPlaceholder = NSAttributedString(string: "아이디를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         pwTextField.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        // 패딩
+        
+        // 패딩 및 속성
         [self.idTextField,
          self.pwTextField].forEach {
+            // 1. 패딩
             $0?.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0))
             $0?.leftViewMode = .always
+            // 2. Capitalization, Correction, SpellChecking 없애기
+            $0?.autocapitalizationType = .none
+            $0?.autocorrectionType = .no
+            $0?.spellCheckingType = .no
+            
         }
+        self.idTextField.delegate = self
+        
+        
+        // 비밀번호 가리기
+        pwTextField.isSecureTextEntry = true
+        pwTextField.textContentType = .oneTimeCode
     }
     
     
@@ -247,7 +283,7 @@ class LoginViewController: UIViewController {
         // 컴포넌트 엄마뷰: bottom, height, horizontalEdges
         //self.loginComponentsView.backgroundColor = .systemPink
         self.loginComponentsView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(140) // bottom
+            $0.bottom.equalToSuperview().inset(150)
             $0.height.equalTo(360) // height
             $0.horizontalEdges.equalToSuperview().inset(35)
         }
@@ -361,4 +397,10 @@ class LoginViewController: UIViewController {
     
     
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
 }

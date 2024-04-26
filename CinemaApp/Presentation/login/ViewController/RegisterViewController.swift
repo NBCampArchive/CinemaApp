@@ -53,8 +53,8 @@ class RegisterViewController: UIViewController {
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.set(userPW, forKey: "userPW")
         
-        // 3. login 화면으로 notification 보내기
-        NotificationCenter.default.post(name: Notification.Name.updateLoginView, object: nil)
+        // 3. login 화면, MyPage 화면으로 notification 보내기
+        NotificationCenter.default.post(name: Notification.Name.userDefaultsChanged, object: nil)
         
         // 4. 회원가입 성공 Alert 띄우기
         self.showAlertIfDataComplete()
@@ -65,6 +65,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         setupUI()
+//        idViewTextField.delegate = self
     }
     
     
@@ -74,6 +75,8 @@ class RegisterViewController: UIViewController {
         setFontAndText()
         setCornerRadius()
         setTextFieldPadding()
+        setTextFieldPlaceHolder()
+        setIfHaveUserDefault()
     }
     
     func setupConstraints() {
@@ -146,24 +149,57 @@ class RegisterViewController: UIViewController {
          self.pwViewTitleLabel].forEach {
             $0?.font = UIFont.boldSystemFont(ofSize: 18)
         }
-        
+    }
+    func setTextFieldPlaceHolder() {
         // MARK: text field place holder
         // text
         self.nameViewTextField.attributedPlaceholder = NSAttributedString(string: "이름을 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         self.idViewTextField.attributedPlaceholder = NSAttributedString(string: "아이디를 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         self.pwViewTextField.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        // font
+        // 비밀번호 가리기
+        pwViewTextField.isSecureTextEntry = true
+        pwViewTextField.textContentType = .oneTimeCode
+        
+        // font 및 속성
         [self.nameViewTextField,
          self.idViewTextField,
          self.pwViewTextField].forEach {
+            // 1. 폰트
             $0?.font = UIFont.systemFont(ofSize: 18)
+            
+            // 2. Capitalization, Correction, SpellChecking 없애기
+            $0?.autocapitalizationType = .none
+            $0?.autocorrectionType = .no
+            $0?.spellCheckingType = .no
+        }
+    }
+    
+    func setRegisterButton(status: String) {
+        // MARK: Register button
+        self.registerButton.setTitle(status, for: .normal)
+        self.registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+    }
+    
+    func setIfHaveUserDefault() {
+        // userDefault 값이 있으면 textField에 userDefault 값 입력해두기!
+        guard let userName = UserDefaults.standard.string(forKey: "userName"),
+              let userID = UserDefaults.standard.string(forKey: "userID"),
+              let userPW = UserDefaults.standard.string(forKey: "userPW"),
+              userName != "",
+              userID != "",
+              userPW != ""
+        else {
+            self.setRegisterButton(status: "가입하기")
+            return
         }
         
-        // MARK: Register button <- 적용 안 됨....
-        self.registerButton.titleLabel?.text = "가입하기"
-        self.registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        
+        self.pageTitleLabel.text = "회원정보 수정"
+        self.nameViewTextField.text = userName
+        self.idViewTextField.text = userID
+        self.pwViewTextField.text = userPW
+        self.setRegisterButton(status: "수정하기")
     }
+    
     
     func setCornerRadius() { // frame과 관련된 값은 viewDidAppear
         [self.nameViewTextField,
@@ -320,3 +356,18 @@ class RegisterViewController: UIViewController {
     
     
 }
+
+//MARK: - id, pw에 영문자와 숫자만 입력 가능하게 하기... 실패...
+//extension RegisterViewController: UITextFieldDelegate {
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if let x = string.rangeOfCharacter(from: .alphanumerics) {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//    
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        return true
+//    }
+//}
