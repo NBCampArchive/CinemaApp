@@ -19,6 +19,7 @@ class LikeMovieTableCell: UITableViewCell{
     }
     let titleLabel = UILabel().then{
         $0.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        $0.numberOfLines = 0
         $0.textColor = UIColor(named: "LabelTextColor")
     }
     
