@@ -45,8 +45,11 @@
 		B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */; };
 		B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */; };
 		B5EC62FA2BDA808F0006E956 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC62F92BDA808F0006E956 /* FloatingPanel */; };
-		B5EC62FF2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */; };
 		B5EC62FD2BDAA7120006E956 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62FC2BDAA7120006E956 /* Movie.swift */; };
+		B5EC62FF2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */; };
+		B5EC63012BDB5EA10006E956 /* LikeMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC63002BDB5EA10006E956 /* LikeMovie.storyboard */; };
+		B5EC63032BDB5EB00006E956 /* LikeMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC63022BDB5EB00006E956 /* LikeMovieViewController.swift */; };
+		B5EC63052BDB5EC20006E956 /* LikeMovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC63042BDB5EC20006E956 /* LikeMovieTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,8 +87,11 @@
 		B5EC62F12BD9E91E0006E956 /* BottomTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabController.swift; sourceTree = "<group>"; };
 		B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieMap.storyboard; sourceTree = "<group>"; };
 		B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapViewController.swift; sourceTree = "<group>"; };
-		B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapFloatingPanel.swift; sourceTree = "<group>"; };
 		B5EC62FC2BDAA7120006E956 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapFloatingPanel.swift; sourceTree = "<group>"; };
+		B5EC63002BDB5EA10006E956 /* LikeMovie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LikeMovie.storyboard; sourceTree = "<group>"; };
+		B5EC63022BDB5EB00006E956 /* LikeMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeMovieViewController.swift; sourceTree = "<group>"; };
+		B5EC63042BDB5EC20006E956 /* LikeMovieTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeMovieTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,7 @@
 		B5EC62BF2BD6323D0006E956 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC63062BDB5ECB0006E956 /* LikeMovie */,
 				B5EC62F32BD9F07C0006E956 /* Map */,
 				3F11B3C22BDA188000A4DE8E /* MovieDetails */,
 				B5EC62EE2BD9E7480006E956 /* BottomTab */,
@@ -371,6 +378,16 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		B5EC63062BDB5ECB0006E956 /* LikeMovie */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC63042BDB5EC20006E956 /* LikeMovieTableCell.swift */,
+				B5EC63022BDB5EB00006E956 /* LikeMovieViewController.swift */,
+				B5EC63002BDB5EA10006E956 /* LikeMovie.storyboard */,
+			);
+			path = LikeMovie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -452,6 +469,7 @@
 				3F11B3C62BDA18C800A4DE8E /* MovieDetails.storyboard in Resources */,
 				68E614FB2BD6510E003E623C /* SearchMovie.storyboard in Resources */,
 				B5EC62B52BD631BB0006E956 /* Base in Resources */,
+				B5EC63012BDB5EA10006E956 /* LikeMovie.storyboard in Resources */,
 				B5EC62B02BD631B90006E956 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,12 +482,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5EC62FF2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift in Sources */,
-				1AE3A3F42BD65D2B00021239 /* BaseLoginViewController.swift in Sources */,
 				B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */,
 				6890C2C22BDA1EA9004EA98F /* Genre.swift in Sources */,
 				1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */,
 				B5EC62FD2BDAA7120006E956 /* Movie.swift in Sources */,
 				B5EC62C92BD63F0D0006E956 /* BaseNetwork.swift in Sources */,
+				B5EC63032BDB5EB00006E956 /* LikeMovieViewController.swift in Sources */,
 				1AE3A3FB2BD7638600021239 /* RegisterViewController.swift in Sources */,
 				B5EC62F22BD9E91E0006E956 /* BottomTabController.swift in Sources */,
 				B5EC62CD2BD642DA0006E956 /* View.swift in Sources */,
@@ -488,6 +506,7 @@
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
 				B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */,
 				B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */,
+				B5EC63052BDB5EC20006E956 /* LikeMovieTableCell.swift in Sources */,
 				B5EC62EB2BD924260006E956 /* MovieDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
