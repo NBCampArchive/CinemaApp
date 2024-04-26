@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A5DC6BC2BDA9DA800B6135A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6BB2BDA9DA800B6135A /* SnapKit */; };
-		1A5DC6BF2BDA9DAD00B6135A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6BE2BDA9DAD00B6135A /* Then */; };
-		1A5DC6C22BDA9DC800B6135A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6C12BDA9DC800B6135A /* Kingfisher */; };
-		1A5DC6C52BDA9DE900B6135A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6C42BDA9DE900B6135A /* Alamofire */; };
-		1A5DC6C72BDA9DE900B6135A /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6C62BDA9DE900B6135A /* AlamofireDynamic */; };
 		1AC32D382BDB702400321F61 /* RestrictTextFieldInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32D372BDB702400321F61 /* RestrictTextFieldInput.swift */; };
 		1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */; };
 		1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F62BD753D900021239 /* LoginViewController.swift */; };
@@ -56,6 +51,11 @@
 		B5EC63012BDB5EA10006E956 /* LikeMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC63002BDB5EA10006E956 /* LikeMovie.storyboard */; };
 		B5EC63032BDB5EB00006E956 /* LikeMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC63022BDB5EB00006E956 /* LikeMovieViewController.swift */; };
 		B5EC63052BDB5EC20006E956 /* LikeMovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC63042BDB5EC20006E956 /* LikeMovieTableCell.swift */; };
+		B5EC630B2BDBA5CD0006E956 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC630A2BDBA5CD0006E956 /* Kingfisher */; };
+		B5EC630E2BDBA5D70006E956 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC630D2BDBA5D70006E956 /* Alamofire */; };
+		B5EC63102BDBA5D70006E956 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC630F2BDBA5D70006E956 /* AlamofireDynamic */; };
+		B5EC63132BDBA5E00006E956 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC63122BDBA5E00006E956 /* SnapKit */; };
+		B5EC63162BDBA5E80006E956 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC63152BDBA5E80006E956 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,12 +111,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EC62DB2BD685FA0006E956 /* Alamofire in Frameworks */,
-				B5EC62DD2BD685FA0006E956 /* AlamofireDynamic in Frameworks */,
-				B5EC62D22BD668F90006E956 /* Then in Frameworks */,
+				B5EC630E2BDBA5D70006E956 /* Alamofire in Frameworks */,
+				B5EC63162BDBA5E80006E956 /* Then in Frameworks */,
+				B5EC63102BDBA5D70006E956 /* AlamofireDynamic in Frameworks */,
+				B5EC630B2BDBA5CD0006E956 /* Kingfisher in Frameworks */,
 				B5EC62FA2BDA808F0006E956 /* FloatingPanel in Frameworks */,
-				B5EC62D52BD669030006E956 /* SnapKit in Frameworks */,
-				B5EC62E32BD693920006E956 /* Kingfisher in Frameworks */,
+				B5EC63132BDBA5E00006E956 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,23 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				1AE3A40A2BDA4C1300021239 /* MyPage.storyboard */,
-        );
-			path = StoryBoard;
-			sourceTree = "<group>";
-		};
-		3F11B3C22BDA188000A4DE8E /* MovieDetails */ = {
-			isa = PBXGroup;
-			children = (
-				3F11B3C42BDA189B00A4DE8E /* ViewController */,
-				3F11B3C32BDA189000A4DE8E /* StoryBoard */,
-			);
-			path = MovieDetails;
-			sourceTree = "<group>";
-		};
-		3F11B3C32BDA189000A4DE8E /* StoryBoard */ = {
-			isa = PBXGroup;
-			children = (
-				3F11B3C52BDA18C800A4DE8E /* MovieDetails.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -191,15 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				1AE3A40D2BDA4EF600021239 /* MyPageViewController.swift */,
-        );
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		3F11B3C42BDA189B00A4DE8E /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3F11B3C92BDA23D000A4DE8E /* MovieDetailsViewController.swift */,
-				3F11B3CB2BDA23E100A4DE8E /* ReservationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -219,7 +193,33 @@
 				1AE3A4172BDA6CAB00021239 /* myMenuTableViewCell.swift */,
 			);
 			path = View;
-      sourceTree = "<group>";
+			sourceTree = "<group>";
+		};
+		3F11B3C22BDA188000A4DE8E /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3F11B3C42BDA189B00A4DE8E /* ViewController */,
+				3F11B3C32BDA189000A4DE8E /* StoryBoard */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		3F11B3C32BDA189000A4DE8E /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				3F11B3C52BDA18C800A4DE8E /* MovieDetails.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		3F11B3C42BDA189B00A4DE8E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F11B3C92BDA23D000A4DE8E /* MovieDetailsViewController.swift */,
+				3F11B3CB2BDA23E100A4DE8E /* ReservationViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
 		};
 		6890C2BE2BD9FC60004EA98F /* SearchMovie */ = {
 			isa = PBXGroup;
@@ -299,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				1AE3A40F2BDA640800021239 /* MyPage */,
-				68E615702BD6ACC6003E623C /* Movie.swift */,
 				6890C2BE2BD9FC60004EA98F /* SearchMovie */,
 				B5EC62DE2BD687A10006E956 /* MovieList */,
 				B5EC62C62BD63DF50006E956 /* Base */,
@@ -464,12 +463,12 @@
 			);
 			name = CinemaApp;
 			packageProductDependencies = (
-				B5EC62D12BD668F90006E956 /* Then */,
-				B5EC62D42BD669030006E956 /* SnapKit */,
-				B5EC62DA2BD685FA0006E956 /* Alamofire */,
-				B5EC62DC2BD685FA0006E956 /* AlamofireDynamic */,
-				B5EC62E22BD693920006E956 /* Kingfisher */,
 				B5EC62F92BDA808F0006E956 /* FloatingPanel */,
+				B5EC630A2BDBA5CD0006E956 /* Kingfisher */,
+				B5EC630D2BDBA5D70006E956 /* Alamofire */,
+				B5EC630F2BDBA5D70006E956 /* AlamofireDynamic */,
+				B5EC63122BDBA5E00006E956 /* SnapKit */,
+				B5EC63152BDBA5E80006E956 /* Then */,
 			);
 			productName = CinemaApp;
 			productReference = B5EC62A52BD631B90006E956 /* CinemaApp.app */;
@@ -500,11 +499,11 @@
 			);
 			mainGroup = B5EC629C2BD631B90006E956;
 			packageReferences = (
-				B5EC62D02BD668F90006E956 /* XCRemoteSwiftPackageReference "Then" */,
-				B5EC62D32BD669030006E956 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				B5EC62D92BD685FA0006E956 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				B5EC62E12BD693920006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				B5EC63092BDBA5CD0006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B5EC630C2BDBA5D70006E956 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				B5EC63112BDBA5E00006E956 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B5EC63142BDBA5E80006E956 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = B5EC62A62BD631B90006E956 /* Products */;
 			projectDirPath = "";
@@ -797,38 +796,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1A5DC6BA2BDA9DA800B6135A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		1A5DC6BD2BDA9DAD00B6135A /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		1A5DC6C02BDA9DC800B6135A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.11.0;
-			};
-		};
-		1A5DC6C32BDA9DE900B6135A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.1;
-			};
-		};
 		B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scenee/FloatingPanel";
@@ -837,43 +804,70 @@
 				minimumVersion = 2.8.2;
 			};
 		};
+		B5EC63092BDBA5CD0006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		B5EC630C2BDBA5D70006E956 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		B5EC63112BDBA5E00006E956 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		B5EC63142BDBA5E80006E956 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1A5DC6BB2BDA9DA800B6135A /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A5DC6BA2BDA9DA800B6135A /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		1A5DC6BE2BDA9DAD00B6135A /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A5DC6BD2BDA9DAD00B6135A /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
-		1A5DC6C12BDA9DC800B6135A /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A5DC6C02BDA9DC800B6135A /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		1A5DC6C42BDA9DE900B6135A /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A5DC6C32BDA9DE900B6135A /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		1A5DC6C62BDA9DE900B6135A /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A5DC6C32BDA9DE900B6135A /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
-		};
-		B5EC62E22BD693920006E956 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B5EC62E12BD693920006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		B5EC62F92BDA808F0006E956 /* FloatingPanel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
 			productName = FloatingPanel;
+		};
+		B5EC630A2BDBA5CD0006E956 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EC63092BDBA5CD0006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		B5EC630D2BDBA5D70006E956 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EC630C2BDBA5D70006E956 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		B5EC630F2BDBA5D70006E956 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EC630C2BDBA5D70006E956 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+		B5EC63122BDBA5E00006E956 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EC63112BDBA5E00006E956 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		B5EC63152BDBA5E80006E956 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EC63142BDBA5E80006E956 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
