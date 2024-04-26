@@ -82,12 +82,22 @@ class LoginViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: Notification) {
         print("keyboardWillShow")
-        self.loginComponentsView.frame.origin.y = 130
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            self.loginComponentsView.snp.remakeConstraints {
+                $0.bottom.equalToSuperview().inset(keyboardFrame.cgRectValue.height + 15)
+                $0.height.equalTo(360) // height
+                $0.horizontalEdges.equalToSuperview().inset(35)
+            }
+        }
     }
     
     @objc func keyboardWillHide(notification: Notification) {
         print("keyboardWillHide")
-        self.loginComponentsView.frame.origin.y = 330
+        self.loginComponentsView.snp.remakeConstraints {
+            $0.bottom.equalToSuperview().inset(150)
+            $0.height.equalTo(360) // height
+            $0.horizontalEdges.equalToSuperview().inset(35)
+        }
     }
     
     // MARK: - Auto Login
@@ -226,6 +236,9 @@ class LoginViewController: UIViewController {
             $0?.spellCheckingType = .no
             
         }
+        self.idTextField.delegate = self
+        
+        
         // 비밀번호 가리기
         pwTextField.isSecureTextEntry = true
         pwTextField.textContentType = .oneTimeCode
@@ -269,7 +282,7 @@ class LoginViewController: UIViewController {
         // 컴포넌트 엄마뷰: bottom, height, horizontalEdges
         //self.loginComponentsView.backgroundColor = .systemPink
         self.loginComponentsView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(330) // bottom
+            $0.bottom.equalToSuperview().inset(150)
             $0.height.equalTo(360) // height
             $0.horizontalEdges.equalToSuperview().inset(35)
         }
@@ -383,4 +396,10 @@ class LoginViewController: UIViewController {
     
     
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
 }
