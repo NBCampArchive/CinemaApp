@@ -59,7 +59,7 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
                     DispatchQueue.main.async {
                         self.titleLabel.text = movieDetail.title
                         self.descriptionLabel.text = movieDetail.overview
-                        self.ratingLabel.text = String(format: "%.1f", movieDetail.voteAverage)
+                        self.ratingLabel.text = "평점 : \(String(format: "%.1f", movieDetail.voteAverage))"
                         self.releasedateLabel.text = movieDetail.releaseDate
                         if let posterPath = movieDetail.posterPath {
                             let url = URL(string: "https://image.tmdb.org/t/p/w400\(posterPath)")
@@ -82,19 +82,21 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         // 스크롤뷰의 delegate 설정
         scrollView.delegate = self
         
-        // API로부터 데이터를 받아와서 스크롤뷰에 추가하는 함수 호출
-        getDataAndUpdateScrollView()
-        
-        
         // UIScrollViewDelegate 메서드 구현
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             // 스크롤이 발생할 때 호출되는 메서드
             print("스크롤 발생")
         }
-        
-        // API로부터 데이터를 받아와서 스크롤뷰에 추가하는 함수
-        func getDataAndUpdateScrollView() {
+    }
+    
+    @IBAction func reservationButtonTapped(_ sender: Any) {
+        guard let pushVC = UIStoryboard(name: "MovieDetails", bundle:nil).instantiateViewController(withIdentifier: "ReservationViewContrroller") as? ReservationViewContrroller else{
+            return
         }
+        pushVC.movieTitle = movieDetail?.title
+        pushVC.movieId = movieDetail?.id
+        
+        present(pushVC, animated: true, completion: nil)
     }
 }
 
