@@ -15,7 +15,7 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var noticeLabel: UILabel!
     
     // TODO: Key를 발급받아 채워주세요.
-    let authenticationKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzQyNzIxNTdhZDkxZTFlNDViNTJkNmViMTFlYTA5MyIsInN1YiI6IjY2MjVkMjlhY2I1YzhlMDE0YTNlZTE2YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y1iuAsiirrtH96v2KiUWIYtzqIL5zf2ZiVUH2Ul9XBM"
+    private let token = Bundle.main.token
     let urlString = "https://api.themoviedb.org/3/search/movie"
     let genreListUrl = "https://api.themoviedb.org/3/genre/movie/list"
     
@@ -164,7 +164,7 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         // 해더 설정
         urlRequest.allHTTPHeaderFields = [
           "accept": "application/json",
-          "Authorization": "Bearer \(authenticationKey)"
+          "Authorization": "Bearer \(token)"
         ]
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
@@ -201,7 +201,7 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
 
         urlRequest.allHTTPHeaderFields = [
           "accept": "application/json",
-          "Authorization": "Bearer \(authenticationKey)"
+          "Authorization": "Bearer \(token)"
         ]
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
