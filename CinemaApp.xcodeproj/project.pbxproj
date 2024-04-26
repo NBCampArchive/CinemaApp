@@ -12,6 +12,7 @@
 		1A5DC6C22BDA9DC800B6135A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6C12BDA9DC800B6135A /* Kingfisher */; };
 		1A5DC6C52BDA9DE900B6135A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6C42BDA9DE900B6135A /* Alamofire */; };
 		1A5DC6C72BDA9DE900B6135A /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DC6C62BDA9DE900B6135A /* AlamofireDynamic */; };
+		1AC32D382BDB702400321F61 /* RestrictTextFieldInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32D372BDB702400321F61 /* RestrictTextFieldInput.swift */; };
 		1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */; };
 		1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3F62BD753D900021239 /* LoginViewController.swift */; };
 		1AE3A3FB2BD7638600021239 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AC32D372BDB702400321F61 /* RestrictTextFieldInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictTextFieldInput.swift; sourceTree = "<group>"; };
 		1ACA9BDD2BD644C100B6DE9E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		1AE3A3F62BD753D900021239 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				1AE3A3FA2BD7638600021239 /* RegisterViewController.swift */,
 				1AE3A4042BDA27E500021239 /* EasyAlert.swift */,
 				1AE3A4062BDA3B0000021239 /* LoginNotificationCenter.swift */,
+				1AC32D372BDB702400321F61 /* RestrictTextFieldInput.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				1AE3A4052BDA27E600021239 /* EasyAlert.swift in Sources */,
 				1AE3A4162BDA6B8B00021239 /* MyProfileTableViewCell.swift in Sources */,
 				68E615022BD657CC003E623C /* MovieListCollectionViewCell.swift in Sources */,
+				1AC32D382BDB702400321F61 /* RestrictTextFieldInput.swift in Sources */,
 				B5EC62E02BD687B10006E956 /* MovieListResponse.swift in Sources */,
 				B5EC62CF2BD668EA0006E956 /* MovieCollectionViewCell.swift in Sources */,
 				B5EC62D82BD685900006E956 /* MovieListApiManager.swift in Sources */,

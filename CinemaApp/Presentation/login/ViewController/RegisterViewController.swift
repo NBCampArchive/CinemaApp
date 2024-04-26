@@ -65,6 +65,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         setupUI()
+//        idViewTextField.delegate = self
     }
     
     
@@ -355,3 +356,18 @@ class RegisterViewController: UIViewController {
     
     
 }
+
+//MARK: - id, pw에 영문자와 숫자만 입력 가능하게 하기... 실패...
+//extension RegisterViewController: UITextFieldDelegate {
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if let x = string.rangeOfCharacter(from: .alphanumerics) {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//    
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        return true
+//    }
+//}
