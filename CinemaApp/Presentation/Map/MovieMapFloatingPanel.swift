@@ -11,6 +11,7 @@ import FloatingPanel
 import MapKit
 import Then
 
+// MARK: - FloaingPanel
 extension MovieMapViewController{
     
     func showFloatingPanel() {
