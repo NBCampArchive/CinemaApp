@@ -102,7 +102,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             print("case: 예매 내역")
             // 예매 내역 페이지로 이동
             if let navController = self.navigationController {
-                let pushVC = UIStoryboard(name: "LikeMovie", bundle: nil).instantiateViewController(withIdentifier: "LikeMovieViewController")
+                let pushVC = UIStoryboard(name: "ReservationList", bundle: nil).instantiateViewController(withIdentifier: "ReservationListViewController")
                 navController.pushViewController(pushVC, animated: true)
             } else {
                 print("Navigation controller does not exist")
@@ -111,6 +111,12 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         case "찜한 영화" :
             print("case: 찜한 영화")
             // 찜한 영화 페이지로 이동
+            if let navController = self.navigationController {
+                let pushVC = UIStoryboard(name: "LikeMovie", bundle: nil).instantiateViewController(withIdentifier: "LikeMovieViewController")
+                navController.pushViewController(pushVC, animated: true)
+            } else {
+                print("Navigation controller does not exist")
+            }
             
         default :
             print("아무것도 실행 안함")
