@@ -22,6 +22,7 @@ class ReservationViewContrroller: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var humannumberLabel: UILabel!
     
+    var posterPath: String?
     var movieTitle: String?
     var movieId: Int?
     
@@ -111,40 +112,57 @@ class ReservationViewContrroller: UIViewController {
             alert.addAction(UIAlertAction(title: "확인", style: .default))
             present(alert, animated: true)
         } else {
-            // 결제 여부를 묻는 알림창 표시
-            let paymentAlert = UIAlertController(title: "결제하기", message: "결제하시겠습니까?", preferredStyle: .alert)
-            
-            // 확인 액션 추가
-            paymentAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (_) in
-                // 결제 완료 알림창 표시
-                let successAlert = UIAlertController(title: "결제 완료", message: "결제되었습니다.", preferredStyle: .alert)
-                successAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (_) in
-                    // 결제가 완료되면 numberLabel의 값을 다시 0으로 설정
-                    self.numberLabel.text = "0"
+            // 예매 정보 저장
+            if let movieId = self.movieId,
+               let movieTitle = self.movieTitle,
+               let people = Int(self.numberLabel.text ?? "0"),
+               let price = Int(self.priceLabel.text?.replacingOccurrences(of: "원", with: "") ?? "0"){
+                let date = self.datePicker.date
+                
+                // 예매 시간 중복 확인
+                let reservations = self.loadReservations()
+                let hasResrvation = reservations.contains{ reservation in
+                    let timeInterval = reservation.date.timeIntervalSince(date)
+                    return timeInterval < 3600 && timeInterval > -3600
+                }
+                
+                // 예매 시간 중복 시 알림창 표시
+                if hasResrvation {
+                    let alert = UIAlertController(title: "알림", message: "이미 예매된 시간입니다.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+                    self.present(alert, animated: true)
+                } else {
+                    // 결제 여부를 묻는 알림창 표시
+                    let paymentAlert = UIAlertController(title: "결제하기", message: "결제하시겠습니까?", preferredStyle: .alert)
                     
-                    // 예매 정보 저장
-                    if let movieId = self.movieId,
-                       let movieTitle = self.movieTitle,
-                       let numberOfPeople = Int(self.numberLabel.text ?? "0"),
-                       let price = Int(self.priceLabel.text?.replacingOccurrences(of: "원", with: "") ?? "0") {
-                        let reservation = Reservation(movieId: movieId, movieTitle: movieTitle, numberOfPeople: numberOfPeople, price: price)
-                        self.saveReservation(reservation)
-                    }
-                    self.dismiss(animated: true)
-                }))
-                self.present(successAlert, animated: true, completion: nil)
-            }))
+                    // 확인 액션 추가
+                    paymentAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (_) in
+                        // 결제 완료 알림창 표시
+                        let successAlert = UIAlertController(title: "결제 완료", message: "결제되었습니다.", preferredStyle: .alert)
+                        successAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (_) in
+                            let reservation = Reservation(movieId: movieId, movieTitle: movieTitle, posterPath: self.posterPath, people: people, price: price, date: date)
+                            self.saveReservation(reservation)
+                            
+                            self.dismiss(animated: true)
+                        }))
+                        self.present(successAlert, animated: true, completion: nil)
+                    }))
+                    // 취소 액션 추가
+                    paymentAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { (_) in
+                        // 결제 취소 알림창 표시
+                        let cancelAlert = UIAlertController(title: "결제 취소", message: "취소되었습니다.", preferredStyle: .alert)
+                        cancelAlert.addAction(UIAlertAction(title: "확인", style: .default))
+                        self.present(cancelAlert, animated: true, completion: nil)
+                    }))
+                    
+                    // 결제 알림창 표시
+                    present(paymentAlert, animated: true, completion: nil)
+                    
+                }
+            }
+           
             
-            // 취소 액션 추가
-            paymentAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { (_) in
-                // 결제 취소 알림창 표시
-                let cancelAlert = UIAlertController(title: "결제 취소", message: "취소되었습니다.", preferredStyle: .alert)
-                cancelAlert.addAction(UIAlertAction(title: "확인", style: .default))
-                self.present(cancelAlert, animated: true, completion: nil)
-            }))
             
-            // 결제 알림창 표시
-            present(paymentAlert, animated: true, completion: nil)
         }
     }
 }
