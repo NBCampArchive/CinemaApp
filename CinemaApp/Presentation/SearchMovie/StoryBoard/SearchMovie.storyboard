@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Df6-oE-gmR" userLabel="MovieListCollectionView">
-                                <rect key="frame" x="0.0" y="125" width="393" height="693"/>
+                                <rect key="frame" x="0.0" y="166" width="393" height="652"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LwN-wo-HWx">
                                     <size key="itemSize" width="128" height="128"/>
@@ -88,6 +88,19 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qtj-aK-sCD">
+                                <rect key="frame" x="5" y="125" width="383" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Ani"/>
+                                    <segment title="Comedy"/>
+                                    <segment title="Fantasy"/>
+                                    <segment title="Thriller"/>
+                                    <segment title="Action"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.546190296954287" green="0.5135313336723264" blue="0.83450789304123707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1I-eL-Fc2">
                                 <rect key="frame" x="0.0" y="59" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -110,6 +123,7 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bI3-ea-TNm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="3sU-lW-uj7"/>
+                            <constraint firstItem="qtj-aK-sCD" firstAttribute="top" secondItem="W1I-eL-Fc2" secondAttribute="bottom" constant="10" id="5rY-ki-WZZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="W1I-eL-Fc2" secondAttribute="trailing" id="5sJ-8C-s8Y"/>
                             <constraint firstItem="bI3-ea-TNm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="8Eu-8J-7xw"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Df6-oE-gmR" secondAttribute="bottom" id="AjB-n4-6IK"/>
@@ -118,11 +132,14 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bI3-ea-TNm" secondAttribute="trailing" constant="10" id="R6T-MT-Cnj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bI3-ea-TNm" secondAttribute="bottom" constant="10" id="SwU-oG-e3d"/>
                             <constraint firstItem="W1I-eL-Fc2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Yop-GA-J1d"/>
-                            <constraint firstItem="Df6-oE-gmR" firstAttribute="top" secondItem="W1I-eL-Fc2" secondAttribute="bottom" constant="10" id="afk-CR-Vkm"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qtj-aK-sCD" secondAttribute="trailing" constant="5" id="bJS-xo-oGj"/>
                             <constraint firstItem="W1I-eL-Fc2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="f14-tP-YOE"/>
+                            <constraint firstItem="qtj-aK-sCD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="wj0-0s-Nec"/>
+                            <constraint firstItem="Df6-oE-gmR" firstAttribute="top" secondItem="qtj-aK-sCD" secondAttribute="bottom" constant="10" id="z7D-qw-Ax0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="genreSegmentedControl" destination="qtj-aK-sCD" id="c0T-NG-pTa"/>
                         <outlet property="movieListCollectionView" destination="Df6-oE-gmR" id="gol-qq-Mfx"/>
                         <outlet property="noticeLabel" destination="bI3-ea-TNm" id="olJ-5f-4Yj"/>
                         <outlet property="searchBar" destination="W1I-eL-Fc2" id="Ov8-Vj-sbn"/>
