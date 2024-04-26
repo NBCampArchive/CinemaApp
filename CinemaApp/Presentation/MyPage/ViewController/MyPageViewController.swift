@@ -70,8 +70,15 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             
             // 로그아웃 버튼 눌렀을 때 실행할 클로저 정의
             cell.logoutButton = { [unowned self] in
-                self.navigationController?.popToRootViewController(animated: true) //root view인 로그인 뷰로 이동
-                //self.navigationController?.pushViewController(loginVC, animated: true) //로그인 뷰 push
+                print("로그아웃 버튼 클릭")
+                let pushVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+
+                let navigationController = UINavigationController(rootViewController: pushVC)
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                guard let delegate = sceneDelegate else {
+                    return
+                }
+                delegate.window?.rootViewController = navigationController
             }
             return cell
             
