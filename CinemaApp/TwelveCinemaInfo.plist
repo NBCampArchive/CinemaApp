@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string></string>
+	<string>키를 입력하세요</string>
 	<key>API_TOKEN</key>
-	<string></string>
+	<string>토큰을 입력하세요</string>
 </dict>
 </plist>

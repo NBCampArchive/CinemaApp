@@ -111,7 +111,6 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         default :
             print("아무것도 실행 안함")
         }
-        
     }
     
 }
