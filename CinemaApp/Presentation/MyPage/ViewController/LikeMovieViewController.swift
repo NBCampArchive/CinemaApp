@@ -15,8 +15,8 @@ class LikeMovieViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "backgroundColor")
-        likeMovieTableView.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+        likeMovieTableView.backgroundColor = UIColor(named: "BackgroundColor")
         navigationItem.title = "Liked Movies"
         
         likeMovieTableView.delegate = self

@@ -21,14 +21,14 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         setupCollectionView()
         setupSegement()
         fetchMovieList(listType: category)
     }
     
     func setupCollectionView() {
-        movieCollectionView.backgroundColor = UIColor(named: "backgroundColor")
+        movieCollectionView.backgroundColor = UIColor(named: "BackgroundColor")
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
         movieCollectionView.collectionViewLayout = UICollectionViewFlowLayout().then {

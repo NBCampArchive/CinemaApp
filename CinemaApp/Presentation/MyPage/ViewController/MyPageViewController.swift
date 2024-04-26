@@ -61,7 +61,6 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             // cell UI
             cell.configure()
             cell.selectionStyle = .none
-            print("cell: \(cell.userNameLabel.text)")
             
             // 회원정보 수정 버튼 눌렀을 때 실행할 클로저 정의
             cell.editUserInfoButton = { [unowned self] in
@@ -71,7 +70,6 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             
             // 로그아웃 버튼 눌렀을 때 실행할 클로저 정의
             cell.logoutButton = { [unowned self] in
-                let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
                 self.navigationController?.popToRootViewController(animated: true) //root view인 로그인 뷰로 이동
                 //self.navigationController?.pushViewController(loginVC, animated: true) //로그인 뷰 push
             }
@@ -103,7 +101,13 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         case "예매 내역" :
             print("case: 예매 내역")
             // 예매 내역 페이지로 이동
-            
+            if let navController = self.navigationController {
+                let pushVC = UIStoryboard(name: "LikeMovie", bundle: nil).instantiateViewController(withIdentifier: "LikeMovieViewController")
+                navController.pushViewController(pushVC, animated: true)
+            } else {
+                print("Navigation controller does not exist")
+            }
+
         case "찜한 영화" :
             print("case: 찜한 영화")
             // 찜한 영화 페이지로 이동
