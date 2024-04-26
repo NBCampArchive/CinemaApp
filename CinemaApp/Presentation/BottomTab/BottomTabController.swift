@@ -32,12 +32,12 @@ class BottomTabController: UITabBarController {
         movieMapViewController.tabBarItem = movieMapTabBarItem
         
         // 네 번째 탭 - ProfileViewController
-//        let profileViewController = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileViewController")
-//        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
-//        profileViewController.tabBarItem = profileTabBarItem
+        let profileViewController = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MyPageViewController")
+        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        profileViewController.tabBarItem = profileTabBarItem
         
         // 뷰 컨트롤러 배열 생성
-        let viewControllers = [movieListViewController, searchViewController, movieMapViewController]
+        let viewControllers = [movieListViewController, searchViewController, movieMapViewController, profileViewController]
         
         // 탭바 컨트롤러의 뷰 컨트롤러 설정
         self.setViewControllers(viewControllers, animated: false)
