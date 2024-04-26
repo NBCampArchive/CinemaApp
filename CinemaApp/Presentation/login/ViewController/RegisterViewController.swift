@@ -74,6 +74,8 @@ class RegisterViewController: UIViewController {
         setFontAndText()
         setCornerRadius()
         setTextFieldPadding()
+        setTextFieldPlaceHolder()
+        setIfHaveUserDefault()
     }
     
     func setupConstraints() {
@@ -146,7 +148,8 @@ class RegisterViewController: UIViewController {
          self.pwViewTitleLabel].forEach {
             $0?.font = UIFont.boldSystemFont(ofSize: 18)
         }
-        
+    }
+    func setTextFieldPlaceHolder() {
         // MARK: text field place holder
         // text
         self.nameViewTextField.attributedPlaceholder = NSAttributedString(string: "이름을 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
@@ -168,12 +171,34 @@ class RegisterViewController: UIViewController {
             $0?.autocorrectionType = .no
             $0?.spellCheckingType = .no
         }
-        
-        // MARK: Register button <- 적용 안 됨....
-        self.registerButton.titleLabel?.text = "가입하기"
-        self.registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        
     }
+    
+    func setRegisterButton(status: String) {
+        // MARK: Register button
+        self.registerButton.setTitle(status, for: .normal)
+            self.registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+    }
+    
+    func setIfHaveUserDefault() {
+        // userDefault 값이 있으면 textField에 userDefault 값 입력해두기!
+        guard let userName = UserDefaults.standard.string(forKey: "userName"),
+              let userID = UserDefaults.standard.string(forKey: "userID"),
+              let userPW = UserDefaults.standard.string(forKey: "userPW"),
+              userName != "",
+              userID != "",
+              userPW != ""
+        else {
+            self.setRegisterButton(status: "가입하기")
+            return
+        }
+        
+        self.pageTitleLabel.text = "회원정보 수정"
+        self.nameViewTextField.text = userName
+        self.idViewTextField.text = userID
+        self.pwViewTextField.text = userPW
+        self.setRegisterButton(status: "수정하기")
+    }
+    
     
     func setCornerRadius() { // frame과 관련된 값은 viewDidAppear
         [self.nameViewTextField,

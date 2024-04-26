@@ -53,11 +53,11 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
                  //1. 회원가입 뷰 present
                 let registerVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
                 self.present(registerVC, animated: true)
-                // 2. 이름, id, pw값 텍스트필드에 기본으로 넣기
+//                // 2. 이름, id, pw값 텍스트필드에 기본으로 넣기
 //                registerVC.nameViewTextField.text = UserDefaults.standard.string(forKey: "userName")
 //                registerVC.idViewTextField.text = UserDefaults.standard.string(forKey: "userID")
 //                registerVC.pwViewTextField.text = UserDefaults.standard.string(forKey: "userPW")
-                // 3. 가입하기 버튼 타이틀을 "수정하기"로 바꾸기
+//                // 3. 가입하기 버튼 타이틀을 "수정하기"로 바꾸기
 //                registerVC.registerButton.titleLabel?.text = "수정하기"
             }
             cell.configure()
