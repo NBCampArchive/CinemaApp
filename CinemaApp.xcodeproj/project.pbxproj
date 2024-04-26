@@ -42,6 +42,10 @@
 		B5EC62ED2BD928090006E956 /* LikedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62EC2BD928090006E956 /* LikedMovie.swift */; };
 		B5EC62F02BD9E7620006E956 /* BottomTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62EF2BD9E7620006E956 /* BottomTab.storyboard */; };
 		B5EC62F22BD9E91E0006E956 /* BottomTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F12BD9E91E0006E956 /* BottomTabController.swift */; };
+		B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */; };
+		B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */; };
+		B5EC62FA2BDA808F0006E956 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = B5EC62F92BDA808F0006E956 /* FloatingPanel */; };
+		B5EC62FF2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */; };
 		B5EC62FD2BDAA7120006E956 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC62FC2BDAA7120006E956 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +82,9 @@
 		B5EC62EC2BD928090006E956 /* LikedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedMovie.swift; sourceTree = "<group>"; };
 		B5EC62EF2BD9E7620006E956 /* BottomTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomTab.storyboard; sourceTree = "<group>"; };
 		B5EC62F12BD9E91E0006E956 /* BottomTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabController.swift; sourceTree = "<group>"; };
+		B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieMap.storyboard; sourceTree = "<group>"; };
+		B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapViewController.swift; sourceTree = "<group>"; };
+		B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapFloatingPanel.swift; sourceTree = "<group>"; };
 		B5EC62FC2BDAA7120006E956 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +96,7 @@
 				B5EC62DB2BD685FA0006E956 /* Alamofire in Frameworks */,
 				B5EC62DD2BD685FA0006E956 /* AlamofireDynamic in Frameworks */,
 				B5EC62D22BD668F90006E956 /* Then in Frameworks */,
+				B5EC62FA2BDA808F0006E956 /* FloatingPanel in Frameworks */,
 				B5EC62D52BD669030006E956 /* SnapKit in Frameworks */,
 				B5EC62E32BD693920006E956 /* Kingfisher in Frameworks */,
 			);
@@ -256,6 +264,7 @@
 		B5EC62BF2BD6323D0006E956 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC62F32BD9F07C0006E956 /* Map */,
 				3F11B3C22BDA188000A4DE8E /* MovieDetails */,
 				B5EC62EE2BD9E7480006E956 /* BottomTab */,
 				68E614F42BD65021003E623C /* SearchMovie */,
@@ -352,6 +361,16 @@
 			path = BottomTab;
 			sourceTree = "<group>";
 		};
+		B5EC62F32BD9F07C0006E956 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC62F42BD9F0920006E956 /* MovieMap.storyboard */,
+				B5EC62F62BD9F0BA0006E956 /* MovieMapViewController.swift */,
+				B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -374,6 +393,7 @@
 				B5EC62DA2BD685FA0006E956 /* Alamofire */,
 				B5EC62DC2BD685FA0006E956 /* AlamofireDynamic */,
 				B5EC62E22BD693920006E956 /* Kingfisher */,
+				B5EC62F92BDA808F0006E956 /* FloatingPanel */,
 			);
 			productName = CinemaApp;
 			productReference = B5EC62A52BD631B90006E956 /* CinemaApp.app */;
@@ -408,6 +428,7 @@
 				B5EC62D32BD669030006E956 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B5EC62D92BD685FA0006E956 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B5EC62E12BD693920006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = B5EC62A62BD631B90006E956 /* Products */;
 			projectDirPath = "";
@@ -423,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EC62F52BD9F0920006E956 /* MovieMap.storyboard in Resources */,
 				B5EC62F02BD9E7620006E956 /* BottomTab.storyboard in Resources */,
 				1ACA9BDE2BD644C100B6DE9E /* Login.storyboard in Resources */,
 				B5EC62E72BD7C31D0006E956 /* TwelveCinemaInfo.plist in Resources */,
@@ -441,6 +463,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EC62FF2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift in Sources */,
+				1AE3A3F42BD65D2B00021239 /* BaseLoginViewController.swift in Sources */,
 				B5EC62AD2BD631B90006E956 /* MovieListViewController.swift in Sources */,
 				6890C2C22BDA1EA9004EA98F /* Genre.swift in Sources */,
 				1AE3A3F72BD753D900021239 /* LoginViewController.swift in Sources */,
@@ -463,6 +487,7 @@
 				B5EC62AB2BD631B90006E956 /* SceneDelegate.swift in Sources */,
 				B5EC62CB2BD63F170006E956 /* BaseModel.swift in Sources */,
 				B5EC62E92BD7C4000006E956 /* TwelveCinema++Bundle.swift in Sources */,
+				B5EC62F72BD9F0BA0006E956 /* MovieMapViewController.swift in Sources */,
 				B5EC62EB2BD924260006E956 /* MovieDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,7 +640,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FB44T8T3FL;
+				DEVELOPMENT_TEAM = 8B78U37C85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CinemaApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -643,7 +668,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FB44T8T3FL;
+				DEVELOPMENT_TEAM = 8B78U37C85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CinemaApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -720,6 +745,14 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -747,6 +780,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B5EC62E12BD693920006E956 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		B5EC62F92BDA808F0006E956 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EC62F82BDA808F0006E956 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -26,13 +26,18 @@ class BottomTabController: UITabBarController {
         let searchTabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         searchViewController.tabBarItem = searchTabBarItem
         
-        // 세 번째 탭 - ProfileViewController
+        // 두 번째 탭 - SearchViewController
+        let movieMapViewController = UIStoryboard(name: "MovieMap", bundle: nil).instantiateViewController(withIdentifier: "MovieMapViewController")
+        let movieMapTabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "location"), selectedImage: UIImage(systemName: "location.fill"))
+        movieMapViewController.tabBarItem = movieMapTabBarItem
+        
+        // 네 번째 탭 - ProfileViewController
 //        let profileViewController = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileViewController")
 //        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
 //        profileViewController.tabBarItem = profileTabBarItem
         
         // 뷰 컨트롤러 배열 생성
-        let viewControllers = [movieListViewController, searchViewController]
+        let viewControllers = [movieListViewController, searchViewController, movieMapViewController]
         
         // 탭바 컨트롤러의 뷰 컨트롤러 설정
         self.setViewControllers(viewControllers, animated: false)
