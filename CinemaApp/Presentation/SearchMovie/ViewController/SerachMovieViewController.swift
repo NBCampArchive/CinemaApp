@@ -15,7 +15,7 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var noticeLabel: UILabel!
     
     // TODO: Key를 발급받아 채워주세요.
-    let authenticationKey = ""
+    let authenticationKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzQyNzIxNTdhZDkxZTFlNDViNTJkNmViMTFlYTA5MyIsInN1YiI6IjY2MjVkMjlhY2I1YzhlMDE0YTNlZTE2YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y1iuAsiirrtH96v2KiUWIYtzqIL5zf2ZiVUH2Ul9XBM"
     let urlString = "https://api.themoviedb.org/3/search/movie"
     let genreListUrl = "https://api.themoviedb.org/3/genre/movie/list"
     
@@ -29,6 +29,8 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
+    var genreType: GenreType = .all
+    var genreList: [MyGenre] = []
     var filteredMovieList: [Results] = []
     var isFiltered = false
     
@@ -42,9 +44,17 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         setSearchBar()
         noticeLabelUI()
         getGenreData()
-        
+        setSegmentedControl()
+    }
+    
+    func setSegmentedControl() {
+        let allCases = GenreType.allCases
+        for i in 0..<allCases.count {
+            let type = allCases[i]
+            let capitalizedTypeName = "\(type)".capitalized
+            self.genreSegmentedControl.setTitle(capitalizedTypeName, forSegmentAt: i)
+        }
         self.genreSegmentedControl.addTarget(self, action: #selector(genreChanged(segment:)), for: .valueChanged)
-        
     }
     
     func noticeLabelUI() {
@@ -84,56 +94,54 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @objc func genreChanged(segment: UISegmentedControl) {
         isFiltered = true
-        filterActionMovie(movieList: movieList)
     
         switch segment.selectedSegmentIndex {
         case 0:
-            isFiltered = false
+            genreType = .all
         case 1:
-            filterAnimaionMovie(movieList: movieList)
+            genreType = .ani
         case 2:
-            filterComedyMovie(movieList: movieList)
+            genreType = .comedy
         case 3:
-            filterFantasyMovie(movieList: movieList)
+            genreType = .fantasy
         case 4:
-            filterThillerMovie(movieList: movieList)
+            genreType = .thiller
         case 5:
-            filterActionMovie(movieList: movieList)
+            genreType = .action
         default:
             break
+        }
+        
+        switch genreType {
+        case .all:
+            isFiltered = false
+        default:
+            filterByGenreType()
         }
             
         movieListCollectionView.reloadData()
     }
     
-    func filterActionMovie(movieList: [Results]) {
+    func filterByGenreType() {
+        var genreNumber = 0
+        
+        for genre in genreList {
+            if genre.name == genreType.rawValue {
+                genreNumber = genre.id
+                break
+            }
+        }
+        
         filteredMovieList = movieList.filter {
-            $0.genre_ids.contains(28)
+            $0.genre_ids.contains(genreNumber)
         }
     }
     
-    func filterAnimaionMovie(movieList: [Results]) {
-        filteredMovieList = movieList.filter {
-            $0.genre_ids.contains(16)
-        }
-    }
-    
-    func filterComedyMovie(movieList: [Results]) {
-        filteredMovieList = movieList.filter {
-            $0.genre_ids.contains(35)
-        }
-    }
-    
-    func filterFantasyMovie(movieList: [Results]) {
-        filteredMovieList = movieList.filter {
-            $0.genre_ids.contains(14)
-        }
-    }
-    
-    func filterThillerMovie(movieList: [Results]) {
-        filteredMovieList = movieList.filter {
-            $0.genre_ids.contains(53)
-        }
+    func showAlert() {
+        let cancelAction = UIAlertAction(title: "닫기", style: .default)
+        let alertController = UIAlertController(title: "⚠️ 경고 ⚠️", message: "네트워크 오류가 발생했습니다.\n다시 시도해 주세요.", preferredStyle: .alert)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
     }
     
     func getData(query: String, completion: @escaping([Results]) -> Void ) {
@@ -161,6 +169,14 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else { return }
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+                
+                return
+            }
+            
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(Movies.self, from: data)
@@ -190,24 +206,30 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else { return }
-            // print("data: \(data)")
-            // guard let encodedData = String(data: data, encoding: .utf8) else { return }
-            // print("unwrappedData:\(encodedData)")
             
             // 통신에 실패했을 경우 alert 띄우기
             guard error == nil else {
-                let cancelAction = UIAlertAction(title: "닫기", style: .default)
-                let alertController = UIAlertController(title: "⚠️ 경고 ⚠️", message: "네트워크 오류가 발생했습니다.\n다시 시도해 주세요.", preferredStyle: .alert)
-                alertController.addAction(cancelAction)
                 DispatchQueue.main.async {
-                    self.present(alertController, animated: true)
+                    self.showAlert()
                 }
+                
                 return
             }
             
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(GenresMovieList.self, from: data)
+                // print(result)
+                let genres = result.genres.compactMap { genre in
+                    if let genreID = genre.id, let genreName = genre.name {
+                        let myGenre = MyGenre(id: genreID, name: genreName)
+                        return myGenre
+                    } else {
+                        return nil
+                    }
+                }
+                
+                self.genreList = genres
             } catch {
                 print("genre data error: \(error)")
             } 
@@ -238,6 +260,9 @@ class SearchMovieViewController: UIViewController, UICollectionViewDelegate, UIC
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(path)")
             let placeholderImage = UIImage(systemName: "movieclapper")
             cell.movieImage.kf.setImage(with: url, placeholder: placeholderImage)
+            cell.movieImage.kf.indicatorType = .activity
+            cell.movieImage.kf.setImage(with: url,
+                                        options: [.transition(.fade(0.5)), .forceTransition, .keepCurrentImageWhileLoading])
         }
         
         return cell
@@ -294,6 +319,7 @@ extension SearchMovieViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // 키패드 내리는 용도
         view.endEditing(true)
     }
 }
