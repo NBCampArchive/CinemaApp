@@ -23,12 +23,13 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     
     var movieDetail: MovieDetail?
     
+    var movieId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "BackgroundColor")
         
-        getDetailMovie()
+        getDetailMovie(id: movieId ?? 0)
         titleLabel.backgroundColor = UIColor.clear
         titleLabel.textColor = UIColor(named: "LabelTextColor")
         stackView.backgroundColor = UIColor.clear
@@ -47,8 +48,8 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func getDetailMovie() {
-        MovieListApiManager.shared.getMovieDetail(id: 693134) { result in
+    func getDetailMovie(id: Int) {
+        MovieListApiManager.shared.getMovieDetail(id: id) { result in
             switch result {
             case .success(let movies):
                 print("MovieDetail: \(movies)")
