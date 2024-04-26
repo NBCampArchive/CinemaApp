@@ -165,6 +165,7 @@
 		1AE3A4092BDA4C0100021239 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC63002BDB5EA10006E956 /* LikeMovie.storyboard */,
 				1AE3A40A2BDA4C1300021239 /* MyPage.storyboard */,
 			);
 			path = StoryBoard;
@@ -173,6 +174,7 @@
 		1AE3A40C2BDA4ED600021239 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC63022BDB5EB00006E956 /* LikeMovieViewController.swift */,
 				1AE3A40D2BDA4EF600021239 /* MyPageViewController.swift */,
 			);
 			path = ViewController;
@@ -191,6 +193,7 @@
 			children = (
 				1AE3A4152BDA6B8B00021239 /* MyProfileTableViewCell.swift */,
 				1AE3A4172BDA6CAB00021239 /* myMenuTableViewCell.swift */,
+				B5EC63042BDB5EC20006E956 /* LikeMovieTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,7 +331,6 @@
 			isa = PBXGroup;
 			children = (
 				1AE3A4082BDA4BEC00021239 /* MyPage */,
-				B5EC63062BDB5ECB0006E956 /* LikeMovie */,
 				B5EC62F32BD9F07C0006E956 /* Map */,
 				3F11B3C22BDA188000A4DE8E /* MovieDetails */,
 				B5EC62EE2BD9E7480006E956 /* BottomTab */,
@@ -434,16 +436,6 @@
 				B5EC62FE2BDAB1BC0006E956 /* MovieMapFloatingPanel.swift */,
 			);
 			path = Map;
-			sourceTree = "<group>";
-		};
-		B5EC63062BDB5ECB0006E956 /* LikeMovie */ = {
-			isa = PBXGroup;
-			children = (
-				B5EC63042BDB5EC20006E956 /* LikeMovieTableCell.swift */,
-				B5EC63022BDB5EB00006E956 /* LikeMovieViewController.swift */,
-				B5EC63002BDB5EA10006E956 /* LikeMovie.storyboard */,
-			);
-			path = LikeMovie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
