@@ -50,7 +50,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch item.type {
             
-        // MARK: - myProfile
+            // MARK: - myProfile cell 커스터마이징
         case .myProfile:
             print("userName: \(UserDefaults.standard.value(forKey: "userName")) / \(UserDefaults.standard.value(forKey: "userID"))")
             guard let cell = tableView.dequeueReusableCell(
@@ -58,10 +58,12 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
                 for: indexPath) as? MyProfileTableViewCell else {
                 return UITableViewCell()
             }
-            
+            // cell UI
+            cell.configure()
+            cell.selectionStyle = .none
             print("cell: \(cell.userNameLabel.text)")
             
-             // 회원정보 수정 버튼 눌렀을 때 실행할 클로저 정의
+            // 회원정보 수정 버튼 눌렀을 때 실행할 클로저 정의
             cell.editUserInfoButton = { [unowned self] in
                 let registerVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
                 self.present(registerVC, animated: true) //회원가입 뷰 present
@@ -70,17 +72,12 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             // 로그아웃 버튼 눌렀을 때 실행할 클로저 정의
             cell.logoutButton = { [unowned self] in
                 let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-                self.navigationController?.pushViewController(loginVC, animated: true) //로그인 뷰 push
+                self.navigationController?.popToRootViewController(animated: true) //root view인 로그인 뷰로 이동
+                //self.navigationController?.pushViewController(loginVC, animated: true) //로그인 뷰 push
             }
-            
-            
-            
-            cell.configure()
-            cell.selectionStyle = .none
-            cell.backgroundColor = .red
             return cell
-        
-        // MARK: - myMenu
+            
+            // MARK: - myMenu cell 커스터마이징
         case .myMenu:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "myMenuCell", for: indexPath) as? myMenuTableViewCell else {
                 return UITableViewCell()
@@ -92,5 +89,29 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    
+    // MARK: - 메뉴 셀 선택했을 때 화면 이동 이벤트 처리
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // myMenu cell에만 이벤트 등록! (indexPath.row == 0 은 profileCell임)
+        guard indexPath.row > 0 else { return }
+        
+        let item = self.items[indexPath.row] as! MyMenuItem
+        let menuTitle = item.menuTitle
+        
+        // TODO: menuTitle 페이지로 이동하는 함수 작성
+        switch menuTitle {
+        case "예매 내역" :
+            print("case: 예매 내역")
+            // 예매 내역 페이지로 이동
+            
+        case "찜한 영화" :
+            print("case: 찜한 영화")
+            // 찜한 영화 페이지로 이동
+            
+        default :
+            print("아무것도 실행 안함")
+        }
+        
+    }
     
 }
