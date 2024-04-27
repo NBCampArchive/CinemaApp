@@ -14,6 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Navigation Bar의 타이틀 색상 변경
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "labelTextColor") ?? .white]
+        navigationBarAppearance.titleTextAttributes = [
+            .foregroundColor:  UIColor(named: "labelTextColor") ?? .white,
+            .font: UIFont.systemFont(ofSize: 20, weight: .bold)
+        ]
+        
+        // Back 버튼 색상 변경
+        let backButtonAppearance = UIBarButtonItem.appearance()
+        backButtonAppearance.tintColor = UIColor(named: "labelTextColor") ?? .white
+        
         return true
     }
 
