@@ -21,14 +21,14 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         setupCollectionView()
         setupSegement()
         fetchMovieList(listType: category)
     }
     
     func setupCollectionView() {
-        movieCollectionView.backgroundColor = UIColor(named: "backgroundColor")
+        movieCollectionView.backgroundColor = UIColor(named: "BackgroundColor")
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
         movieCollectionView.collectionViewLayout = UICollectionViewFlowLayout().then {
@@ -121,6 +121,7 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         let movie = movies[indexPath.item]
         
+        cell.delegate = self
         cell.configure(with: movie)
         return cell
     }
@@ -147,5 +148,23 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // 원하는 셀의 크기를 반환합니다.
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+    }
+}
+
+extension MovieListViewController: MovieCollectionViewCellDelegate {
+    
+    func movieCollectionViewCell(_ cell: MovieCollectionViewCell, didTapNavigationButtonWith movie: Movie?) {
+        guard let movie = movie else {
+            print("Movie is nil")
+            return
+        }
+        print("Navigation Button Tapped")
+        guard let pushVC = UIStoryboard(name: "MovieDetails", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else {
+            print("Failed to instantiate MovieDetailsViewController")
+            return
+        }
+
+        pushVC.movieId = movie.id
+        present(pushVC, animated: true)
     }
 }

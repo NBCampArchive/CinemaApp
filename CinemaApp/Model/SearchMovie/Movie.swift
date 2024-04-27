@@ -18,7 +18,7 @@ struct Results: Decodable {
     // let adult: Bool
     // let backdrop_path: String?
     let genre_ids: [Int]
-    // let id: Int
+    let id: Int
     // let original_language: String
     // let original_title: String
     // let overview: String

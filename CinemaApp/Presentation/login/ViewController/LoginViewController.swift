@@ -118,7 +118,13 @@ class LoginViewController: UIViewController {
         if idTextField.text == UserDefaults.standard.string(forKey: "userID"),
            pwTextField.text == UserDefaults.standard.string(forKey: "userPW") {
             // TODO: 화면 이동 함수 추가
-            
+            let pushVC = UIStoryboard(name: "BottomTab", bundle: nil).instantiateViewController(withIdentifier: "BottomTabController")
+            let navigationController = UINavigationController(rootViewController: pushVC)
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            guard let delegate = sceneDelegate else {
+                return
+            }
+            delegate.window?.rootViewController = navigationController
         } else {
             // Alert: 로그인 정보가 일치하지 않습니다
             EasyAlert.showAlert(title: "로그인 실패", message: "로그인 정보가 일치하지 않습니다.", vc: self)

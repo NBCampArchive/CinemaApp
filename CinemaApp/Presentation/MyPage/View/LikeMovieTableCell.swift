@@ -19,13 +19,14 @@ class LikeMovieTableCell: UITableViewCell{
     }
     let titleLabel = UILabel().then{
         $0.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        $0.textColor = UIColor(named: "labelTextColor")
+        $0.numberOfLines = 0
+        $0.textColor = UIColor(named: "LabelTextColor")
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        contentView.backgroundColor = UIColor(named: "backgroundColor")
+        contentView.backgroundColor = UIColor(named: "BackgroundColor")
         
         setupLayout()
     }
