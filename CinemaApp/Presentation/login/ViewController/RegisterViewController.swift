@@ -77,6 +77,7 @@ class RegisterViewController: UIViewController {
         setCornerRadius()
         setTextFieldPadding()
         setTextFieldPlaceHolder()
+        setPageTitle()
         setIfHaveUserDefault()
     }
     
@@ -190,17 +191,22 @@ class RegisterViewController: UIViewController {
               userID != "",
               userPW != ""
         else {
-            self.setRegisterButton(status: "가입하기")
             return
         }
-        
-        self.pageTitleLabel.text = "회원정보 수정"
         self.nameViewTextField.text = userName
         self.idViewTextField.text = userID
         self.pwViewTextField.text = userPW
-        self.setRegisterButton(status: "수정하기")
     }
     
+    func setPageTitle() {
+        if LoginStatus.loginStatus == true {
+            self.pageTitleLabel.text = "회원정보 수정"
+            self.registerButton.titleLabel?.text = "수정하기"
+        } else {
+            self.pageTitleLabel.text = "회원가입"
+            self.registerButton.titleLabel?.text = "가입하기"
+        }
+    }
     
     func setCornerRadius() { // frame과 관련된 값은 viewDidAppear
         [self.nameViewTextField,

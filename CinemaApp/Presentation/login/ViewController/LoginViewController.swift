@@ -54,6 +54,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
         LoginStatus.loginStatus = true
+        print("loginStatus: \(LoginStatus.loginStatus)")
         conductLogin()
     }
     

@@ -66,6 +66,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             cell.editUserInfoButton = { [unowned self] in
                 let registerVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
                 self.present(registerVC, animated: true) //회원가입 뷰 present
+                print("loginStatus: \(LoginStatus.loginStatus)")
             }
             
             // 로그아웃 버튼 눌렀을 때 실행할 클로저 정의
@@ -73,6 +74,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
                 print("로그아웃 버튼 클릭")
                 
                 LoginStatus.loginStatus = false
+                print("loginStatus: \(LoginStatus.loginStatus)")
                 
                 let pushVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
 
