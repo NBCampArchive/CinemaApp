@@ -183,13 +183,11 @@ class RegisterViewController: UIViewController {
     }
     
     func setIfHaveUserDefault() {
-        // userDefault 값이 있으면 textField에 userDefault 값 입력해두기!
+        // 로그인 상태이면 textField에 userDefault 값 입력해두기!
         guard let userName = UserDefaults.standard.string(forKey: "userName"),
               let userID = UserDefaults.standard.string(forKey: "userID"),
               let userPW = UserDefaults.standard.string(forKey: "userPW"),
-              userName != "",
-              userID != "",
-              userPW != ""
+              LoginStatus.loginStatus == true
         else {
             return
         }
@@ -201,10 +199,10 @@ class RegisterViewController: UIViewController {
     func setPageTitle() {
         if LoginStatus.loginStatus == true {
             self.pageTitleLabel.text = "회원정보 수정"
-            self.registerButton.titleLabel?.text = "수정하기"
+            self.setRegisterButton(status: "수정하기")
         } else {
             self.pageTitleLabel.text = "회원가입"
-            self.registerButton.titleLabel?.text = "가입하기"
+            self.setRegisterButton(status: "가입하기")
         }
     }
     
@@ -351,17 +349,16 @@ class RegisterViewController: UIViewController {
     
     // MARK: - Alert: 정상 가입 되었을 경우
     func showAlertIfDataComplete() {
-        let alert = UIAlertController(title: "회원가입 완료", message: "회원가입이 완료되었습니다.", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .cancel) { [weak self] _ in
-            self?.dismiss(animated: true)
+        if LoginStatus.loginStatus == true {
+            // 1. 로그인 상태일 경우: 수정 완료 메시지 띄우기
+            EasyAlert.dismissModalAlert(title: "회원정보", message: "회원 정보가 수정되었습니다.", vc: self)
+        } else {
+            // 2. 로그아웃 상태일 경우: 가입 완료 메시지 띄우기
+            EasyAlert.dismissModalAlert(title: "회원가입", message: "회원가입이 완료되었습니다.", vc: self)
         }
-        
-        alert.addAction(ok)
-        self.present(alert, animated: true)
     }
 }
-
-
+    
 //MARK: - 영문자와 숫자만 입력 가능하게 하는 delegate 함수 (-> id,pw textField에 적용)
 extension RegisterViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
