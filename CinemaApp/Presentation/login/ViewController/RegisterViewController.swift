@@ -73,6 +73,7 @@ class RegisterViewController: UIViewController {
     func setupUI() {
         setColors()
         setFontAndText()
+        setTitleAndButtonLabel()
         setCornerRadius()
         setTextFieldPadding()
         setTextFieldPlaceHolder()
@@ -123,11 +124,20 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    func setTitleAndButtonLabel() {
+        // 로그인 상태에 따라 <회원가입> 또는 <회원정보 수정>
+        if LoginStatus.loginStatus == false {
+            self.pageTitleLabel.text = "회원가입"
+            self.setRegisterButton(status: "가입하기")
+        } else {
+            self.pageTitleLabel.text = "회원정보 수정"
+            self.setRegisterButton(status: "수정하기")
+        }
+    }
+    
     func setFontAndText() {
         // MARK: title
-        self.pageTitleLabel.text = "회원가입"
         self.pageTitleLabel.font = UIFont.boldSystemFont(ofSize: 26)
-        
         self.pageSubtitleLabel.text = "Twelve Cinema에 오신 것을 환영합니다."
         self.pageSubtitleLabel.font = UIFont.systemFont(ofSize: 16)
         self.pageSubtitleLabel.numberOfLines = 0
@@ -181,23 +191,17 @@ class RegisterViewController: UIViewController {
     }
     
     func setIfHaveUserDefault() {
-        // userDefault 값이 있으면 textField에 userDefault 값 입력해두기!
+        // 로그인 상태이면 textField에 userDefault 값 입력해두기!
         guard let userName = UserDefaults.standard.string(forKey: "userName"),
               let userID = UserDefaults.standard.string(forKey: "userID"),
               let userPW = UserDefaults.standard.string(forKey: "userPW"),
-              userName != "",
-              userID != "",
-              userPW != ""
+              LoginStatus.loginStatus == true
         else {
-            self.setRegisterButton(status: "가입하기")
             return
         }
-        
-        self.pageTitleLabel.text = "회원정보 수정"
         self.nameViewTextField.text = userName
         self.idViewTextField.text = userID
         self.pwViewTextField.text = userPW
-        self.setRegisterButton(status: "수정하기")
     }
     
     
