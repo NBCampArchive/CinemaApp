@@ -197,12 +197,12 @@ class RegisterViewController: UIViewController {
     }
     
     func setPageTitle() {
-        if LoginStatus.loginStatus == true {
-            self.pageTitleLabel.text = "회원정보 수정"
-            self.setRegisterButton(status: "수정하기")
-        } else {
+        if LoginStatus.loginStatus == false || UserDefaults.standard.value(forKey: "userID") == nil {
             self.pageTitleLabel.text = "회원가입"
             self.setRegisterButton(status: "가입하기")
+        } else {
+            self.pageTitleLabel.text = "회원정보 수정"
+            self.setRegisterButton(status: "수정하기")
         }
     }
     
