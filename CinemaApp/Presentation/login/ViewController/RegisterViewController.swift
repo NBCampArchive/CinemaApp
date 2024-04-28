@@ -73,6 +73,7 @@ class RegisterViewController: UIViewController {
     func setupUI() {
         setColors()
         setFontAndText()
+        setTitleAndButtonLabel()
         setCornerRadius()
         setTextFieldPadding()
         setTextFieldPlaceHolder()
@@ -123,11 +124,20 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    func setTitleAndButtonLabel() {
+        // 로그인 상태에 따라 <회원가입> 또는 <회원정보 수정>
+        if LoginStatus.loginStatus == false {
+            self.pageTitleLabel.text = "회원가입"
+            self.setRegisterButton(status: "가입하기")
+        } else {
+            self.pageTitleLabel.text = "회원정보 수정"
+            self.setRegisterButton(status: "수정하기")
+        }
+    }
+    
     func setFontAndText() {
         // MARK: title
-        self.pageTitleLabel.text = "회원가입"
         self.pageTitleLabel.font = UIFont.boldSystemFont(ofSize: 26)
-        
         self.pageSubtitleLabel.text = "Twelve Cinema에 오신 것을 환영합니다."
         self.pageSubtitleLabel.font = UIFont.systemFont(ofSize: 16)
         self.pageSubtitleLabel.numberOfLines = 0
@@ -181,23 +191,17 @@ class RegisterViewController: UIViewController {
     }
     
     func setIfHaveUserDefault() {
-        // userDefault 값이 있으면 textField에 userDefault 값 입력해두기!
+        // 로그인 상태이면 textField에 userDefault 값 입력해두기!
         guard let userName = UserDefaults.standard.string(forKey: "userName"),
               let userID = UserDefaults.standard.string(forKey: "userID"),
               let userPW = UserDefaults.standard.string(forKey: "userPW"),
-              userName != "",
-              userID != "",
-              userPW != ""
+              LoginStatus.loginStatus == true
         else {
-            self.setRegisterButton(status: "가입하기")
             return
         }
-        
-        self.pageTitleLabel.text = "회원정보 수정"
         self.nameViewTextField.text = userName
         self.idViewTextField.text = userID
         self.pwViewTextField.text = userPW
-        self.setRegisterButton(status: "수정하기")
     }
     
     
@@ -342,19 +346,17 @@ class RegisterViewController: UIViewController {
         EasyAlert.showAlert(title: alertTitle, message: nil, vc: self)
     }
     
+    
     // MARK: - Alert: 정상 가입 되었을 경우
     func showAlertIfDataComplete() {
-        let alert = UIAlertController(title: "회원가입 완료", message: "회원가입이 완료되었습니다.", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .cancel) { [weak self] _ in
-            self?.dismiss(animated: true)
+        if LoginStatus.loginStatus == true {
+            // 1. 로그인 상태일 경우: 수정 완료 메시지 띄우기
+            EasyAlert.dismissModalAlert(title: "회원정보", message: "회원 정보가 수정되었습니다.", vc: self)
+        } else {
+            // 2. 로그아웃 상태일 경우: 가입 완료 메시지 띄우기
+            EasyAlert.dismissModalAlert(title: "회원가입", message: "회원가입이 완료되었습니다.", vc: self)
         }
-        
-        alert.addAction(ok)
-        self.present(alert, animated: true)
     }
-    
-    
-    
 }
 
 //MARK: - id, pw에 영문자와 숫자만 입력 가능하게 하기... 실패...
