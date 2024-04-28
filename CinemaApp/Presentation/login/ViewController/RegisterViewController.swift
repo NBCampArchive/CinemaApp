@@ -65,7 +65,8 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         setupUI()
-//        idViewTextField.delegate = self
+        idViewTextField.delegate = self
+        pwViewTextField.delegate = self
     }
     
     
@@ -99,7 +100,7 @@ class RegisterViewController: UIViewController {
         self.pwView.backgroundColor = nil
         
         // 라벨 컬러
-        [self.pageTitleLabel, 
+        [self.pageTitleLabel,
          self.pageSubtitleLabel,
          self.nameViewTitleLabel,
          self.idViewTitleLabel,
@@ -110,7 +111,7 @@ class RegisterViewController: UIViewController {
         
         // Text Field 컬러
         [self.nameViewTextField,
-        self.idViewTextField,
+         self.idViewTextField,
          self.pwViewTextField].forEach {
             $0?.backgroundColor = PrimaryContainerColor
             $0?.textColor = LabelTextColor
@@ -352,22 +353,21 @@ class RegisterViewController: UIViewController {
         alert.addAction(ok)
         self.present(alert, animated: true)
     }
-    
-    
-    
 }
 
-//MARK: - id, pw에 영문자와 숫자만 입력 가능하게 하기... 실패...
-//extension RegisterViewController: UITextFieldDelegate {
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if let x = string.rangeOfCharacter(from: .alphanumerics) {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-//    
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        return true
-//    }
-//}
+
+//MARK: - 영문자와 숫자만 입력 가능하게 하는 delegate 함수 (-> id,pw textField에 적용)
+extension RegisterViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9].*", options: [])
+            if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
+                return false
+            }
+        }
+        catch {
+            print("ERROR")
+        }
+        return true
+    }
+}

@@ -42,9 +42,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-//    // 로그인 상태: 자동으로 홈화면으로 이동되는 것 방지
-//    var loginStatus: Bool = false
-    
     // color set
     let BackgroundColor = UIColor(named: "BackgroundColor")
     let customPrimaryColor = UIColor(named: "customPrimaryColor")
