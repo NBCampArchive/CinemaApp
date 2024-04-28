@@ -42,6 +42,9 @@ class LoginViewController: UIViewController {
         }
     }
     
+//    // 로그인 상태: 자동으로 홈화면으로 이동되는 것 방지
+//    var loginStatus: Bool = false
+    
     // color set
     let BackgroundColor = UIColor(named: "BackgroundColor")
     let customPrimaryColor = UIColor(named: "customPrimaryColor")
@@ -53,6 +56,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
+        LoginStatus.loginStatus = true
         conductLogin()
     }
     
@@ -108,7 +112,11 @@ class LoginViewController: UIViewController {
             // 1. text에 userDefaults 정보 넣기
             idTextField.text = UserDefaults.standard.string(forKey: "userID")
             pwTextField.text = UserDefaults.standard.string(forKey: "userPW")
-            conductLogin()
+            
+            // 로그인 상태가 true일 경우에만 로그인
+            if LoginStatus.loginStatus == true {
+                conductLogin()
+            }
         }
         
     }

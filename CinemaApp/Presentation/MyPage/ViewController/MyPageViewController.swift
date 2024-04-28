@@ -71,6 +71,9 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             // 로그아웃 버튼 눌렀을 때 실행할 클로저 정의
             cell.logoutButton = { [unowned self] in
                 print("로그아웃 버튼 클릭")
+                
+                LoginStatus.loginStatus = false
+                
                 let pushVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
 
                 let navigationController = UINavigationController(rootViewController: pushVC)
