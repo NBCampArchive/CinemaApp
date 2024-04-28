@@ -63,6 +63,8 @@ class LoginViewController: UIViewController {
         self.setupUI()
         self.setupConstraints()
         self.conductAutoLogin()
+        idTextField.delegate = self
+        pwTextField.delegate = self
         print("userDefault Id:", UserDefaults.standard.string(forKey: "userID"))
     }
     
@@ -135,14 +137,6 @@ class LoginViewController: UIViewController {
             EasyAlert.showAlert(title: "로그인 실패", message: "로그인 정보가 일치하지 않습니다.", vc: self)
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -410,8 +404,18 @@ class LoginViewController: UIViewController {
     
 }
 
+//MARK: - 영문자와 숫자만 입력 가능하게 하는 delegate 함수 (-> id,pw textField에 적용)
 extension LoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9].*", options: [])
+            if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
+                return false
+            }
+        }
+        catch {
+            print("ERROR")
+        }
         return true
     }
 }
