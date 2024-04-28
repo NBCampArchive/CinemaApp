@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>c31b9c5e5899c77a5743da1f58e46171</string>
+	<string>키를 입력하세요</string>
 	<key>API_TOKEN</key>
-	<string>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzFiOWM1ZTU4OTljNzdhNTc0M2RhMWY1OGU0NjE3MSIsInN1YiI6IjY2MjVkMGZkY2I1YzhlMDE2NDNmY2Y2YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gYBA_5m1zFie_AKPbNap-9XH1IHCjHgMHw5hP1T1H_k</string>
+	<string>토큰을 입력하세요</string>
 </dict>
 </plist>
