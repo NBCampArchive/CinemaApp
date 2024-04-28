@@ -190,7 +190,7 @@ class LoginViewController: UIViewController {
     }
     
     func setAppLogoUI() {
-        let image = UIImage(systemName: "apple.logo")
+        let image = UIImage(named: "Logo")
         self.appLogoImage.tintColor = .white
         self.appLogoImage.image = image
         self.appLogoImage.contentMode = .scaleAspectFit
