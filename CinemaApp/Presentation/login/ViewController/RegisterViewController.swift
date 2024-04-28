@@ -342,19 +342,17 @@ class RegisterViewController: UIViewController {
         EasyAlert.showAlert(title: alertTitle, message: nil, vc: self)
     }
     
+    
     // MARK: - Alert: 정상 가입 되었을 경우
     func showAlertIfDataComplete() {
-        let alert = UIAlertController(title: "회원가입 완료", message: "회원가입이 완료되었습니다.", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .cancel) { [weak self] _ in
-            self?.dismiss(animated: true)
+        if LoginStatus.loginStatus == true {
+            // 1. 로그인 상태일 경우: 수정 완료 메시지 띄우기
+            EasyAlert.dismissModalAlert(title: "회원정보", message: "회원 정보가 수정되었습니다.", vc: self)
+        } else {
+            // 2. 로그아웃 상태일 경우: 가입 완료 메시지 띄우기
+            EasyAlert.dismissModalAlert(title: "회원가입", message: "회원가입이 완료되었습니다.", vc: self)
         }
-        
-        alert.addAction(ok)
-        self.present(alert, animated: true)
     }
-    
-    
-    
 }
 
 //MARK: - id, pw에 영문자와 숫자만 입력 가능하게 하기... 실패...
