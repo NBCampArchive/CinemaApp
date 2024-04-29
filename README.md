@@ -10,7 +10,7 @@
 - ### 참여 인원
   |<img src="https://avatars.githubusercontent.com/u/157277372?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/112539563?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/161591832?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/160442827?v=4" width="150" height="150"/>|
   |:-:|:-:|:-:|:-:|
-  |Yurim<br/>[@yurim830](https://github.com/yurim830)|HyunRyeol Park<br/>[@devpark435](https://github.com/devpark435)|[@yeggrrr](https://github.com/yeggrrr)|[@taeng-sa](https://github.com/taeng-sa)|
+  |Yurim<br/>[@yurim830](https://github.com/yurim830)|HyunRyeol Park<br/>[@devpark435](https://github.com/devpark435)|yejin<br/>[@yeggrrr](https://github.com/yeggrrr)|[@taeng-sa](https://github.com/taeng-sa)|
  
 ## 🌐 Stacks & Tools
 ### Develop
